@@ -1,0 +1,84 @@
+{%extends 'admin-layout.html'%}
+{%load static%}
+{%block title%}
+<style>
+  body {
+	background-color: #f5f7fa;
+}
+
+.testimonial-card .card-up {
+  height: 120px;
+  overflow: hidden;
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+}
+
+.aqua-gradient {
+  background: linear-gradient(40deg, #2096ff, #05ffa3) !important;
+}
+
+.testimonial-card .avatar {
+  width: 120px;
+  margin-top: -60px;
+  overflow: hidden;
+  border: 5px solid #fff;
+  border-radius: 50%;
+}
+</style>
+<title>dashboard</title>
+{%endblock title%}
+{%block main_content%}
+<div class="row">
+  <div class="col-sm-4">
+<div class="card" style="width: 18rem;margin:40px;">
+
+  <img src="static/images/college1.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Location</h5>
+
+    <a href="/add_college" class="btn btn-primary">Locations</a>
+  </div>
+  </div>
+</div>
+  <div class="col-sm-4">
+<div class="card" style="width: 18rem;margin:40px;">
+  <img src="static/images/college1.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">College Name</h5>
+
+    <a href="/front" class="btn btn-primary">Name</a>
+  </div>
+</div>
+  </div>
+    <div class="col-sm-4">
+<div class="card" style="width: 18rem;margin:40px;">
+  <img src="static/images/college1.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Required money</h5>
+
+    <a href="/khabar" class="btn btn-primary">Money</a>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="container">
+  <section class="mx-auto my-5" style="max-width: 23rem;">
+
+    <div class="card testimonial-card mt-2 mb-3">
+      <div class="card-up aqua-gradient"></div>
+      <div class="avatar mx-auto white">
+        <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20%2831%29.jpg" class="rounded-circle img-fluid"
+          alt="woman avatar">
+      </div>
+      <div class="card-body text-center">
+        <h4 class="card-title font-weight-bold">Martha Smith</h4>
+        <hr>
+        <p><i class="fas fa-quote-left"></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos,
+          adipisci</p>
+      </div>
+    </div>
+
+  </section>
+</div>
+{%endblock main_content%}
