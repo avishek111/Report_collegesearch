@@ -1,0 +1,60 @@
+@media print {
+    * {
+        transition: none !important;
+        -webkit-transition: none !important;
+        -moz-transition: none !important;
+        color: #000 !important
+    }
+    .no-print {
+        display: none
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: #000 !important;
+        font-weight: 700 !important
+    }
+    #print-background {
+        display: block;
+        height: auto;
+        margin: 20px 0;
+        width: 200px
+    }
+    body {
+        background: 0 0;
+        color: #000;
+        padding-top: 0 !important
+    }
+    main {
+        background: 0 0;
+        border-top: 1px solid #000;
+        padding-top: 20px
+    }
+    .main-content,
+    .row {
+        padding: 0;
+        max-width: none
+    }
+    form,
+    #main-content,
+    #block-tabs,
+    #toolbar-administration,
+    .block-local-tasks-block,
+    .header,
+    .sidebar,
+    .footer,
+    .pager,
+    .field--name-dynamic-token-fieldnode-addthis,
+    .field--name-dynamic-token-field-node-addthis,
+    .field--name-dynamic-token-fieldnode-addthis-email-and-print,
+    .field--name-dynamic-token-field-node-addthis-email-and-print,
+    .field--name-field-highlighted-attorneys,
+    .field--name-field-related-attorneys,
+    .field--name-field-video,
+    a[class*=button] {
+        display: none
+    }
+}

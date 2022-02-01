@@ -211,5 +211,6 @@ def filter(request):
 
 
 def front(request):
-    return render(request, 'Admin/front.html')
+    return render(request, 'Admin/dash.html')
+
 

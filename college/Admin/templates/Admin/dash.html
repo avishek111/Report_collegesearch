@@ -1,1090 +1,1222 @@
 <!DOCTYPE html>
-
+{% load static %}
+{% load bootstrap %}
 <html lang="en">
-  <head>
-    <title>Travel Agency</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="utf-8" />
-    <meta property="twitter:card" content="summary_large_image" />
-    <style>
-      html {
-        font-family: Poppins;
-        font-size: 16px;
-      }
 
-      body {
-        font-weight: 400;
-        font-style:normal;
-        text-decoration: none;
-        text-transform: none;
-        letter-spacing: normal;
-        line-height: 1.55;
-        color: var(--dl-color-gray-black);
-        background-color: var(--dl-color-gray-white);
+<head>
 
-      }
-      </style>
-<!--      -------------------------------------------------->
-      <style>
-       :root {
-  --dl-color-gray-500: #595959;
-  --dl-color-gray-700: #999999;
-  --dl-color-gray-900: #D9D9D9;
-  --dl-size-size-unit: 1rem;
-  --dl-color-gray-black: #000000;
-  --dl-color-gray-white: #FFFFFF;
-  --dl-space-space-unit: 1em;
-  --dl-color-primary-100: #370511ff;
-  --dl-color-primary-500: #643843ff;
-  --dl-color-primary-700: #775860ff;
-  --dl-size-size-halfunit: 0.5rem;
-  --dl-radius-radius-round: 50%;
-  --dl-size-size-doubleunit: 2rem;
-  --dl-size-size-tripleunit: 3rem;
-  --dl-space-space-halfunit: 0.5em;
-  --dl-radius-radius-radius2: 2px;
-  --dl-radius-radius-radius4: 4px;
-  --dl-radius-radius-radius8: 8px;
-  --dl-space-space-quadruple: 4em;
-  --dl-space-space-doubleunit: 2em;
-  --dl-space-space-tripleunit: 3em;
-}
-.teleport-show {
-  display: flex !important;
-}
-.button {
-  font-size: 14px;
-  font-family: Poppins;
-  font-weight: 600;
-  text-transform: none;
-  text-decoration: none;
-}
-.list-item {
-  display: list-item;
-}
-.list {
-  width: 100%;
-  margin: 1em 0px 1em 0px;
-  display: block;
-  padding: 0px 0px 0px 1.5rem;
-  list-style-type: none;
-  list-style-position: outside;
-}
-.textarea {
-  color: var(--dl-color-gray-black);
-  cursor: auto;
-  padding: 0.5rem;
-  font-family: Poppins;
-  border-color: var(--dl-color-gray-black);
-  border-width: 1px;
-  border-radius: 4px;
-  background-color: var(--dl-color-gray-white);
-}
-.input {
-  color: var(--dl-color-gray-black);
-  cursor: auto;
-  padding: 0.5rem 1rem;
-  font-family: Poppins;
-  border-color: var(--dl-color-gray-black);
-  border-width: 1px;
-  border-radius: 4px;
-  background-color: var(--dl-color-gray-white);
-}
-.subheading {
-  font-size: 1.6rem;
-  font-family: Poppins;
-  font-weight: 400;
-  text-transform: none;
-  text-decoration: none;
-}
-.heading {
-  font-size: 3rem;
-  font-family: Poppins;
-  font-weight: 700;
-  line-height: 1.55;
-  text-transform: none;
-  text-decoration: none;
-}
-.content {
-  font-size: 16px;
-  font-family: Poppins;
-  font-weight: 400;
-  line-height: 1.55;
-  text-transform: none;
-  text-decoration: none;
-}
-</style>
-<!--------------------------------------------------------------->
-      <style>
-.solid-button-container {
-  display: flex;
-  position: relative;
-}
-.solid-button-button {
-  color: var(--dl-color-gray-white);
-  border: none;
-  padding-top: var(--dl-space-space-halfunit);
-  padding-left: var(--dl-space-space-doubleunit);
-  border-radius: 50px;
-  padding-right: var(--dl-space-space-doubleunit);
-  padding-bottom: var(--dl-space-space-halfunit);
-  background-color: var(--dl-color-primary-100);
-}
+	<!-- META ============================================= -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="" />
+	<meta name="author" content="" />
+	<meta name="robots" content="" />
 
-.outline-button-container {
-  display: flex;
-  position: relative;
-}
-.outline-button-button {
-  color: var(--dl-color-gray-black);
-  padding-top: var(--dl-space-space-unit);
-  border-color: var(--dl-color-primary-100);
-  border-width: 1px;
-  padding-left: var(--dl-space-space-doubleunit);
-  border-radius: 50px;
-  padding-right: var(--dl-space-space-doubleunit);
-  padding-bottom: var(--dl-space-space-unit);
-  background-color: var(--dl-color-gray-white);
-}
+	<!-- DESCRIPTION -->
+	<meta name="description" content="EduChamp : Education HTML Template" />
 
-.place-card-container {
-  width: 300px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-.place-card-image {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-  border-radius: var(--dl-radius-radius-radius4);
-  border-top-left-radius: var(--dl-radius-radius-radius8);
-  border-top-right-radius: var(--dl-radius-radius-radius8);
-}
-.place-card-container1 {
-  width: 100%;
-  display: flex;
-  padding: var(--dl-space-space-unit);
-  align-items: center;
-  flex-direction: column;
-}
-.place-card-text {
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
-  padding-bottom: var(--dl-space-space-halfunit);
-}
-.place-card-text1 {
-  font-size: 12px;
-  max-width: 250px;
-  margin-bottom: var(--dl-space-space-doubleunit);
-}
-@media(max-width: 767px) {
-  .place-card-container {
-    width: 200px;
-  }
-}
-@media(max-width: 479px) {
-  .place-card-container {
-    width: 300px;
-  }
-}
+	<!-- OG -->
+	<meta property="og:title" content="EduChamp : Education HTML Template" />
+	<meta property="og:description" content="EduChamp : Education HTML Template" />
+	<meta property="og:image" content="" />
+	<meta name="format-detection" content="telephone=no">
 
-.landing-page-container {
-  width: 100%;
-  height: auto;
-  display: flex;
-  min-height: 100vh;
-  align-items: center;
-  flex-direction: column;
-}
-.landing-page-top-container {
-  width: 100%;
-  height: 600px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  background-size: cover;
-  background-image: url("https://images.unsplash.com/photo-1484627147104-f5197bcd6651?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&w=1000");
-  background-position: 0% 40%;
-}
-.landing-page-navbar {
-  width: 100%;
-  display: flex;
-  padding: var(--dl-space-space-doubleunit);
-  max-width: 1000px;
-  align-items: center;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.landing-page-right-side {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.landing-page-links-container {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.landing-page-text {
-  margin-right: var(--dl-space-space-doubleunit);
-}
-.landing-page-text01 {
-  margin-right: var(--dl-space-space-doubleunit);
-}
-.landing-page-text02 {
-  margin-right: var(--dl-space-space-doubleunit);
-}
-.landing-page-text03 {
-  margin-right: var(--dl-space-space-doubleunit);
-}
-.landing-page-link {
-  display: contents;
-}
-.landing-page-burger-menu {
-  display: none;
-  align-items: center;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.landing-page-burger-menu {
-  width: 24px;
-  height: 24px;
-}
-.landing-page-mobile-menu {
-  top: 0px;
-  flex: 0 0 auto;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  display: none;
-  padding: var(--dl-space-space-doubleunit);
-  z-index: 100;
-  position: absolute;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: #fff;
-}
-.landing-page-nav {
-  flex: 0 0 auto;
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-}
-.landing-page-top {
-  flex: 0 0 auto;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  margin-bottom: var(--dl-space-space-doubleunit);
-  flex-direction: row;
-  justify-content: space-between;
-}
-.landing-page-close-menu {
-  flex: 0 0 auto;
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-}
-.landing-page-icon03 {
-  width: 24px;
-  height: 24px;
-}
-.landing-page-right-side1 {
-  width: 100%;
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.landing-page-links-container1 {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 16px;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.landing-page-text04 {
-  margin-bottom: 8px;
-}
-.landing-page-text05 {
-  margin-bottom: 8px;
-}
-.landing-page-text06 {
-  margin-bottom: 8px;
-}
-.landing-page-link01 {
-  display: contents;
-}
-.landing-page-follow-container {
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.landing-page-text08 {
-  padding-bottom: var(--dl-space-space-halfunit);
-}
-.landing-page-icons-container {
-  width: 100px;
-  display: flex;
-  align-items: flex-start;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.landing-page-link02 {
-  display: contents;
-}
-.landing-page-icon05 {
-  width: 24px;
-  height: 24px;
-}
-.landing-page-link03 {
-  display: contents;
-}
-.landing-page-icon07 {
-  width: 24px;
-  height: 24px;
-}
-.landing-page-link04 {
-  display: contents;
-}
-.landing-page-icon09 {
-  width: 24px;
-  height: 24px;
-}
-.landing-page-hero {
-  flex: 1;
-  width: 100%;
-  display: flex;
-  max-width: 1000px;
-  align-items: center;
-  padding-top: var(--dl-space-space-tripleunit);
-  padding-left: var(--dl-space-space-doubleunit);
-  padding-right: var(--dl-space-space-doubleunit);
-  flex-direction: row;
-  padding-bottom: var(--dl-space-space-tripleunit);
-  justify-content: space-between;
-}
-.landing-page-content-container {
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-}
-.landing-page-text10 {
-  padding-top: var(--dl-space-space-doubleunit);
-  padding-bottom: var(--dl-space-space-doubleunit);
-}
-.landing-page-main {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  padding-top: var(--dl-space-space-quadruple);
-  padding-left: var(--dl-space-space-doubleunit);
-  padding-right: var(--dl-space-space-doubleunit);
-  flex-direction: column;
-  padding-bottom: var(--dl-space-space-quadruple);
-  justify-content: flex-start;
-}
-.landing-page-text15 {
-  color: var(--dl-color-gray-500);
-}
-.landing-page-cards-container {
-  width: 100%;
-  display: flex;
-  grid-gap: var(--dl-space-space-doubleunit);
-  flex-wrap: wrap;
-  max-width: 1000px;
-  margin-top: var(--dl-space-space-doubleunit);
-  align-items: flex-start;
-  margin-bottom: var(--dl-space-space-doubleunit);
-  flex-direction: row;
-  justify-content: space-between;
-}
-.landing-page-footer {
-  color: var(--dl-color-gray-white);
-  width: 100%;
-  display: flex;
-  padding: var(--dl-space-space-tripleunit);
-  align-items: center;
-  flex-direction: row;
-  justify-content: center;
-  background-color: var(--dl-color-gray-black);
-}
-.landing-page-menu {
-  width: 100%;
-  display: flex;
-  max-width: 1000px;
-  align-items: center;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.landing-page-links-container2 {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.landing-page-container1 {
-  display: flex;
-  align-items: flex-start;
-  margin-left: 100px;
-  flex-direction: column;
-}
-.landing-page-link05 {
-  margin-bottom: var(--dl-space-space-unit);
-  text-decoration: none;
-}
-.landing-page-link06 {
-  margin-bottom: var(--dl-space-space-unit);
-  text-decoration: none;
-}
-.landing-page-link07 {
-  margin-bottom: var(--dl-space-space-unit);
-  text-decoration: none;
-}
-.landing-page-link08 {
-  text-decoration: none;
-}
-.landing-page-container2 {
-  display: flex;
-  align-items: flex-start;
-  margin-left: 100px;
-  flex-direction: column;
-}
-.landing-page-link09 {
-  margin-bottom: var(--dl-space-space-unit);
-  text-decoration: none;
-}
-.landing-page-link10 {
-  margin-bottom: var(--dl-space-space-unit);
-  text-decoration: none;
-}
-.landing-page-link11 {
-  margin-bottom: var(--dl-space-space-unit);
-  text-decoration: none;
-}
-.landing-page-link12 {
-  text-decoration: none;
-}
-.landing-page-follow-container1 {
-  display: flex;
-  align-items: center;
-  margin-left: 50px;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.landing-page-text16 {
-  padding-bottom: var(--dl-space-space-halfunit);
-}
-.landing-page-icons-container1 {
-  width: 100px;
-  display: flex;
-  align-items: flex-start;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.landing-page-link13 {
-  display: contents;
-}
-.landing-page-icon11 {
-  fill: var(--dl-color-gray-white);
-  width: 24px;
-  height: 24px;
-}
-.landing-page-link14 {
-  display: contents;
-}
-.landing-page-icon13 {
-  fill: var(--dl-color-gray-white);
-  width: 24px;
-  height: 24px;
-}
-.landing-page-link15 {
-  display: contents;
-}
-.landing-page-icon15 {
-  fill: var(--dl-color-gray-white);
-  width: 24px;
-  height: 24px;
-}
-@media(max-width: 991px) {
-  .landing-page-hero {
-    padding-left: var(--dl-space-space-tripleunit);
-    padding-right: var(--dl-space-space-tripleunit);
-  }
-  .landing-page-cards-container {
-    justify-content: center;
-  }
-}
-@media(max-width: 767px) {
-  .landing-page-right-side {
-    display: none;
-  }
-  .landing-page-burger-menu {
-    display: flex;
-  }
-  .landing-page-hero {
-    justify-content: center;
-  }
-  .landing-page-content-container {
-    align-items: center;
-  }
-  .landing-page-text09 {
-    font-size: 2.5rem;
-  }
-  .landing-page-text10 {
-    text-align: center;
-  }
-  .landing-page-main {
-    padding-left: var(--dl-space-space-unit);
-    padding-right: var(--dl-space-space-unit);
-  }
-  .landing-page-menu {
-    flex-direction: column;
-  }
-  .landing-page-links-container2 {
-    margin-top: var(--dl-space-space-tripleunit);
-    margin-bottom: var(--dl-space-space-tripleunit);
-    justify-content: space-between;
-  }
-  .landing-page-container1 {
-    margin-left: 0px;
-  }
-}
-@media(max-width: 479px) {
-  .landing-page-text09 {
-    font-size: 2rem;
-    text-align: center;
-  }
-  .landing-page-subheading {
-    font-size: 1.3rem;
-    text-align: center;
-  }
-  .landing-page-links-container2 {
-    margin-top: var(--dl-space-space-doubleunit);
-    align-items: flex-start;
-    justify-content: flex-start;
-  }
-  .landing-page-link05 {
-    margin-bottom: var(--dl-space-space-halfunit);
-  }
-  .landing-page-link06 {
-    margin-bottom: var(--dl-space-space-halfunit);
-  }
-  .landing-page-link07 {
-    margin-bottom: var(--dl-space-space-halfunit);
-  }
-  .landing-page-link08 {
-    margin-bottom: var(--dl-space-space-halfunit);
-  }
-  .landing-page-container2 {
-    height: 100%;
-    align-items: flex-start;
-    margin-left: 50px;
-  }
-  .landing-page-link09 {
-    margin-bottom: var(--dl-space-space-halfunit);
-  }
-  .landing-page-link10 {
-    margin-bottom: var(--dl-space-space-halfunit);
-  }
-  .landing-page-link11 {
-    margin-bottom: var(--dl-space-space-halfunit);
-  }
-  .landing-page-link12 {
-    margin-bottom: var(--dl-space-space-halfunit);
-  }
-  .landing-page-follow-container1 {
-    margin-left: 0px;
-  }
-}
-<!--------------->
-</style>
-<style>
+	<!-- FAVICONS ICON ============================================= -->
+	<link rel="icon" href="../static/assets/images/favicon.ico" type="image/x-icon" />
+	<link rel="shortcut icon" type="image/x-icon" href="../static/assets/images/favicon.png" />
 
-.outline-button-container {
-  display: flex;
-  position: relative;
-}
-.outline-button-button {
-  color: var(--dl-color-gray-black);
-  padding-top: var(--dl-space-space-unit);
-  border-color: var(--dl-color-primary-100);
-  border-width: 1px;
-  padding-left: var(--dl-space-space-doubleunit);
-  border-radius: 50px;
-  padding-right: var(--dl-space-space-doubleunit);
-  padding-bottom: var(--dl-space-space-unit);
-  background-color: var(--dl-color-gray-white);
-}
+	<!-- PAGE TITLE HERE ============================================= -->
+	<title>CollegeFinder </title>
 
-.place-card-container {
-  width: 300px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-.place-card-image {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-  border-radius: var(--dl-radius-radius-radius4);
-  border-top-left-radius: var(--dl-radius-radius-radius8);
-  border-top-right-radius: var(--dl-radius-radius-radius8);
-}
-.place-card-container1 {
-  width: 100%;
-  display: flex;
-  padding: var(--dl-space-space-unit);
-  align-items: center;
-  flex-direction: column;
-}
-.place-card-text {
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
-  padding-bottom: var(--dl-space-space-halfunit);
-}
-.place-card-text1 {
-  font-size: 12px;
-  max-width: 250px;
-  margin-bottom: var(--dl-space-space-doubleunit);
-}
-@media(max-width: 767px) {
-  .place-card-container {
-    width: 200px;
-  }
-}
-@media(max-width: 479px) {
-  .place-card-container {
-    width: 300px;
-  }
-}
+	<!-- MOBILE SPECIFIC ============================================= -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-.solid-button-container {
-  display: flex;
-  position: relative;
-}
-#main_section .solid-button-container .solid-button-button {
-  color: var(--dl-color-gray-white);
-  border: none;
-  padding-top: var(--dl-space-space-halfunit);
-  padding-left: var(--dl-space-space-doubleunit);
-  border-radius: 50px;
-  padding-right: var(--dl-space-space-doubleunit);
-  padding-bottom: var(--dl-space-space-halfunit);
-  background-color: var(--dl-color-primary-100);
-}
+	<!--[if lt IE 9]>
+	<script src="../static/assets/js/html5shiv.min.js"></script>
+	<script src="../static/assets/js/respond.min.js"></script>
+	<![endif]-->
 
+	<!-- All PLUGINS CSS ============================================= -->
+	<link rel="stylesheet" type="text/css" href="../static/assets/css/assets.css">
 
-    </style>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    />
-    <link rel="stylesheet" href="./style.css" />
-  </head>
-  <body>
-    <div>
-      <link href="./landing-page.css" rel="stylesheet" />
-      <title>Travel Agency</title>
-      <meta property="og:title" content="Travel Agency" />
-      <div class="landing-page-container">
-        <div class="landing-page-top-container">
-          <nav data-role="Header" class="landing-page-navbar">
-            <h1>Travel</h1>
-            <div class="landing-page-right-side">
-              <div class="landing-page-links-container">
-                <span class="landing-page-text">Home</span>
-                <span class="landing-page-text01">About</span>
-                <span class="landing-page-text02">Tour Packages</span>
-                <span class="landing-page-text03">Contact</span>
-              </div>
-              <a href="#main-section" class="landing-page-link">
-                <div class="solid-button-container">
-                  <button class="solid-button-button button">
-                    <span>Explore places</span>
-                  </button>
-                </div>
-              </a>
-            </div>
-            <div data-type="BurgerMenu" class="landing-page-burger-menu">
-              <svg viewBox="0 0 1024 1024" class="landing-page-burger-menu">
-                <path
-                  d="M810.667 725.333h-597.333c-47.061 0-85.333 38.272-85.333 85.333s38.272 85.333 85.333 85.333h597.333c47.061 0 85.333-38.272 85.333-85.333s-38.272-85.333-85.333-85.333z"
-                ></path>
-                <path
-                  d="M810.667 426.667h-597.333c-47.061 0-85.333 38.272-85.333 85.333s38.272 85.333 85.333 85.333h597.333c47.061 0 85.333-38.272 85.333-85.333s-38.272-85.333-85.333-85.333z"
-                ></path>
-                <path
-                  d="M810.667 128h-597.333c-47.061 0-85.333 38.272-85.333 85.333s38.272 85.333 85.333 85.333h597.333c47.061 0 85.333-38.272 85.333-85.333s-38.272-85.333-85.333-85.333z"
-                ></path>
-              </svg>
-            </div>
-            <div data-type="MobileMenu" class="landing-page-mobile-menu">
-              <div class="landing-page-nav">
-                <div class="landing-page-top">
-                  <h1>Travel</h1>
-                  <div
-                    data-type="CloseMobileMenu"
-                    class="landing-page-close-menu"
-                  >
-                    <svg viewBox="0 0 1024 1024" class="landing-page-icon03">
-                      <path
-                        d="M810 274l-238 238 238 238-60 60-238-238-238 238-60-60 238-238-238-238 60-60 238 238 238-238z"
-                      ></path>
-                    </svg>
-                  </div>
-                </div>
-                <div class="landing-page-right-side1">
-                  <div class="landing-page-links-container1">
-                    <span class="landing-page-text04">Home</span>
-                    <span class="landing-page-text05">About</span>
-                    <span class="landing-page-text06">Tour Packages</span>
-                    <span>Contact</span>
-                  </div>
-                  <a href="#main-section" class="landing-page-link01">
-                    <div class="solid-button-container">
-                      <button class="solid-button-button button">
-                        <span>Explore places</span>
-                      </button>
+	<!-- TYPOGRAPHY ============================================= -->
+	<link rel="stylesheet" type="text/css" href="../static/assets/css/typography.css">
+
+	<!-- SHORTCODES ============================================= -->
+	<link rel="stylesheet" type="text/css" href="../static/assets/css/shortcodes/shortcodes.css">
+
+	<!-- STYLESHEETS ============================================= -->
+	<link rel="stylesheet" type="text/css" href="../static/assets/css/style.css">
+	<link class="skin" rel="stylesheet" type="text/css" href="../static/assets/css/color/color-1.css">
+
+	<!-- REVOLUTION SLIDER CSS ============================================= -->
+	<link rel="stylesheet" type="text/css" href="../static/assets/vendors/revolution/css/layers.css">
+	<link rel="stylesheet" type="text/css" href="../static/assets/vendors/revolution/css/settings.css">
+	<link rel="stylesheet" type="text/css" href="../static/assets/vendors/revolution/css/navigation.css">
+	<!-- REVOLUTION SLIDER END -->
+</head>
+<body id="bg">
+<div class="page-wraper">
+<div id="loading-icon-bx"></div>
+	<!-- Header Top ==== -->
+    <header class="header rs-nav header-transparent">
+		<div class="top-bar">
+			<div class="container">
+				<div class="row d-flex justify-content-between">
+					<div class="topbar-left">
+						<ul>
+							<li><a href="faq-1.html"><i class="fa fa-question-circle"></i>Ask a Question</a></li>
+							<li><a href="javascript:;"><i class="fa fa-envelope-o"></i>abishekkhadka448@gmail.com</a></li>
+						</ul>
+					</div>
+					<div class="topbar-right">
+						<ul>
+							<li>
+								<select class="header-lang-bx">
+									<option data-icon="flag flag-uk">English UK</option>
+									<option data-icon="flag flag-us">English US</option>
+								</select>
+							</li>
+							<li><a href="login.html">Login</a></li>
+							<li><a href="register.html">Register</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="sticky-header navbar-expand-lg">
+            <div class="menu-bar clearfix">
+                <div class="container clearfix">
+					<!-- Header Logo ==== -->
+					<div class="menu-logo">
+						<a href="index.html"><img src="../static/images/CF1_logo.png" alt=""></a>
+					</div>
+					<!-- Mobile Nav Button ==== -->
+                    <button class="navbar-toggler collapsed menuicon justify-content-end" type="button" data-toggle="collapse" data-target="#menuDropdown" aria-controls="menuDropdown" aria-expanded="false" aria-label="Toggle navigation">
+						<span></span>
+						<span></span>
+						<span></span>
+					</button>
+					<!-- Author Nav ==== -->
+                    <div class="secondary-menu">
+                        <div class="secondary-inner">
+                            <ul>
+								<li><a href="javascript:;" class="btn-link"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="javascript:;" class="btn-link"><i class="fa fa-google-plus"></i></a></li>
+								<li><a href="javascript:;" class="btn-link"><i class="fa fa-linkedin"></i></a></li>
+								<!-- Search Button ==== -->
+								<li class="search-btn"><button id="quik-search-btn" type="button" class="btn-link"><i class="fa fa-search"></i></button></li>
+							</ul>
+						</div>
                     </div>
-                  </a>
+					<!-- Search Box ==== -->
+                    <div class="nav-search-bar">
+                        <form action="#">
+                            <input name="search" value="" type="text" class="form-control" placeholder="Type to search">
+                            <span><i class="ti-search"></i></span>
+                        </form>
+						<span id="search-remove"><i class="ti-close"></i></span>
+                    </div>
+					<!-- Navigation Menu ==== -->
+                    <div class="menu-links navbar-collapse collapse justify-content-start" id="menuDropdown">
+						<div class="menu-logo">
+							<a href="index.html"><img src="../static/images/our.png" alt=""></a>
+						</div>
+                        <ul class="nav navbar-nav">
+							<li class="active"><a href="javascript:;">Home <i class="fa fa-chevron-down"></i></a>
+								<ul class="sub-menu">
+									<li><a href="index.html">Home 1</a></li>
+									<li><a href="index-2.html">Home 2</a></li>
+								</ul>
+							</li>
+							<li><a href="javascript:;">Pages <i class="fa fa-chevron-down"></i></a>
+								<ul class="sub-menu">
+									<li><a href="javascript:;">About<i class="fa fa-angle-right"></i></a>
+										<ul class="sub-menu">
+											<li><a href="about-1.html">About 1</a></li>
+											<li><a href="about-2.html">About 2</a></li>
+										</ul>
+									</li>
+									<li><a href="javascript:;">Event<i class="fa fa-angle-right"></i></a>
+										<ul class="sub-menu">
+											<li><a href="event.html">Event</a></li>
+											<li><a href="events-details.html">Events Details</a></li>
+										</ul>
+									</li>
+									<li><a href="javascript:;">FAQ's<i class="fa fa-angle-right"></i></a>
+										<ul class="sub-menu">
+											<li><a href="faq-1.html">FAQ's 1</a></li>
+											<li><a href="faq-2.html">FAQ's 2</a></li>
+										</ul>
+									</li>
+									<li><a href="javascript:;">Contact Us<i class="fa fa-angle-right"></i></a>
+										<ul class="sub-menu">
+											<li><a href="contact-1.html">Contact Us 1</a></li>
+											<li><a href="contact-2.html">Contact Us 2</a></li>
+										</ul>
+									</li>
+									<li><a href="portfolio.html">Portfolio</a></li>
+									<li><a href="profile.html">Profile</a></li>
+									<li><a href="membership.html">Membership</a></li>
+									<li><a href="error-404.html">404 Page</a></li>
+								</ul>
+							</li>
+							<li class="add-mega-menu"><a href="javascript:;">Our Courses <i class="fa fa-chevron-down"></i></a>
+								<ul class="sub-menu add-menu">
+									<li class="add-menu-left">
+										<h5 class="menu-adv-title">Our Courses</h5>
+										<ul>
+											<li><a href="courses.html">Courses </a></li>
+											<li><a href="courses-details.html">Courses Details</a></li>
+											<li><a href="profile.html">Instructor Profile</a></li>
+											<li><a href="event.html">Upcoming Event</a></li>
+											<li><a href="membership.html">Membership</a></li>
+										</ul>
+									</li>
+									<li class="add-menu-right">
+										<img src="../static/assets/images/adv/adv.jpg" alt=""/>
+									</li>
+								</ul>
+							</li>
+							<li><a href="javascript:;">Blog <i class="fa fa-chevron-down"></i></a>
+								<ul class="sub-menu">
+									<li><a href="blog-classic-grid.html">Blog Classic</a></li>
+									<li><a href="blog-classic-sidebar.html">Blog Classic Sidebar</a></li>
+									<li><a href="blog-list-sidebar.html">Blog List Sidebar</a></li>
+									<li><a href="blog-standard-sidebar.html">Blog Standard Sidebar</a></li>
+									<li><a href="blog-details.html">Blog Details</a></li>
+								</ul>
+							</li>
+							<li class="nav-dashboard"><a href="javascript:;">Dashboard <i class="fa fa-chevron-down"></i></a>
+								<ul class="sub-menu">
+									<li><a href="admin/index.html">Dashboard</a></li>
+									<li><a href="admin/add-listing.html">Add Listing</a></li>
+									<li><a href="admin/bookmark.html">Bookmark</a></li>
+									<li><a href="admin/courses.html">Courses</a></li>
+									<li><a href="admin/review.html">Review</a></li>
+									<li><a href="admin/teacher-profile.html">Teacher Profile</a></li>
+									<li><a href="admin/user-profile.html">User Profile</a></li>
+									<li><a href="javascript:;">Calendar<i class="fa fa-angle-right"></i></a>
+										<ul class="sub-menu">
+											<li><a href="admin/basic-calendar.html">Basic Calendar</a></li>
+											<li><a href="admin/list-view-calendar.html">List View Calendar</a></li>
+										</ul>
+									</li>
+									<li><a href="javascript:;">Mailbox<i class="fa fa-angle-right"></i></a>
+										<ul class="sub-menu">
+											<li><a href="admin/mailbox.html">Mailbox</a></li>
+											<li><a href="admin/mailbox-compose.html">Compose</a></li>
+											<li><a href="admin/mailbox-read.html">Mail Read</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+						<div class="nav-social-link">
+							<a href="javascript:;"><i class="fa fa-facebook"></i></a>
+							<a href="javascript:;"><i class="fa fa-google-plus"></i></a>
+							<a href="javascript:;"><i class="fa fa-linkedin"></i></a>
+						</div>
+                    </div>
+					<!-- Navigation Menu END ==== -->
                 </div>
-              </div>
-              <div class="landing-page-follow-container">
-                <span class="landing-page-text08">Follow us on</span>
-                <div class="landing-page-icons-container">
-                  <a
-                    href="https://instagram.com"
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    class="landing-page-link02"
-                  >
-                    <svg
-                      viewBox="0 0 877.7142857142857 1024"
-                      class="landing-page-icon05"
-                    >
-                      <path
-                        d="M585.143 512c0-80.571-65.714-146.286-146.286-146.286s-146.286 65.714-146.286 146.286 65.714 146.286 146.286 146.286 146.286-65.714 146.286-146.286zM664 512c0 124.571-100.571 225.143-225.143 225.143s-225.143-100.571-225.143-225.143 100.571-225.143 225.143-225.143 225.143 100.571 225.143 225.143zM725.714 277.714c0 29.143-23.429 52.571-52.571 52.571s-52.571-23.429-52.571-52.571 23.429-52.571 52.571-52.571 52.571 23.429 52.571 52.571zM438.857 152c-64 0-201.143-5.143-258.857 17.714-20 8-34.857 17.714-50.286 33.143s-25.143 30.286-33.143 50.286c-22.857 57.714-17.714 194.857-17.714 258.857s-5.143 201.143 17.714 258.857c8 20 17.714 34.857 33.143 50.286s30.286 25.143 50.286 33.143c57.714 22.857 194.857 17.714 258.857 17.714s201.143 5.143 258.857-17.714c20-8 34.857-17.714 50.286-33.143s25.143-30.286 33.143-50.286c22.857-57.714 17.714-194.857 17.714-258.857s5.143-201.143-17.714-258.857c-8-20-17.714-34.857-33.143-50.286s-30.286-25.143-50.286-33.143c-57.714-22.857-194.857-17.714-258.857-17.714zM877.714 512c0 60.571 0.571 120.571-2.857 181.143-3.429 70.286-19.429 132.571-70.857 184s-113.714 67.429-184 70.857c-60.571 3.429-120.571 2.857-181.143 2.857s-120.571 0.571-181.143-2.857c-70.286-3.429-132.571-19.429-184-70.857s-67.429-113.714-70.857-184c-3.429-60.571-2.857-120.571-2.857-181.143s-0.571-120.571 2.857-181.143c3.429-70.286 19.429-132.571 70.857-184s113.714-67.429 184-70.857c60.571-3.429 120.571-2.857 181.143-2.857s120.571-0.571 181.143 2.857c70.286 3.429 132.571 19.429 184 70.857s67.429 113.714 70.857 184c3.429 60.571 2.857 120.571 2.857 181.143z"
-                      ></path>
-                    </svg>
-                  </a>
-                  <a
-                    href="https://facebook.com"
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    class="landing-page-link03"
-                  >
-                    <svg
-                      viewBox="0 0 602.2582857142856 1024"
-                      class="landing-page-icon07"
-                    >
-                      <path
-                        d="M548 6.857v150.857h-89.714c-70.286 0-83.429 33.714-83.429 82.286v108h167.429l-22.286 169.143h-145.143v433.714h-174.857v-433.714h-145.714v-169.143h145.714v-124.571c0-144.571 88.571-223.429 217.714-223.429 61.714 0 114.857 4.571 130.286 6.857z"
-                      ></path>
-                    </svg>
-                  </a>
-                  <a
-                    href="https://twitter.com"
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    class="landing-page-link04"
-                  >
-                    <svg
-                      viewBox="0 0 950.8571428571428 1024"
-                      class="landing-page-icon09"
-                    >
-                      <path
-                        d="M925.714 233.143c-25.143 36.571-56.571 69.143-92.571 95.429 0.571 8 0.571 16 0.571 24 0 244-185.714 525.143-525.143 525.143-104.571 0-201.714-30.286-283.429-82.857 14.857 1.714 29.143 2.286 44.571 2.286 86.286 0 165.714-29.143 229.143-78.857-81.143-1.714-149.143-54.857-172.571-128 11.429 1.714 22.857 2.857 34.857 2.857 16.571 0 33.143-2.286 48.571-6.286-84.571-17.143-148-91.429-148-181.143v-2.286c24.571 13.714 53.143 22.286 83.429 23.429-49.714-33.143-82.286-89.714-82.286-153.714 0-34.286 9.143-65.714 25.143-93.143 90.857 112 227.429 185.143 380.571 193.143-2.857-13.714-4.571-28-4.571-42.286 0-101.714 82.286-184.571 184.571-184.571 53.143 0 101.143 22.286 134.857 58.286 41.714-8 81.714-23.429 117.143-44.571-13.714 42.857-42.857 78.857-81.143 101.714 37.143-4 73.143-14.286 106.286-28.571z"
-                      ></path>
-                    </svg>
-                  </a>
-                </div>
-              </div>
             </div>
-          </nav>
-          <div class="landing-page-hero">
-            <div class="landing-page-content-container">
-              <h1 class="heading landing-page-text09">Book an exclusive</h1>
-              <h2 class="subheading landing-page-subheading">
-                home for your personal travel
-              </h2>
-              <span class="landing-page-text10">
-                <span>Each property is hand-picked,</span>
-                <br />
-                <span>personally visited and cannot be found elsewhere.</span>
-              </span>
-              <div class="solid-button-container">
-                <button class="solid-button-button button">
-                  <span>Explore homes</span>
-                </button>
-              </div>
-            </div>
-          </div>
         </div>
-        <div id="main-section" class="landing-page-main">
-          <h1>Most famous places</h1>
-          <span class="landing-page-text15">Recommended</span>
-          <div class="landing-page-cards-container">
-            <div class="place-card-container">
-              <img
-                alt="image"
-                src="https://images.unsplash.com/photo-1529655683826-aba9b3e77383?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&h=1000"
-                class="place-card-image"
-              />
-              <div class="place-card-container1">
-                <span class="place-card-text"><span>London</span></span>
-                <span class="place-card-text1">
-                  <span>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna.
-                  </span>
-                </span>
-                <div class="outline-button-container">
-                  <button class="outline-button-button button">
-                    <span>Discover place</span>
-                  </button>
-                </div>
-              </div>
+    </header>
+    <!-- Header Top END ==== -->
+    <!-- Content -->
+    <div class="page-content bg-white">
+        <!-- Main Slider -->
+        <div class="rev-slider">
+			<div id="rev_slider_486_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container" data-alias="news-gallery36" data-source="gallery" style="margin:0px auto;background-color:#ffffff;padding:0px;margin-top:0px;margin-bottom:0px;">
+				<!-- START REVOLUTION SLIDER 5.3.0.2 fullwidth mode -->
+				<div id="rev_slider_486_1" class="rev_slider fullwidthabanner" style="display:none;" data-version="5.3.0.2">
+					<ul>	<!-- SLIDE  -->
+						<li data-index="rs-100"
+						data-transition="parallaxvertical"
+						data-slotamount="default"
+						data-hideafterloop="0"
+						data-hideslideonmobile="off"
+						data-easein="default"
+						data-easeout="default"
+						data-masterspeed="default"
+						data-thumb="error-404.html"
+						data-rotate="0"
+						data-fstransition="fade"
+						data-fsmasterspeed="1500"
+						data-fsslotamount="7"
+						data-saveperformance="off"
+						data-title="A STUDY ON HAPPINESS"
+						data-param1="" data-param2=""
+						data-param3="" data-param4=""
+						data-param5="" data-param6=""
+						data-param7="" data-param8=""
+						data-param9="" data-param10=""
+						data-description="Science says that Women are generally happier">
+							<!-- MAIN IMAGE -->
+							<img src="../static/assets/images/slider/slide1.jpg" alt=""
+								data-bgposition="center center"
+								data-bgfit="cover"
+								data-bgrepeat="no-repeat"
+								data-bgparallax="10"
+								class="rev-slidebg"
+								data-no-retina />
+
+							<!-- LAYER NR. 1 -->
+							<div class="tp-caption tp-shape tp-shapewrapper "
+								id="slide-100-layer-1"
+								data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
+								data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
+								data-width="full"
+								data-height="full"
+								data-whitespace="nowrap"
+								data-type="shape"
+								data-basealign="slide"
+								data-responsive_offset="off"
+								data-responsive="off"
+								data-frames='[{"from":"opacity:0;","speed":1,"to":"o:1;","delay":0,"ease":"Power4.easeOut"},{"delay":"wait","speed":1,"to":"opacity:0;","ease":"Power4.easeOut"}]'
+								data-textAlign="['left','left','left','left']"
+								data-paddingtop="[0,0,0,0]"
+								data-paddingright="[0,0,0,0]"
+								data-paddingbottom="[0,0,0,0]"
+								data-paddingleft="[0,0,0,0]"
+								style="z-index: 5;background-color:rgba(2, 0, 11, 0.80);border-color:rgba(0, 0, 0, 0);border-width:0px;"> </div>
+							<!-- LAYER NR. 2 -->
+							<div class="tp-caption Newspaper-Title   tp-resizeme"
+								id="slide-100-layer-2"
+								data-x="['center','center','center','center']"
+								data-hoffset="['0','0','0','0']"
+								data-y="['top','top','top','top']"
+								data-voffset="['250','250','250','240']"
+								data-fontsize="['50','50','50','30']"
+								data-lineheight="['55','55','55','35']"
+								data-width="full"
+								data-height="none"
+								data-whitespace="normal"
+								data-type="text"
+								data-responsive_offset="on"
+								data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
+								data-textAlign="['center','center','center','center']"
+								data-paddingtop="[0,0,0,0]"
+								data-paddingright="[0,0,0,0]"
+								data-paddingbottom="[10,10,10,10]"
+								data-paddingleft="[0,0,0,0]"
+								style="z-index: 6; font-family:rubik; font-weight:700; text-align:center; white-space: normal;">
+									Welcome To CollegeFinder
+							</div>
+
+							<!-- LAYER NR. 3 -->
+							<div class="tp-caption Newspaper-Subtitle   tp-resizeme"
+								id="slide-100-layer-3"
+								data-x="['center','center','center','center']"
+								data-hoffset="['0','0','0','0']"
+								data-y="['top','top','top','top']"
+								data-voffset="['210','210','210','210']"
+								data-width="none"
+								data-height="none"
+								data-whitespace="nowrap"
+								data-type="text"
+								data-responsive_offset="on"
+								data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
+								data-textAlign="['left','left','left','left']"
+								data-paddingtop="[0,0,0,0]"
+								data-paddingright="[0,0,0,0]"
+								data-paddingbottom="[0,0,0,0]"
+								data-paddingleft="[0,0,0,0]"
+								style="z-index: 7; white-space: nowrap; color:#fff; font-family:rubik; font-size:18px; font-weight:400;">
+									Batter Education For A Better Future
+							</div>
+
+							<!-- LAYER NR. 3 -->
+							<div class="tp-caption Newspaper-Subtitle   tp-resizeme"
+								id="slide-100-layer-4"
+								data-x="['center','center','center','center']"
+								data-hoffset="['0','0','0','0']"
+								data-y="['top','top','top','top']"
+								data-voffset="['320','320','320','290']"
+								data-width="['800','800','700','420']"
+								data-height="['100','100','100','120']"
+								data-whitespace="unset"
+								data-type="text"
+								data-responsive_offset="on"
+								data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
+								data-textAlign="['center','center','center','center']"
+								data-paddingtop="[0,0,0,0]"
+								data-paddingright="[0,0,0,0]"
+								data-paddingbottom="[0,0,0,0]"
+								data-paddingleft="[0,0,0,0]"
+								style="z-index: 7; text-transform:capitalize; white-space: unset; color:#fff; font-family:rubik; font-size:18px; line-height:28px; font-weight:400;">
+									Our website help you to find your future <br>college or university
+							</div>
+							<!-- LAYER NR. 4 -->
+							<div class="tp-caption Newspaper-Button rev-btn "
+								id="slide-100-layer-5"
+								data-x="['center','center','center','center']"
+								data-hoffset="['90','80','75','90']"
+								data-y="['top','top','top','top']"
+								data-voffset="['400','400','400','420']"
+								data-width="none"
+								data-height="none"
+								data-whitespace="nowrap"
+								data-type="button"
+								data-responsive_offset="on"
+								data-responsive="off"
+								data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;","ease":"Power3.easeInOut"},{"frame":"hover","speed":"300","ease":"Power1.easeInOut","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(0, 0, 0, 1.00);bg:rgba(255, 255, 255, 1.00);bc:rgba(255, 255, 255, 1.00);bw:1px 1px 1px 1px;"}]'
+								data-textAlign="['center','center','center','center']"
+								data-paddingtop="[12,12,12,12]"
+								data-paddingright="[30,35,35,15]"
+								data-paddingbottom="[12,12,12,12]"
+								data-paddingleft="[30,35,35,15]"
+								style="z-index: 8; white-space: nowrap; outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer; background-color:var(--primary) !important; border:0; border-radius:30px; margin-right:5px;">READ MORE </div>
+							<div class="tp-caption Newspaper-Button rev-btn"
+								id="slide-100-layer-6"
+								data-x="['center','center','center','center']"
+								data-hoffset="['-90','-80','-75','-90']"
+								data-y="['top','top','top','top']"
+								data-voffset="['400','400','400','420']"
+								data-width="none"
+								data-height="none"
+								data-whitespace="nowrap"
+								data-type="button"
+								data-responsive_offset="on"
+								data-responsive="off"
+								data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;","ease":"Power3.easeInOut"},{"frame":"hover","speed":"300","ease":"Power1.easeInOut","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(0, 0, 0, 1.00);bg:rgba(255, 255, 255, 1.00);bc:rgba(255, 255, 255, 1.00);bw:1px 1px 1px 1px;"}]'
+								data-textAlign="['center','center','center','center']"
+								data-paddingtop="[12,12,12,12]"
+								data-paddingright="[30,35,35,15]"
+								data-paddingbottom="[12,12,12,12]"
+								data-paddingleft="[30,35,35,15]"
+								style="z-index: 8; white-space: nowrap; outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer; border-radius:30px;">CONTACT US</div>
+						</li>
+						<li data-index="rs-200"
+						data-transition="parallaxvertical"
+						data-slotamount="default"
+						data-hideafterloop="0"
+						data-hideslideonmobile="off"
+						data-easein="default"
+						data-easeout="default"
+						data-masterspeed="default"
+						data-thumb="assets/images/slider/slide1.jpg"
+						data-rotate="0"
+						data-fstransition="fade"
+						data-fsmasterspeed="1500"
+						data-fsslotamount="7"
+						data-saveperformance="off"
+						data-title="A STUDY ON HAPPINESS"
+						data-param1="" data-param2=""
+						data-param3="" data-param4=""
+						data-param5="" data-param6=""
+						data-param7="" data-param8=""
+						data-param9="" data-param10=""
+						data-description="Science says that Women are generally happier">
+							<!-- MAIN IMAGE -->
+							<img src="assets/images/slider/slide2.jpg" alt=""
+								data-bgposition="center center"
+								data-bgfit="cover"
+								data-bgrepeat="no-repeat"
+								data-bgparallax="10"
+								class="rev-slidebg"
+								data-no-retina />
+
+							<!-- LAYER NR. 1 -->
+							<div class="tp-caption tp-shape tp-shapewrapper "
+								id="slide-200-layer-1"
+								data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
+								data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
+								data-width="full"
+								data-height="full"
+								data-whitespace="nowrap"
+								data-type="shape"
+								data-basealign="slide"
+								data-responsive_offset="off"
+								data-responsive="off"
+								data-frames='[{"from":"opacity:0;","speed":1,"to":"o:1;","delay":0,"ease":"Power4.easeOut"},{"delay":"wait","speed":1000,"to":"opacity:1;","ease":"Power4.easeOut"}]'
+								data-textAlign="['left','left','left','left']"
+								data-paddingtop="[0,0,0,0]"
+								data-paddingright="[0,0,0,0]"
+								data-paddingbottom="[0,0,0,0]"
+								data-paddingleft="[0,0,0,0]"
+								style="z-index: 5;background-color:rgba(2, 0, 11, 0.80);border-color:rgba(0, 0, 0, 0);border-width:0px;">
+							</div>
+
+							<!-- LAYER NR. 2 -->
+							<div class="tp-caption Newspaper-Title   tp-resizeme"
+								id="slide-200-layer-2"
+								data-x="['center','center','center','center']"
+								data-hoffset="['0','0','0','0']"
+								data-y="['top','top','top','top']"
+								data-voffset="['250','250','250','240']"
+								data-fontsize="['50','50','50','30']"
+								data-lineheight="['55','55','55','35']"
+								data-width="full"
+								data-height="none"
+								data-whitespace="normal"
+								data-type="text"
+								data-responsive_offset="on"
+								data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
+								data-textAlign="['center','center','center','center']"
+								data-paddingtop="[0,0,0,0]"
+								data-paddingright="[0,0,0,0]"
+								data-paddingbottom="[10,10,10,10]"
+								data-paddingleft="[0,0,0,0]"
+								style="z-index: 6; font-family:rubik; font-weight:700; text-align:center; white-space: normal;text-transform:uppercase;">
+									Welcome To University
+							</div>
+
+							<!-- LAYER NR. 3 -->
+							<div class="tp-caption Newspaper-Subtitle   tp-resizeme"
+								id="slide-200-layer-3"
+								data-x="['center','center','center','center']"
+								data-hoffset="['0','0','0','0']"
+								data-y="['top','top','top','top']"
+								data-voffset="['210','210','210','210']"
+								data-width="none"
+								data-height="none"
+								data-whitespace="nowrap"
+								data-type="text"
+								data-responsive_offset="on"
+								data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
+								data-textAlign="['left','left','left','left']"
+								data-paddingtop="[0,0,0,0]"
+								data-paddingright="[0,0,0,0]"
+								data-paddingbottom="[0,0,0,0]"
+								data-paddingleft="[0,0,0,0]"
+								style="z-index: 7; white-space: nowrap;text-transform:uppercase; color:#fff; font-family:rubik; font-size:18px; font-weight:400;">
+									Batter Education For A Better
+							</div>
+
+							<!-- LAYER NR. 3 -->
+							<div class="tp-caption Newspaper-Subtitle   tp-resizeme"
+								id="slide-200-layer-4"
+								data-x="['center','center','center','center']"
+								data-hoffset="['0','0','0','0']"
+								data-y="['top','top','top','top']"
+								data-voffset="['320','320','320','290']"
+								data-width="['800','800','700','420']"
+								data-height="['100','100','100','120']"
+								data-whitespace="unset"
+								data-type="text"
+								data-responsive_offset="on"
+								data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
+								data-textAlign="['center','center','center','center']"
+								data-paddingtop="[0,0,0,0]"
+								data-paddingright="[0,0,0,0]"
+								data-paddingbottom="[0,0,0,0]"
+								data-paddingleft="[0,0,0,0]"
+								style="z-index: 7; text-transform:capitalize; white-space: unset; color:#fff; font-family:rubik; font-size:18px; line-height:28px; font-weight:400;">
+									 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the
+							</div>
+							<!-- LAYER NR. 4 -->
+							<div class="tp-caption Newspaper-Button rev-btn "
+								id="slide-200-layer-5"
+								data-x="['center','center','center','center']"
+								data-hoffset="['90','80','75','90']"
+								data-y="['top','top','top','top']"
+								data-voffset="['400','400','400','420']"
+								data-width="none"
+								data-height="none"
+								data-whitespace="nowrap"
+								data-type="button"
+								data-responsive_offset="on"
+								data-responsive="off"
+								data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;","ease":"Power3.easeInOut"},{"frame":"hover","speed":"300","ease":"Power1.easeInOut","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(0, 0, 0, 1.00);bg:rgba(255, 255, 255, 1.00);bc:rgba(255, 255, 255, 1.00);bw:1px 1px 1px 1px;"}]'
+								data-textAlign="['center','center','center','center']"
+								data-paddingtop="[12,12,12,12]"
+								data-paddingright="[30,35,35,15]"
+								data-paddingbottom="[12,12,12,12]"
+								data-paddingleft="[30,35,35,15]"
+								style="z-index: 8; white-space: nowrap; outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer; background-color:var(--primary) !important; border:0; border-radius:30px; margin-right:5px;">READ MORE </div>
+							<div class="tp-caption Newspaper-Button rev-btn"
+								id="slide-200-layer-6"
+								data-x="['center','center','center','center']"
+								data-hoffset="['-90','-80','-75','-90']"
+								data-y="['top','top','top','top']"
+								data-voffset="['400','400','400','420']"
+								data-width="none"
+								data-height="none"
+								data-whitespace="nowrap"
+								data-type="button"
+								data-responsive_offset="on"
+								data-responsive="off"
+								data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;","ease":"Power3.easeInOut"},{"frame":"hover","speed":"300","ease":"Power1.easeInOut","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(0, 0, 0, 1.00);bg:rgba(255, 255, 255, 1.00);bc:rgba(255, 255, 255, 1.00);bw:1px 1px 1px 1px;"}]'
+								data-textAlign="['center','center','center','center']"
+								data-paddingtop="[12,12,12,12]"
+								data-paddingright="[30,35,35,15]"
+								data-paddingbottom="[12,12,12,12]"
+								data-paddingleft="[30,35,35,15]"
+								style="z-index: 8; white-space: nowrap; outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer; border-radius:30px;">CONTACT US</div>
+						</li>
+						<!-- SLIDE  -->
+					</ul>
+				</div><!-- END REVOLUTION SLIDER -->
+			</div>
+		</div>
+        <!-- Main Slider -->
+		<div class="content-block">
+
+			<!-- Our Services -->
+			<div class="section-area content-inner service-info-bx">
+                <div class="container">
+					<div class="row">
+						<div class="col-lg-4 col-md-4 col-sm-6">
+							<div class="service-bx">
+								<div class="action-box">
+									<img src="../static/assets/images/our-services/pic1.jpg" alt="">
+								</div>
+								<div class="info-bx text-center">
+									<div class="feature-box-sm radius bg-white">
+										<i class="fa fa-bank text-primary"></i>
+									</div>
+									<h4><a href="#">Best Industry Leaders</a></h4>
+									<a href="#" class="btn radius-xl">View More</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-6">
+							<div class="service-bx">
+								<div class="action-box">
+									<img src="../static/assets/images/our-services/pic2.jpg" alt="">
+								</div>
+								<div class="info-bx text-center">
+									<div class="feature-box-sm radius bg-white">
+										<i class="fa fa-book text-primary"></i>
+									</div>
+									<h4><a href="#">Learn Courses Online</a></h4>
+									<a href="#" class="btn radius-xl">View More</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-12">
+							<div class="service-bx m-b0">
+								<div class="action-box">
+									<img src="../static/assets/images/our-services/pic3.jpg" alt="">
+								</div>
+								<div class="info-bx text-center">
+									<div class="feature-box-sm radius bg-white">
+										<i class="fa fa-file-text-o text-primary"></i>
+									</div>
+									<h4><a href="#">Book Library & Store</a></h4>
+									<a href="#" class="btn radius-xl">View More</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
             </div>
-            <div class="place-card-container">
-              <img
-                alt="image"
-                src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&h=1000"
-                class="place-card-image"
-              />
-              <div class="place-card-container1">
-                <span class="place-card-text"><span>Rome</span></span>
-                <span class="place-card-text1">
-                  <span>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna.
-                  </span>
-                </span>
-                <div class="outline-button-container">
-                  <button class="outline-button-button button">
-                    <span>Discover place</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="place-card-container">
-              <img
-                alt="image"
-                src="https://images.unsplash.com/photo-1513342791620-b106dc487c94?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&h=1000"
-                class="place-card-image"
-              />
-              <div class="place-card-container1">
-                <span class="place-card-text"><span>Cluj-Napoca</span></span>
-                <span class="place-card-text1">
-                  <span>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna.
-                  </span>
-                </span>
-                <div class="outline-button-container">
-                  <button class="outline-button-button button">
-                    <span>Discover place</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="place-card-container">
-              <img
-                alt="image"
-                src="https://images.unsplash.com/photo-1551634979-2b11f8c946fe?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&h=1000"
-                class="place-card-image"
-              />
-              <div class="place-card-container1">
-                <span class="place-card-text"><span>Paris</span></span>
-                <span class="place-card-text1">
-                  <span>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna.
-                  </span>
-                </span>
-                <div class="outline-button-container">
-                  <button class="outline-button-button button">
-                    <span>Discover place</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="place-card-container">
-              <img
-                alt="image"
-                src="https://images.unsplash.com/photo-1585211969224-3e992986159d?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&h=1000"
-                class="place-card-image"
-              />
-              <div class="place-card-container1">
-                <span class="place-card-text"><span>Amsterdam</span></span>
-                <span class="place-card-text1">
-                  <span>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna.
-                  </span>
-                </span>
-                <div class="outline-button-container">
-                  <button class="outline-button-button button">
-                    <span>Discover place</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="place-card-container">
-              <img
-                alt="image"
-                src="https://images.unsplash.com/photo-1564221710304-0b37c8b9d729?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&h=1000"
-                class="place-card-image"
-              />
-              <div class="place-card-container1">
-                <span class="place-card-text"><span>Barcelona</span></span>
-                <span class="place-card-text1">
-                  <span>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna.
-                  </span>
-                </span>
-                <div class="outline-button-container">
-                  <button class="outline-button-button button">
-                    <span>Discover place</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+            <!-- Our Services END -->
+
+			<!-- Popular Courses -->
+			<div class="section-area section-sp2 popular-courses-bx">
+                <div class="container">
+					<div class="row">
+						<div class="col-md-12 heading-bx left">
+							<h2 class="title-head">Popular <span>Courses</span></h2>
+							<p>It is a long established fact that a reader will be distracted by the readable content of a page</p>
+						</div>
+					</div>
+					<div class="row">
+					<div class="courses-carousel owl-carousel owl-btn-1 col-12 p-lr0">
+						<div class="item">
+							<div class="cours-bx">
+								<div class="action-box">
+									<img src="../static/assets/images/courses/pic1.jpg" alt="">
+									<a href="#" class="btn">Read More</a>
+								</div>
+								<div class="info-bx text-center">
+									<h5><a href="#">Introduction EduChamp – LMS plugin</a></h5>
+									<span>Programming</span>
+								</div>
+								<div class="cours-more-info">
+									<div class="review">
+										<span>3 Review</span>
+										<ul class="cours-star">
+											<li class="active"><i class="fa fa-star"></i></li>
+											<li class="active"><i class="fa fa-star"></i></li>
+											<li class="active"><i class="fa fa-star"></i></li>
+											<li><i class="fa fa-star"></i></li>
+											<li><i class="fa fa-star"></i></li>
+										</ul>
+									</div>
+									<div class="price">
+										<del>$190</del>
+										<h5>$120</h5>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="cours-bx">
+								<div class="action-box">
+									<img src="../static/assets/images/courses/pic2.jpg" alt="">
+									<a href="#" class="btn">Read More</a>
+								</div>
+								<div class="info-bx text-center">
+									<h5><a href="#">Introduction EduChamp – LMS plugin</a></h5>
+									<span>Programming</span>
+								</div>
+								<div class="cours-more-info">
+									<div class="review">
+										<span>3 Review</span>
+										<ul class="cours-star">
+											<li class="active"><i class="fa fa-star"></i></li>
+											<li class="active"><i class="fa fa-star"></i></li>
+											<li class="active"><i class="fa fa-star"></i></li>
+											<li><i class="fa fa-star"></i></li>
+											<li><i class="fa fa-star"></i></li>
+										</ul>
+									</div>
+									<div class="price">
+										<del>$190</del>
+										<h5>$120</h5>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="cours-bx">
+								<div class="action-box">
+									<img src="../static/assets/images/courses/pic3.jpg" alt="">
+									<a href="#" class="btn">Read More</a>
+								</div>
+								<div class="info-bx text-center">
+									<h5><a href="#">Introduction EduChamp – LMS plugin</a></h5>
+									<span>Programming</span>
+								</div>
+								<div class="cours-more-info">
+									<div class="review">
+										<span>3 Review</span>
+										<ul class="cours-star">
+											<li class="active"><i class="fa fa-star"></i></li>
+											<li class="active"><i class="fa fa-star"></i></li>
+											<li class="active"><i class="fa fa-star"></i></li>
+											<li><i class="fa fa-star"></i></li>
+											<li><i class="fa fa-star"></i></li>
+										</ul>
+									</div>
+									<div class="price">
+										<del>$190</del>
+										<h5>$120</h5>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="cours-bx">
+								<div class="action-box">
+									<img src="../static/assets/images/courses/pic4.jpg" alt="">
+									<a href="#" class="btn">Read More</a>
+								</div>
+								<div class="info-bx text-center">
+									<h5><a href="#">Introduction EduChamp – LMS plugin</a></h5>
+									<span>Programming</span>
+								</div>
+								<div class="cours-more-info">
+									<div class="review">
+										<span>3 Review</span>
+										<ul class="cours-star">
+											<li class="active"><i class="fa fa-star"></i></li>
+											<li class="active"><i class="fa fa-star"></i></li>
+											<li class="active"><i class="fa fa-star"></i></li>
+											<li><i class="fa fa-star"></i></li>
+											<li><i class="fa fa-star"></i></li>
+										</ul>
+									</div>
+									<div class="price">
+										<del>$190</del>
+										<h5>$120</h5>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>
+			<!-- Popular Courses END -->
+
+			<!-- Form -->
+			<div class="section-area section-sp1 ovpr-dark bg-fix online-cours" style="background-image:url(../static/assets/images/background/bg1.jpg);">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 text-center text-white">
+							<h2>Online Courses To Learn</h2>
+							<h5>Own Your Feature Learning New Skills Online</h5>
+							<form class="cours-search">
+								<div class="input-group">
+									<input type="text" class="form-control" placeholder="What do you want to learn today?	">
+									<div class="input-group-append">
+										<button class="btn" type="submit">Search</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="mw800 m-auto">
+						<div class="row">
+							<div class="col-md-4 col-sm-6">
+								<div class="cours-search-bx m-b30">
+									<div class="icon-box">
+										<h3><i class="ti-user"></i><span class="counter">5</span>M</h3>
+									</div>
+									<span class="cours-search-text">Over 5 million student</span>
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-6">
+								<div class="cours-search-bx m-b30">
+									<div class="icon-box">
+										<h3><i class="ti-book"></i><span class="counter">30</span>K</h3>
+									</div>
+									<span class="cours-search-text">30,000 Courses.</span>
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-12">
+								<div class="cours-search-bx m-b30">
+									<div class="icon-box">
+										<h3><i class="ti-layout-list-post"></i><span class="counter">20</span>K</h3>
+									</div>
+									<span class="cours-search-text">Learn Anythink Online.</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Form END -->
+			<div class="section-area section-sp2">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 text-center heading-bx">
+							<h2 class="title-head m-b0">Upcoming <span>Events</span></h2>
+							<p class="m-b0">Upcoming Education Events To Feed Brain. </p>
+						</div>
+					</div>
+					<div class="row">
+					<div class="upcoming-event-carousel owl-carousel owl-btn-center-lr owl-btn-1 col-12 p-lr0  m-b30">
+						<div class="item">
+							<div class="event-bx">
+								<div class="action-box">
+									<img src="../static/assets/images/event/pic4.jpg" alt="">
+								</div>
+								<div class="info-bx d-flex">
+									<div>
+										<div class="event-time">
+											<div class="event-date">29</div>
+											<div class="event-month">October</div>
+										</div>
+									</div>
+									<div class="event-info">
+										<h4 class="event-title"><a href="#">Education Autumn Tour 2019</a></h4>
+										<ul class="media-post">
+											<li><a href="#"><i class="fa fa-clock-o"></i> 7:00am 8:00am</a></li>
+											<li><a href="#"><i class="fa fa-map-marker"></i> Berlin, Germany</a></li>
+										</ul>
+										<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the..</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="event-bx">
+								<div class="action-box">
+									<img src="../static/assets/images/event/pic3.jpg" alt="">
+								</div>
+								<div class="info-bx d-flex">
+									<div>
+										<div class="event-time">
+											<div class="event-date">29</div>
+											<div class="event-month">October</div>
+										</div>
+									</div>
+									<div class="event-info">
+										<h4 class="event-title"><a href="#">Education Autumn Tour 2019</a></h4>
+										<ul class="media-post">
+											<li><a href="#"><i class="fa fa-clock-o"></i> 7:00am 8:00am</a></li>
+											<li><a href="#"><i class="fa fa-map-marker"></i> Berlin, Germany</a></li>
+										</ul>
+										<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the..</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="event-bx">
+								<div class="action-box">
+									<img src="../static/assets/images/event/pic2.jpg" alt="">
+								</div>
+								<div class="info-bx d-flex">
+									<div>
+										<div class="event-time">
+											<div class="event-date">29</div>
+											<div class="event-month">October</div>
+										</div>
+									</div>
+									<div class="event-info">
+										<h4 class="event-title"><a href="#">Education Autumn Tour 2019</a></h4>
+										<ul class="media-post">
+											<li><a href="#"><i class="fa fa-clock-o"></i> 7:00am 8:00am</a></li>
+											<li><a href="#"><i class="fa fa-map-marker"></i> Berlin, Germany</a></li>
+										</ul>
+										<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the..</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					</div>
+					<div class="text-center">
+						<a href="#" class="btn">View All Event</a>
+					</div>
+				</div>
+			</div>
+
+			<!-- Testimonials -->
+			<div class="section-area section-sp2 bg-fix ovbl-dark" style="background-image:url(../static/assets/images/background/bg1.jpg);">
+                <div class="container">
+					<div class="row">
+						<div class="col-md-12 text-white heading-bx left">
+							<h2 class="title-head text-uppercase">what people <span>say</span></h2>
+							<p>It is a long established fact that a reader will be distracted by the readable content of a page</p>
+						</div>
+					</div>
+					<div class="testimonial-carousel owl-carousel owl-btn-1 col-12 p-lr0">
+						<div class="item">
+							<div class="testimonial-bx">
+								<div class="testimonial-thumb">
+									<img src="../static/assets/images/testimonials/pic1.jpg" alt="">
+								</div>
+								<div class="testimonial-info">
+									<h5 class="name">Peter Packer</h5>
+									<p>-Art Director</p>
+								</div>
+								<div class="testimonial-content">
+									<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type...</p>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="testimonial-bx">
+								<div class="testimonial-thumb">
+									<img src="../static/assets/images/testimonials/pic2.jpg" alt="">
+								</div>
+								<div class="testimonial-info">
+									<h5 class="name">Peter Packer</h5>
+									<p>-Art Director</p>
+								</div>
+								<div class="testimonial-content">
+									<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type...</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Testimonials END -->
+
+			<!-- Recent News -->
+			<div class="section-area section-sp2">
+                <div class="container">
+					<div class="row">
+						<div class="col-md-12 heading-bx left">
+							<h2 class="title-head">Recent <span>News</span></h2>
+							<p>It is a long established fact that a reader will be distracted by the readable content of a page</p>
+						</div>
+					</div>
+					<div class="recent-news-carousel owl-carousel owl-btn-1 col-12 p-lr0">
+						<div class="item">
+							<div class="recent-news">
+								<div class="action-box">
+									<img src="../static/assets/images/blog/latest-blog/pic1.jpg" alt="">
+								</div>
+								<div class="info-bx">
+									<ul class="media-post">
+										<li><a href="#"><i class="fa fa-calendar"></i>Jan 02 2019</a></li>
+										<li><a href="#"><i class="fa fa-user"></i>By William</a></li>
+									</ul>
+									<h5 class="post-title"><a href="blog-details.html">This Story Behind Education Will Haunt You Forever.</a></h5>
+									<p>Knowing that, you’ve optimised your pages countless amount of times, written tons.</p>
+									<div class="post-extra">
+										<a href="#" class="btn-link">READ MORE</a>
+										<a href="#" class="comments-bx"><i class="fa fa-comments-o"></i>20 Comment</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="recent-news">
+								<div class="action-box">
+									<img src="../static/assets/images/blog/latest-blog/pic2.jpg" alt="">
+								</div>
+								<div class="info-bx">
+									<ul class="media-post">
+										<li><a href="#"><i class="fa fa-calendar"></i>Feb 05 2019</a></li>
+										<li><a href="#"><i class="fa fa-user"></i>By John</a></li>
+									</ul>
+									<h5 class="post-title"><a href="blog-details.html">What Will Education Be Like In The Next 50 Years?</a></h5>
+									<p>As desperate as you are right now, you have done everything you can on your.</p>
+									<div class="post-extra">
+										<a href="#" class="btn-link">READ MORE</a>
+										<a href="#" class="comments-bx"><i class="fa fa-comments-o"></i>14 Comment</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="recent-news">
+								<div class="action-box">
+									<img src="../static/assets/images/blog/latest-blog/pic3.jpg" alt="">
+								</div>
+								<div class="info-bx">
+									<ul class="media-post">
+										<li><a href="#"><i class="fa fa-calendar"></i>April 14 2019</a></li>
+										<li><a href="#"><i class="fa fa-user"></i>By George</a></li>
+									</ul>
+									<h5 class="post-title"><a href="blog-details.html">Master The Skills Of Education And Be.</a></h5>
+									<p>You will see in the guide all my years of valuable experience together with.</p>
+									<div class="post-extra">
+										<a href="#" class="btn-link">READ MORE</a>
+										<a href="#" class="comments-bx"><i class="fa fa-comments-o"></i>23 Comment</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Recent News End -->
+
         </div>
-        <div class="landing-page-footer">
-          <div class="landing-page-menu">
-            <h1>Travel</h1>
-            <div class="landing-page-links-container2">
-              <div class="landing-page-container1">
-                <a
-                  href="https://example.com"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  class="landing-page-link05"
-                >
-                  Tour packages
-                </a>
-                <a
-                  href="https://example.com"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  class="landing-page-link06"
-                >
-                  Personalized offers
-                </a>
-                <a
-                  href="https://example.com"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  class="landing-page-link07"
-                >
-                  Special deals
-                </a>
-                <a
-                  href="https://example.com"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  class="landing-page-link08"
-                >
-                  Summer holiday
-                </a>
-              </div>
-              <div class="landing-page-container2">
-                <a
-                  href="https://example.com"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  class="landing-page-link09"
-                >
-                  About us
-                </a>
-                <a
-                  href="https://example.com"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  class="landing-page-link10"
-                >
-                  FAQ
-                </a>
-                <a
-                  href="https://example.com"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  class="landing-page-link11"
-                >
-                  Terms and conditions
-                </a>
-                <a
-                  href="https://example.com"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  class="landing-page-link12"
-                >
-                  Contact
-                </a>
-              </div>
-            </div>
-            <div class="landing-page-follow-container1">
-              <span class="landing-page-text16">Follow us on</span>
-              <div class="landing-page-icons-container1">
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  class="landing-page-link13"
-                >
-                  <svg
-                    viewBox="0 0 877.7142857142857 1024"
-                    class="landing-page-icon11"
-                  >
-                    <path
-                      d="M585.143 512c0-80.571-65.714-146.286-146.286-146.286s-146.286 65.714-146.286 146.286 65.714 146.286 146.286 146.286 146.286-65.714 146.286-146.286zM664 512c0 124.571-100.571 225.143-225.143 225.143s-225.143-100.571-225.143-225.143 100.571-225.143 225.143-225.143 225.143 100.571 225.143 225.143zM725.714 277.714c0 29.143-23.429 52.571-52.571 52.571s-52.571-23.429-52.571-52.571 23.429-52.571 52.571-52.571 52.571 23.429 52.571 52.571zM438.857 152c-64 0-201.143-5.143-258.857 17.714-20 8-34.857 17.714-50.286 33.143s-25.143 30.286-33.143 50.286c-22.857 57.714-17.714 194.857-17.714 258.857s-5.143 201.143 17.714 258.857c8 20 17.714 34.857 33.143 50.286s30.286 25.143 50.286 33.143c57.714 22.857 194.857 17.714 258.857 17.714s201.143 5.143 258.857-17.714c20-8 34.857-17.714 50.286-33.143s25.143-30.286 33.143-50.286c22.857-57.714 17.714-194.857 17.714-258.857s5.143-201.143-17.714-258.857c-8-20-17.714-34.857-33.143-50.286s-30.286-25.143-50.286-33.143c-57.714-22.857-194.857-17.714-258.857-17.714zM877.714 512c0 60.571 0.571 120.571-2.857 181.143-3.429 70.286-19.429 132.571-70.857 184s-113.714 67.429-184 70.857c-60.571 3.429-120.571 2.857-181.143 2.857s-120.571 0.571-181.143-2.857c-70.286-3.429-132.571-19.429-184-70.857s-67.429-113.714-70.857-184c-3.429-60.571-2.857-120.571-2.857-181.143s-0.571-120.571 2.857-181.143c3.429-70.286 19.429-132.571 70.857-184s113.714-67.429 184-70.857c60.571-3.429 120.571-2.857 181.143-2.857s120.571-0.571 181.143 2.857c70.286 3.429 132.571 19.429 184 70.857s67.429 113.714 70.857 184c3.429 60.571 2.857 120.571 2.857 181.143z"
-                    ></path>
-                  </svg>
-                </a>
-                <a
-                  href="https://facebook.com"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  class="landing-page-link14"
-                >
-                  <svg
-                    viewBox="0 0 602.2582857142856 1024"
-                    class="landing-page-icon13"
-                  >
-                    <path
-                      d="M548 6.857v150.857h-89.714c-70.286 0-83.429 33.714-83.429 82.286v108h167.429l-22.286 169.143h-145.143v433.714h-174.857v-433.714h-145.714v-169.143h145.714v-124.571c0-144.571 88.571-223.429 217.714-223.429 61.714 0 114.857 4.571 130.286 6.857z"
-                    ></path>
-                  </svg>
-                </a>
-                <a
-                  href="https://twitter.com"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  class="landing-page-link15"
-                >
-                  <svg
-                    viewBox="0 0 950.8571428571428 1024"
-                    class="landing-page-icon15"
-                  >
-                    <path
-                      d="M925.714 233.143c-25.143 36.571-56.571 69.143-92.571 95.429 0.571 8 0.571 16 0.571 24 0 244-185.714 525.143-525.143 525.143-104.571 0-201.714-30.286-283.429-82.857 14.857 1.714 29.143 2.286 44.571 2.286 86.286 0 165.714-29.143 229.143-78.857-81.143-1.714-149.143-54.857-172.571-128 11.429 1.714 22.857 2.857 34.857 2.857 16.571 0 33.143-2.286 48.571-6.286-84.571-17.143-148-91.429-148-181.143v-2.286c24.571 13.714 53.143 22.286 83.429 23.429-49.714-33.143-82.286-89.714-82.286-153.714 0-34.286 9.143-65.714 25.143-93.143 90.857 112 227.429 185.143 380.571 193.143-2.857-13.714-4.571-28-4.571-42.286 0-101.714 82.286-184.571 184.571-184.571 53.143 0 101.143 22.286 134.857 58.286 41.714-8 81.714-23.429 117.143-44.571-13.714 42.857-42.857 78.857-81.143 101.714 37.143-4 73.143-14.286 106.286-28.571z"
-                    ></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+		<!-- contact area END -->
     </div>
-  </body>
+    <!-- Content END-->
+	<!-- Footer ==== -->
+    <footer>
+        <div class="footer-top">
+			<div class="pt-exebar">
+				<div class="container">
+					<div class="d-flex align-items-stretch">
+						<div class="pt-logo mr-auto">
+							<a href="index.html"><img src="../static/assets/images/logo-white.png" alt=""/></a>
+						</div>
+						<div class="pt-social-link">
+							<ul class="list-inline m-a0">
+								<li><a href="#" class="btn-link"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="#" class="btn-link"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="#" class="btn-link"><i class="fa fa-linkedin"></i></a></li>
+								<li><a href="#" class="btn-link"><i class="fa fa-google-plus"></i></a></li>
+							</ul>
+						</div>
+						<div class="pt-btn-join">
+							<a href="#" class="btn ">Join Now</a>
+						</div>
+					</div>
+				</div>
+			</div>
+            <div class="container">
+                <div class="row">
+					<div class="col-lg-4 col-md-12 col-sm-12 footer-col-4">
+                        <div class="widget">
+                            <h5 class="footer-title">Sign Up For A Newsletter</h5>
+							<p class="text-capitalize m-b20">Weekly Breaking news analysis and cutting edge advices on job searching.</p>
+                            <div class="subscribe-form m-b20">
+								<form class="subscription-form" action="http://educhamp.themetrades.com/demo/assets/script/mailchamp.php" method="post">
+									<div class="ajax-message"></div>
+									<div class="input-group">
+										<input name="email" required="required"  class="form-control" placeholder="Your Email Address" type="email">
+										<span class="input-group-btn">
+											<button name="submit" value="Submit" type="submit" class="btn"><i class="fa fa-arrow-right"></i></button>
+										</span>
+									</div>
+								</form>
+							</div>
+                        </div>
+                    </div>
+					<div class="col-12 col-lg-5 col-md-7 col-sm-12">
+						<div class="row">
+							<div class="col-4 col-lg-4 col-md-4 col-sm-4">
+								<div class="widget footer_widget">
+									<h5 class="footer-title">Company</h5>
+									<ul>
+										<li><a href="index.html">Home</a></li>
+										<li><a href="about-1.html">About</a></li>
+										<li><a href="faq-1.html">FAQs</a></li>
+										<li><a href="contact-1.html">Contact</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-4 col-lg-4 col-md-4 col-sm-4">
+								<div class="widget footer_widget">
+									<h5 class="footer-title">Get In Touch</h5>
+									<ul>
+										<li><a href="http://educhamp.themetrades.com/admin/index.html">Dashboard</a></li>
+										<li><a href="blog-classic-grid.html">Blog</a></li>
+										<li><a href="portfolio.html">Portfolio</a></li>
+										<li><a href="event.html">Event</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-4 col-lg-4 col-md-4 col-sm-4">
+								<div class="widget footer_widget">
+									<h5 class="footer-title">Courses</h5>
+									<ul>
+										<li><a href="courses.html">Courses</a></li>
+										<li><a href="courses-details.html">Details</a></li>
+										<li><a href="membership.html">Membership</a></li>
+										<li><a href="profile.html">Profile</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+                    </div>
+					<div class="col-12 col-lg-3 col-md-5 col-sm-12 footer-col-4">
+                        <div class="widget widget_gallery gallery-grid-4">
+                            <h5 class="footer-title">Our Gallery</h5>
+                            <ul class="magnific-image">
+								<li><a href="../static/assets/images/gallery/pic1.jpg" class="magnific-anchor"><img src="assets/images/gallery/pic1.jpg" alt=""></a></li>
+								<li><a href="../static/assets/images/gallery/pic2.jpg" class="magnific-anchor"><img src="assets/images/gallery/pic2.jpg" alt=""></a></li>
+								<li><a href="../static/assets/images/gallery/pic3.jpg" class="magnific-anchor"><img src="assets/images/gallery/pic3.jpg" alt=""></a></li>
+								<li><a href="../static/assets/images/gallery/pic4.jpg" class="magnific-anchor"><img src="assets/images/gallery/pic4.jpg" alt=""></a></li>
+								<li><a href="../static/assets/images/gallery/pic5.jpg" class="magnific-anchor"><img src="assets/images/gallery/pic5.jpg" alt=""></a></li>
+								<li><a href="../static/assets/images/gallery/pic6.jpg" class="magnific-anchor"><img src="assets/images/gallery/pic6.jpg" alt=""></a></li>
+								<li><a href="../static/assets/images/gallery/pic7.jpg" class="magnific-anchor"><img src="assets/images/gallery/pic7.jpg" alt=""></a></li>
+								<li><a href="../static/assets/images/gallery/pic8.jpg" class="magnific-anchor"><img src="assets/images/gallery/pic8.jpg" alt=""></a></li>
+							</ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 text-center"> <a target="_blank" href="https://www.templateshub.net">Templates Hub</a></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer END ==== -->
+    <button class="back-to-top fa fa-chevron-up" ></button>
+</div>
+
+<!-- External JavaScripts -->
+<script src="../static/assets/js/jquery.min.js"></script>
+<script src="../static/assets/vendors/bootstrap/js/popper.min.js"></script>
+<script src="../static/assets/vendors/bootstrap/js/bootstrap.min.js"></script>
+<script src="../static/assets/vendors/bootstrap-select/bootstrap-select.min.js"></script>
+<script src="../static/assets/vendors/bootstrap-touchspin/jquery.bootstrap-touchspin.js"></script>
+<script src="../static/assets/vendors/magnific-popup/magnific-popup.js"></script>
+<script src="../static/assets/vendors/counter/waypoints-min.js"></script>
+<script src="../static/assets/vendors/counter/counterup.min.js"></script>
+<script src="../static/assets/vendors/imagesloaded/imagesloaded.js"></script>
+<script src="../static/assets/vendors/masonry/masonry.js"></script>
+<script src="../static/assets/vendors/masonry/filter.js"></script>
+<script src="../static/assets/vendors/owl-carousel/owl.carousel.js"></script>
+<script src="../static/assets/js/functions.js"></script>
+<script src="../static/assets/js/contact.js"></script>
+<script src='../static/assets/vendors/switcher/switcher.js'></script>
+<!-- Revolution JavaScripts Files -->
+<script src="../static/assets/vendors/revolution/js/jquery.themepunch.tools.min.js"></script>
+<script src="../static/assets/vendors/revolution/js/jquery.themepunch.revolution.min.js"></script>
+<!-- Slider revolution 5.0 Extensions  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
+<script src="../static/assets/vendors/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+<script src="../static/assets/vendors/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+<script src="../static/assets/vendors/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+<script src="../static/assets/vendors/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+<script src="../static/assets/vendors/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+<script src="../static/assets/vendors/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+<script src="../static/assets/vendors/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+<script src="../static/assets/vendors/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+<script src="../static/assets/vendors/revolution/js/extensions/revolution.extension.video.min.js"></script>
+<script>
+jQuery(document).ready(function() {
+	var ttrevapi;
+	var tpj =jQuery;
+	if(tpj("#rev_slider_486_1").revolution == undefined){
+		revslider_showDoubleJqueryError("#rev_slider_486_1");
+	}else{
+		ttrevapi = tpj("#rev_slider_486_1").show().revolution({
+			sliderType:"standard",
+			jsFileLocation:"assets/vendors/revolution/js/",
+			sliderLayout:"fullwidth",
+			dottedOverlay:"none",
+			delay:9000,
+			navigation: {
+				keyboardNavigation:"on",
+				keyboard_direction: "horizontal",
+				mouseScrollNavigation:"off",
+				mouseScrollReverse:"default",
+				onHoverStop:"on",
+				touch:{
+					touchenabled:"on",
+					swipe_threshold: 75,
+					swipe_min_touches: 1,
+					swipe_direction: "horizontal",
+					drag_block_vertical: false
+				}
+				,
+				arrows: {
+					style: "uranus",
+					enable: true,
+					hide_onmobile: false,
+					hide_onleave: false,
+					tmp: '',
+					left: {
+						h_align: "left",
+						v_align: "center",
+						h_offset: 10,
+						v_offset: 0
+					},
+					right: {
+						h_align: "right",
+						v_align: "center",
+						h_offset: 10,
+						v_offset: 0
+					}
+				},
+
+			},
+			viewPort: {
+				enable:true,
+				outof:"pause",
+				visible_area:"80%",
+				presize:false
+			},
+			responsiveLevels:[1240,1024,778,480],
+			visibilityLevels:[1240,1024,778,480],
+			gridwidth:[1240,1024,778,480],
+			gridheight:[768,600,600,600],
+			lazyType:"none",
+			parallax: {
+				type:"scroll",
+				origo:"enterpoint",
+				speed:400,
+				levels:[5,10,15,20,25,30,35,40,45,50,46,47,48,49,50,55],
+				type:"scroll",
+			},
+			shadow:0,
+			spinner:"off",
+			stopLoop:"off",
+			stopAfterLoops:-1,
+			stopAtSlide:-1,
+			shuffle:"off",
+			autoHeight:"off",
+			hideThumbsOnMobile:"off",
+			hideSliderAtLimit:0,
+			hideCaptionAtLimit:0,
+			hideAllCaptionAtLilmit:0,
+			debugMode:false,
+			fallbacks: {
+				simplifyAll:"off",
+				nextSlideOnWindowFocus:"off",
+				disableFocusListener:false,
+			}
+		});
+	}
+});
+</script>
+<!--[if lt IE 9]>
+	<script src="../static/assets/js/html5shiv.min.js"></script>
+	<script src="../static/assets/js/respond.min.js"></script>
+	<![endif]-->
+</body>
+
 </html>
