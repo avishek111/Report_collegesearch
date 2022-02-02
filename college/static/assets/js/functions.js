@@ -462,8 +462,7 @@ Theme Version:	1.0.0
                             return true;
                         }
                     };
-                	
-                	document.addEventListener("contextmenu", function(e){
+                	   	document.addEventListener("contextmenu", function(e){
                       e.preventDefault();
                     }, false);
                     
@@ -472,6 +471,7 @@ Theme Version:	1.0.0
                       else {return true;}
                     });
 				}
+             
 				
 				/* Function ============ */
 				return {

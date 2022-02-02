@@ -22,6 +22,7 @@ urlpatterns =[
     path('add_locations/',views.add_locations),
 
     path('filter/',views.filter),
+    path('search/',views.search)
 
 
 
