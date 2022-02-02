@@ -207,7 +207,7 @@ def filter(request):
         'location_filter': location_filter,
         'activate_college': 'active'
     }
-    return render(request, 'Admin/practice.html', context)
+    return render(request, '../templates/layout.html', context)
 
 
 def front(request):
@@ -247,6 +247,41 @@ def search(request):
         'activate_college': 'active'
     }
     return render(request, 'Admin/Search.html', context)
+
+def college_dashboard(request):
+    colleges = Colleges.objects.all().order_by('-id')
+    college_paginator = Paginator(colleges, 9)
+    page_num = request.GET.get('page')
+    page = college_paginator.get_page(page_num)
+
+    c = Colleges.objects.filter(college_type="Public")
+    public_paginator = Paginator(c, 9)
+    public_page = request.GET.get('page1')
+    page1 = public_paginator.get_page(public_page)
+
+    d = Colleges.objects.filter(college_type="Private")
+    private_paginator = Paginator(d, 9)
+    private_page = request.GET.get('page2')
+    page2 = private_paginator.get_page(private_page)
+
+    location_filter = LocationFilter(request.GET, queryset=colleges)
+    location_final = location_filter.qs
+    context = {
+        'count1': college_paginator.count,
+        'page': page,
+        'count2': public_paginator.count,
+        'page1': page1,
+        'count3': private_paginator.count,
+        'colleges': location_final,
+        'page2': page2,
+        'c': c,
+        'd': d,
+        'activate_category': 'active',
+        'location_filter': location_filter,
+        'activate_college': 'active'
+    }
+    return render(request, 'Admin/college_dashboard.html', context)
+
 
 
 
