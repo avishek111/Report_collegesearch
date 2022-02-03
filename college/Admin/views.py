@@ -207,7 +207,7 @@ def filter(request):
         'location_filter': location_filter,
         'activate_college': 'active'
     }
-    return render(request, '../templates/layout.html', context)
+    return render(request, 'Admin/show_location_college.html', context)
 
 
 def front(request):
@@ -216,9 +216,7 @@ def front(request):
 
 def search(request):
     colleges = Colleges.objects.all().order_by('-id')
-    college_paginator = Paginator(colleges, 9)
-    page_num = request.GET.get('page')
-    page = college_paginator.get_page(page_num)
+
 
     c = Colleges.objects.filter(college_type="Public")
     public_paginator = Paginator(c, 9)
@@ -232,6 +230,9 @@ def search(request):
 
     location_filter = LocationFilter(request.GET, queryset=colleges)
     location_final = location_filter.qs
+    college_paginator = Paginator(location_final, 9)
+    page_num = request.GET.get('page')
+    page = college_paginator.get_page(page_num)
     context = {
         'count1': college_paginator.count,
         'page': page,
@@ -250,9 +251,7 @@ def search(request):
 
 def college_dashboard(request):
     colleges = Colleges.objects.all().order_by('-id')
-    college_paginator = Paginator(colleges, 9)
-    page_num = request.GET.get('page')
-    page = college_paginator.get_page(page_num)
+
 
     c = Colleges.objects.filter(college_type="Public")
     public_paginator = Paginator(c, 9)
@@ -266,6 +265,9 @@ def college_dashboard(request):
 
     location_filter = LocationFilter(request.GET, queryset=colleges)
     location_final = location_filter.qs
+    college_paginator = Paginator(location_final, 9)
+    page_num = request.GET.get('page')
+    page = college_paginator.get_page(page_num)
     context = {
         'count1': college_paginator.count,
         'page': page,
@@ -284,4 +286,26 @@ def college_dashboard(request):
 
 
 
+def searche(request):
+    searched = request.GET['searched']
+    data = Colleges.objects.filter(college_name=searched)
+    return render(request, 'Admin/Search.html',{'data':data})
 
+
+def get_val(request):
+    choice = request.POST.get("public1")
+    if choice == "public":
+        public_filter = Colleges.objects.filter(college_type="Public")
+        context = {
+            'public_filter':public_filter
+        }
+        return render(request,'Admin/Search.html', context)
+
+    elif choice == "private":
+        private_filter = Colleges.objects.filter(college_type="Private")
+        context = {
+            'private_filter':private_filter
+        }
+        return render(request, 'Admin/Search.html', context)
+    else:
+        return render(request, 'Admin/Search.html')

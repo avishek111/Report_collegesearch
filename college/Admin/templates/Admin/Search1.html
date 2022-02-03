@@ -232,7 +232,13 @@
     <!-- Content -->
     <div class="page-content bg-white">
         <!-- inner page banner -->
-
+        <div class="page-banner ovbl-dark" style="background-image:url(assets/images/banner/banner3.jpg);">
+            <div class="container">
+                <div class="page-banner-entry">
+                    <h1 class="text-white">Our Colleges</h1>
+				 </div>
+            </div>
+        </div>
 		<!-- Breadcrumb row -->
 		<div class="breadcrumb-row">
 			<div class="container">
@@ -257,35 +263,24 @@
 <!--										<input name="dzName" type="text" required class="form-control">-->
 <!--									</div>-->
 <!--								</div>-->
-								  <div class="card card-body">
-                    <form class="form" method="get">
-                        {{location_filter.form}}
-        <button class="btn btn-outline-success" type="submit" style="margin-top:10px;">Search</button>
-						<a href="/search" class="btn btn-outline-primary" style="margin-top:10px;">Show all</a>
-
+								<div class="card card-body">
+                    <form class="form" method="get" action="/search">
+						{% csrf_token %}
+                        <input type="text" id="fname" name="searched" id="searched" placeholder="Search College">
+        <button class="btn btn-outline-success" name="searcher" type="submit" style="margin-top:20px;">Search</button>
                     </form>
                     </div>
 							</div>
-<!--							<div class="widget widget_archive">-->
-<!--                                <h5 class="widget-title style-1">All Courses</h5>-->
-<!--                                <ul>-->
-<!--                                    <li class="active"><a href="#">General</a></li>-->
-<!--                                    <li><a href="#">IT & Software</a></li>-->
-<!--                                    <li><a href="#">Photography</a></li>-->
-<!--                                    <li><a href="#">Programming Language</a></li>-->
-<!--                                    <li><a href="#">Technology</a></li>-->
-<!--                                </ul>-->
-<!--                            </div>-->
-
-							<div class="filter_box">
-								<div class="filter_by_p">
-									<h6>choose your college type</h6>
-									<input type="radio" id="public" name="public1" value="public" formmethod="post">
-									<label for="public">Public</label><br>
-									<input type="radio" id="Private" name="public1" value="private" formmethod="post">
-									<label for="Private">Private</label><br>
-								</div>
-							</div>
+							<div class="widget widget_archive">
+                                <h5 class="widget-title style-1">All Courses</h5>
+                                <ul>
+                                    <li class="active"><a href="#">General</a></li>
+                                    <li><a href="#">IT & Software</a></li>
+                                    <li><a href="#">Photography</a></li>
+                                    <li><a href="#">Programming Language</a></li>
+                                    <li><a href="#">Technology</a></li>
+                                </ul>
+                            </div>
 							<div class="widget">
 								<a href="#"><img src="assets/images/adv/adv.jpg" alt=""/></a>
 							</div>
@@ -294,72 +289,7 @@
 
 						<div class="col-lg-9 col-md-8 col-sm-12">
 							<div class="row">
-								{% if public_filter %}
-									{% for i in public_filter %}
-								<div class="col-md-6 col-lg-4 col-sm-6 m-b30">
-									<div class="cours-bx">
-										<div class="action-box" style="width:300px;height:150px;">
-											<img src="/{{i.college_image}}" alt="">
-											<a href="/college_dashboard" class="btn" >Read More</a>
-										</div>
-										<div class="info-bx text-center">
-											<h5><a href="#">{{i.college_name}}</a></h5>
-											<span>{{i.college_location}}</span>
-										</div>
-										<div class="cours-more-info">
-											<div class="review">
-												<span>3 Review</span>
-												<ul class="cours-star">
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li><i class="fa fa-star"></i></li>
-													<li><i class="fa fa-star"></i></li>
-												</ul>
-											</div>
-											<div class="price">
-												<del>$190</del>
-												<h5>$120</h5>
-											</div>
-										</div>
-									</div>
-
-								</div>
-								{% endfor %}
-								{% elif private_filter %}
-									{% for i in private_filter %}
-								<div class="col-md-6 col-lg-4 col-sm-6 m-b30">
-									<div class="cours-bx">
-										<div class="action-box" style="width:300px;height:150px;">
-											<img src="/{{i.college_image}}" alt="">
-											<a href="/college_dashboard" class="btn" >Read More</a>
-										</div>
-										<div class="info-bx text-center">
-											<h5><a href="#">{{i.college_name}}</a></h5>
-											<span>{{i.college_location}}</span>
-										</div>
-										<div class="cours-more-info">
-											<div class="review">
-												<span>3 Review</span>
-												<ul class="cours-star">
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li><i class="fa fa-star"></i></li>
-													<li><i class="fa fa-star"></i></li>
-												</ul>
-											</div>
-											<div class="price">
-												<del>$190</del>
-												<h5>$120</h5>
-											</div>
-										</div>
-									</div>
-
-								</div>
-								{% endfor %}
-								{% else %}
-									{% for i in page.object_list %}
+									{% for i in college_search %}
 								<div class="col-md-6 col-lg-4 col-sm-6 m-b30">
 									<div class="cours-bx">
 										<div class="action-box" style="width:300px;height:150px;">
@@ -390,9 +320,6 @@
 
 								</div>
 								{% endfor %}
-								{% endif %}
-
-
 
 
 
