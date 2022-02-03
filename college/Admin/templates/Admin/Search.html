@@ -280,10 +280,13 @@
 							<div class="filter_box">
 								<div class="filter_by_p">
 									<h6>choose your college type</h6>
-									<input type="radio" id="public" name="public1" value="public" formmethod="post">
-									<label for="public">Public</label><br>
-									<input type="radio" id="Private" name="public1" value="private" formmethod="post">
-									<label for="Private">Private</label><br>
+									<form action="/search" method="post">
+										{% csrf_token %}
+										<input type="radio" id="public" name="public1" value="public">
+										<label for="public">Public</label><br>
+										<input type="radio" id="Private" name="public1" value="private">
+										<label for="Private">Private</label><br>
+									</form>
 								</div>
 							</div>
 							<div class="widget">
@@ -294,71 +297,6 @@
 
 						<div class="col-lg-9 col-md-8 col-sm-12">
 							<div class="row">
-								{% if public_filter %}
-									{% for i in public_filter %}
-								<div class="col-md-6 col-lg-4 col-sm-6 m-b30">
-									<div class="cours-bx">
-										<div class="action-box" style="width:300px;height:150px;">
-											<img src="/{{i.college_image}}" alt="">
-											<a href="/college_dashboard" class="btn" >Read More</a>
-										</div>
-										<div class="info-bx text-center">
-											<h5><a href="#">{{i.college_name}}</a></h5>
-											<span>{{i.college_location}}</span>
-										</div>
-										<div class="cours-more-info">
-											<div class="review">
-												<span>3 Review</span>
-												<ul class="cours-star">
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li><i class="fa fa-star"></i></li>
-													<li><i class="fa fa-star"></i></li>
-												</ul>
-											</div>
-											<div class="price">
-												<del>$190</del>
-												<h5>$120</h5>
-											</div>
-										</div>
-									</div>
-
-								</div>
-								{% endfor %}
-								{% elif private_filter %}
-									{% for i in private_filter %}
-								<div class="col-md-6 col-lg-4 col-sm-6 m-b30">
-									<div class="cours-bx">
-										<div class="action-box" style="width:300px;height:150px;">
-											<img src="/{{i.college_image}}" alt="">
-											<a href="/college_dashboard" class="btn" >Read More</a>
-										</div>
-										<div class="info-bx text-center">
-											<h5><a href="#">{{i.college_name}}</a></h5>
-											<span>{{i.college_location}}</span>
-										</div>
-										<div class="cours-more-info">
-											<div class="review">
-												<span>3 Review</span>
-												<ul class="cours-star">
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li><i class="fa fa-star"></i></li>
-													<li><i class="fa fa-star"></i></li>
-												</ul>
-											</div>
-											<div class="price">
-												<del>$190</del>
-												<h5>$120</h5>
-											</div>
-										</div>
-									</div>
-
-								</div>
-								{% endfor %}
-								{% else %}
 									{% for i in page.object_list %}
 								<div class="col-md-6 col-lg-4 col-sm-6 m-b30">
 									<div class="cours-bx">
@@ -390,7 +328,7 @@
 
 								</div>
 								{% endfor %}
-								{% endif %}
+
 
 
 
