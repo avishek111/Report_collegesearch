@@ -216,38 +216,60 @@ def front(request):
 
 def search(request):
     if request.method == "POST":
-        query = request.POST.get()
-        colleges = Colleges.objects.all().order_by('-id')
-        c = Colleges.objects.filter(college_type="Public")
-        public_paginator = Paginator(c, 9)
-        public_page = request.GET.get('page1')
-        page1 = public_paginator.get_page(public_page)
-
-        d = Colleges.objects.filter(college_type="Private")
-        private_paginator = Paginator(d, 9)
-        private_page = request.GET.get('page2')
-        page2 = private_paginator.get_page(private_page)
-
-        location_filter = LocationFilter(request.GET, queryset=colleges)
-        location_final = location_filter.qs
-        college_paginator = Paginator(location_final, 9)
-        page_num = request.GET.get('page')
-        page = college_paginator.get_page(page_num)
-        context = {
-            'count1': college_paginator.count,
-            'page': page,
-            'count2': public_paginator.count,
-            'page1': page1,
-            'count3': private_paginator.count,
-            'colleges': location_final,
-            'page2': page2,
-            'c': c,
-            'd': d,
-            'activate_category': 'active',
-            'location_filter': location_filter,
-            'activate_college': 'active'
-        }
-        return render(request, 'Admin/Search.html', context)
+        print("hi how are you")
+        page = request.POST['page']
+        print(page)
+        if page=="1":
+            c = Colleges.objects.filter(college_type="Public")
+            public_paginator = Paginator(c, 9)
+            public_page = request.GET.get('page1')
+            page1 = public_paginator.get_page(public_page)
+            context = {
+                'count2': public_paginator.count,
+                'page': page1,
+            }
+            return render(request, 'Admin/Search.html', context)
+        elif page=="2":
+            d = Colleges.objects.filter(college_type="Private")
+            private_paginator = Paginator(d, 9)
+            private_page = request.GET.get('page2')
+            page2 = private_paginator.get_page(private_page)
+            context = {
+                'count3': private_paginator.count,
+                'page': page2
+            }
+            return render(request, 'Admin/Search.html', context)
+        else:
+            colleges = Colleges.objects.all().order_by('-id')
+            location_filter = LocationFilter(request.GET, queryset=colleges)
+            location_final = location_filter.qs
+            college_paginator = Paginator(location_final, 9)
+            page_num = request.GET.get('page')
+            page = college_paginator.get_page(page_num)
+            context = {
+                'count1': college_paginator.count,
+                'page': page,
+                'colleges': location_final,
+                'activate_category': 'active',
+                'location_filter': location_filter,
+                'activate_college': 'active'
+            }
+            return render(request, 'Admin/Search.html', context)
+    colleges = Colleges.objects.all().order_by('-id')
+    location_filter = LocationFilter(request.GET, queryset=colleges)
+    location_final = location_filter.qs
+    college_paginator = Paginator(location_final, 9)
+    page_num = request.GET.get('page')
+    page = college_paginator.get_page(page_num)
+    context = {
+        'count1': college_paginator.count,
+        'page': page,
+        'colleges': location_final,
+        'activate_category': 'active',
+        'location_filter': location_filter,
+        'activate_college': 'active'
+    }
+    return render(request, 'Admin/Search.html',context)
 
 def college_dashboard(request):
     colleges = Colleges.objects.all().order_by('-id')
@@ -286,10 +308,10 @@ def college_dashboard(request):
 
 
 
-def searche(request):
-    searched = request.GET['searched']
-    data = Colleges.objects.filter(college_name=searched)
-    return render(request, 'Admin/Search.html',{'data':data})
+# def searche(request):
+#     searched = request.GET['searched']
+#     data = Colleges.objects.filter(college_name=searched)
+#     return render(request, 'Admin/Search.html',{'data':data})
 
 
 # def get_val(request):

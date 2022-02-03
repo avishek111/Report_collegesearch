@@ -280,12 +280,13 @@
 							<div class="filter_box">
 								<div class="filter_by_p">
 									<h6>choose your college type</h6>
-									<form action="/search" method="post">
+									<form method="post" action="{% url 'search' %}", enctype="multipart/form-data">
 										{% csrf_token %}
-										<input type="radio" id="public" name="public1" value="public">
+										<input type="radio" id="public" name="page" value="1">
 										<label for="public">Public</label><br>
-										<input type="radio" id="Private" name="public1" value="private">
+										<input type="radio" id="Private" name="page" value="2">
 										<label for="Private">Private</label><br>
+										<input type="submit" value="Submit">
 									</form>
 								</div>
 							</div>
@@ -294,7 +295,6 @@
 							</div>
 
 						</div>
-
 						<div class="col-lg-9 col-md-8 col-sm-12">
 							<div class="row">
 									{% for i in page.object_list %}
@@ -328,6 +328,7 @@
 
 								</div>
 								{% endfor %}
+
 
 
 

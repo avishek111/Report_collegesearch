@@ -22,6 +22,6 @@ urlpatterns =[
     path('add_locations/',views.add_locations),
 
     path('filter/',views.filter),
-    path('search/',views.search),
+    path('search/',views.search, name="search"),
     path('college_dashboard/',views.college_dashboard),
 ]
