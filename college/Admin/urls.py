@@ -24,4 +24,5 @@ urlpatterns =[
     path('filter/',views.filter),
     path('search/',views.search,name="search"),
     path('college_dashboard/',views.college_dashboard),
+#     wish list for students
 ]

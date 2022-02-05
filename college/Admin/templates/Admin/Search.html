@@ -280,19 +280,19 @@
 							<div class="filter_box">
 								<div class="filter_by_p">
 									<h6 style="color:orange;">Choose your college type</h6>
+									<input type="radio" id="page" name="page" value="1">
+									<label for="page">Public</label><br>
+									<input type="radio" id="page1" name="page" value="2">
+									<label for="Page1">Private</label><br>
+
 									<form method="post" action="{% url 'search' %}", enctype="multipart/form-data">
 										{% csrf_token %}
-										<input type="radio" id="page" name="page" value="1">
-										<label for="page">Public</label><br>
-										<input type="radio" id="page1" name="page" value="2">
-										<label for="Page1">Private</label><br>
-
 										<h6 style="color:orange;">Choose your college level</h6>
-										<input type="checkbox" id="2year" name="2year" value="3">
-										<label for="2year"> 2 Year </label><br>
-										<input type="checkbox" id="4year" name="check2" value="4">
-										<label for="4year"> 4 Year </label><br>
-										<input type="submit" value="Submit">
+										<input type="checkbox" id="check1" name="check1" value="3">
+										<label for="check1"> 2 Year </label><br>
+										<input type="checkbox" id="check2" name="check2" value="4">
+										<label for="check2"> 4 Year </label><br>
+										<input id="submit" type="submit" value="Submit">
 									</form>
 
 								</div>
@@ -303,7 +303,7 @@
 
 						</div>
 						<div class="col-lg-9 col-md-8 col-sm-12">
-							<div class="row">
+							<div class="row" id="row1">
 									{% for i in page.object_list %}
 								<div class="col-md-6 col-lg-4 col-sm-6 m-b30">
 									<div class="cours-bx">
@@ -335,237 +335,6 @@
 
 								</div>
 								{% endfor %}
-
-
-
-
-
-
-
-<!--								<div class="col-md-6 col-lg-4 col-sm-6 m-b30">-->
-<!--									<div class="cours-bx">-->
-<!--										<div class="action-box">-->
-<!--											<img src="assets/images/courses/pic2.jpg" alt="">-->
-<!--											<a href="#" class="btn">Read More</a>-->
-<!--										</div>-->
-<!--										<div class="info-bx text-center">-->
-<!--											<h5><a href="#">Introduction EduChamp – LMS plugin</a></h5>-->
-<!--											<span>Programming</span>-->
-<!--										</div>-->
-<!--										<div class="cours-more-info">-->
-<!--											<div class="review">-->
-<!--												<span>3 Review</span>-->
-<!--												<ul class="cours-star">-->
-<!--													<li class="active"><i class="fa fa-star"></i></li>-->
-<!--													<li class="active"><i class="fa fa-star"></i></li>-->
-<!--													<li class="active"><i class="fa fa-star"></i></li>-->
-<!--													<li><i class="fa fa-star"></i></li>-->
-<!--													<li><i class="fa fa-star"></i></li>-->
-<!--												</ul>-->
-<!--											</div>-->
-<!--											<div class="price">-->
-<!--												<del>$190</del>-->
-<!--												<h5>$120</h5>-->
-<!--											</div>-->
-<!--										</div>-->
-<!--									</div>-->
-<!--								</div>-->
-<!--								<div class="col-md-6 col-lg-4 col-sm-6 m-b30">-->
-<!--									<div class="cours-bx">-->
-<!--										<div class="action-box">-->
-<!--											<img src="assets/images/courses/pic3.jpg" alt="">-->
-<!--											<a href="#" class="btn">Read More</a>-->
-<!--										</div>-->
-<!--										<div class="info-bx text-center">-->
-<!--											<h5><a href="#">Introduction EduChamp – LMS plugin</a></h5>-->
-<!--											<span>Programming</span>-->
-<!--										</div>-->
-<!--										<div class="cours-more-info">-->
-<!--											<div class="review">-->
-<!--												<span>3 Review</span>-->
-<!--												<ul class="cours-star">-->
-<!--													<li class="active"><i class="fa fa-star"></i></li>-->
-<!--													<li class="active"><i class="fa fa-star"></i></li>-->
-<!--													<li class="active"><i class="fa fa-star"></i></li>-->
-<!--													<li><i class="fa fa-star"></i></li>-->
-<!--													<li><i class="fa fa-star"></i></li>-->
-<!--												</ul>-->
-<!--											</div>-->
-<!--											<div class="price">-->
-<!--												<del>$190</del>-->
-<!--												<h5>$120</h5>-->
-<!--											</div>-->
-<!--										</div>-->
-<!--									</div>-->
-<!--								</div>-->
-<!--								<div class="col-md-6 col-lg-4 col-sm-6 m-b30">-->
-<!--									<div class="cours-bx">-->
-<!--										<div class="action-box">-->
-<!--											<img src="assets/images/courses/pic4.jpg" alt="">-->
-<!--											<a href="#" class="btn">Read More</a>-->
-<!--										</div>-->
-<!--										<div class="info-bx text-center">-->
-<!--											<h5><a href="#">Introduction EduChamp – LMS plugin</a></h5>-->
-<!--											<span>Programming</span>-->
-<!--										</div>-->
-<!--										<div class="cours-more-info">-->
-<!--											<div class="review">-->
-<!--												<span>3 Review</span>-->
-<!--												<ul class="cours-star">-->
-<!--													<li class="active"><i class="fa fa-star"></i></li>-->
-<!--													<li class="active"><i class="fa fa-star"></i></li>-->
-<!--													<li class="active"><i class="fa fa-star"></i></li>-->
-<!--													<li><i class="fa fa-star"></i></li>-->
-<!--													<li><i class="fa fa-star"></i></li>-->
-<!--												</ul>-->
-<!--											</div>-->
-<!--											<div class="price">-->
-<!--												<del>$190</del>-->
-<!--												<h5>$120</h5>-->
-<!--											</div>-->
-<!--										</div>-->
-<!--									</div>-->
-<!--								</div>-->
-<!--								<div class="col-md-6 col-lg-4 col-sm-6 m-b30">-->
-<!--									<div class="cours-bx">-->
-<!--										<div class="action-box">-->
-<!--											<img src="assets/images/courses/pic5.jpg" alt="">-->
-<!--											<a href="#" class="btn">Read More</a>-->
-<!--										</div>-->
-<!--										<div class="info-bx text-center">-->
-<!--											<h5><a href="#">Introduction EduChamp – LMS plugin</a></h5>-->
-<!--											<span>Programming</span>-->
-<!--										</div>-->
-<!--										<div class="cours-more-info">-->
-<!--											<div class="review">-->
-<!--												<span>3 Review</span>-->
-<!--												<ul class="cours-star">-->
-<!--													<li class="active"><i class="fa fa-star"></i></li>-->
-<!--													<li class="active"><i class="fa fa-star"></i></li>-->
-<!--													<li class="active"><i class="fa fa-star"></i></li>-->
-<!--													<li><i class="fa fa-star"></i></li>-->
-<!--													<li><i class="fa fa-star"></i></li>-->
-<!--												</ul>-->
-<!--											</div>-->
-<!--											<div class="price">-->
-<!--												<del>$190</del>-->
-<!--												<h5>$120</h5>-->
-<!--											</div>-->
-<!--										</div>-->
-<!--									</div>-->
-<!--								</div>-->
-<!--								<div class="col-md-6 col-lg-4 col-sm-6 m-b30">-->
-<!--									<div class="cours-bx">-->
-<!--										<div class="action-box">-->
-<!--											<img src="assets/images/courses/pic6.jpg" alt="">-->
-<!--											<a href="#" class="btn">Read More</a>-->
-<!--										</div>-->
-<!--										<div class="info-bx text-center">-->
-<!--											<h5><a href="#">Introduction EduChamp – LMS plugin</a></h5>-->
-<!--											<span>Programming</span>-->
-<!--										</div>-->
-<!--										<div class="cours-more-info">-->
-<!--											<div class="review">-->
-<!--												<span>3 Review</span>-->
-<!--												<ul class="cours-star">-->
-<!--													<li class="active"><i class="fa fa-star"></i></li>-->
-<!--													<li class="active"><i class="fa fa-star"></i></li>-->
-<!--													<li class="active"><i class="fa fa-star"></i></li>-->
-<!--													<li><i class="fa fa-star"></i></li>-->
-<!--													<li><i class="fa fa-star"></i></li>-->
-<!--												</ul>-->
-<!--											</div>-->
-<!--											<div class="price">-->
-<!--												<del>$190</del>-->
-<!--												<h5>$120</h5>-->
-<!--											</div>-->
-<!--										</div>-->
-<!--									</div>-->
-<!--								</div>-->
-<!--								<div class="col-md-6 col-lg-4 col-sm-6 m-b30">-->
-<!--									<div class="cours-bx">-->
-<!--										<div class="action-box">-->
-<!--											<img src="assets/images/courses/pic7.jpg" alt="">-->
-<!--											<a href="#" class="btn">Read More</a>-->
-<!--										</div>-->
-<!--										<div class="info-bx text-center">-->
-<!--											<h5><a href="#">Introduction EduChamp – LMS plugin</a></h5>-->
-<!--											<span>Programming</span>-->
-<!--										</div>-->
-<!--										<div class="cours-more-info">-->
-<!--											<div class="review">-->
-<!--												<span>3 Review</span>-->
-<!--												<ul class="cours-star">-->
-<!--													<li class="active"><i class="fa fa-star"></i></li>-->
-<!--													<li class="active"><i class="fa fa-star"></i></li>-->
-<!--													<li class="active"><i class="fa fa-star"></i></li>-->
-<!--													<li><i class="fa fa-star"></i></li>-->
-<!--													<li><i class="fa fa-star"></i></li>-->
-<!--												</ul>-->
-<!--											</div>-->
-<!--											<div class="price">-->
-<!--												<del>$190</del>-->
-<!--												<h5>$120</h5>-->
-<!--											</div>-->
-<!--										</div>-->
-<!--									</div>-->
-<!--								</div>-->
-<!--								<div class="col-md-6 col-lg-4 col-sm-6 m-b30">-->
-<!--									<div class="cours-bx">-->
-<!--										<div class="action-box">-->
-<!--											<img src="assets/images/courses/pic8.jpg" alt="">-->
-<!--											<a href="#" class="btn">Read More</a>-->
-<!--										</div>-->
-<!--										<div class="info-bx text-center">-->
-<!--											<h5><a href="#">Introduction EduChamp – LMS plugin</a></h5>-->
-<!--											<span>Programming</span>-->
-<!--										</div>-->
-<!--										<div class="cours-more-info">-->
-<!--											<div class="review">-->
-<!--												<span>3 Review</span>-->
-<!--												<ul class="cours-star">-->
-<!--													<li class="active"><i class="fa fa-star"></i></li>-->
-<!--													<li class="active"><i class="fa fa-star"></i></li>-->
-<!--													<li class="active"><i class="fa fa-star"></i></li>-->
-<!--													<li><i class="fa fa-star"></i></li>-->
-<!--													<li><i class="fa fa-star"></i></li>-->
-<!--												</ul>-->
-<!--											</div>-->
-<!--											<div class="price">-->
-<!--												<del>$190</del>-->
-<!--												<h5>$120</h5>-->
-<!--											</div>-->
-<!--										</div>-->
-<!--									</div>-->
-<!--								</div>-->
-<!--								<div class="col-md-6 col-lg-4 col-sm-6 m-b30">-->
-<!--									<div class="cours-bx">-->
-<!--										<div class="action-box">-->
-<!--											<img src="assets/images/courses/pic9.jpg" alt="">-->
-<!--											<a href="#" class="btn">Read More</a>-->
-<!--										</div>-->
-<!--										<div class="info-bx text-center">-->
-<!--											<h5><a href="#">Introduction EduChamp – LMS plugin</a></h5>-->
-<!--											<span>Programming</span>-->
-<!--										</div>-->
-<!--										<div class="cours-more-info">-->
-<!--											<div class="review">-->
-<!--												<span>3 Review</span>-->
-<!--												<ul class="cours-star">-->
-<!--													<li class="active"><i class="fa fa-star"></i></li>-->
-<!--													<li class="active"><i class="fa fa-star"></i></li>-->
-<!--													<li class="active"><i class="fa fa-star"></i></li>-->
-<!--													<li><i class="fa fa-star"></i></li>-->
-<!--													<li><i class="fa fa-star"></i></li>-->
-<!--												</ul>-->
-<!--											</div>-->
-<!--											<div class="price">-->
-<!--												<del>$190</del>-->
-<!--												<h5>$120</h5>-->
-<!--											</div>-->
-<!--										</div>-->
-<!--									</div>-->
-<!--								</div>-->
 								<div class="col-lg-12 m-b20">
 									<div class="pagination-bx rounded-sm gray clearfix">
 										<ul class="pagination">
@@ -587,6 +356,243 @@
 										</ul>
 									</div>
 								</div>
+							</div>
+<!--							-------------------------->
+							<div class="row" id="row2">
+									{% for i in page1.object_list %}
+								<div class="col-md-6 col-lg-4 col-sm-6 m-b30">
+									<div class="cours-bx">
+										<div class="action-box" style="width:300px;height:150px;">
+											<img src="/{{i.college_image}}" alt="">
+											<a href="/college_dashboard" class="btn" >Read More</a>
+										</div>
+										<div class="info-bx text-center">
+											<h5><a href="#">{{i.college_name}}</a></h5>
+											<span>{{i.college_location}}</span>
+										</div>
+										<div class="cours-more-info">
+											<div class="review">
+												<span>3 Review</span>
+												<ul class="cours-star">
+													<li class="active"><i class="fa fa-star"></i></li>
+													<li class="active"><i class="fa fa-star"></i></li>
+													<li class="active"><i class="fa fa-star"></i></li>
+													<li><i class="fa fa-star"></i></li>
+													<li><i class="fa fa-star"></i></li>
+												</ul>
+											</div>
+											<div class="price">
+												<del>$190</del>
+												<h5>$120</h5>
+											</div>
+										</div>
+									</div>
+
+								</div>
+								{% endfor %}
+								<div class="col-lg-12 m-b20">
+									<div class="pagination-bx rounded-sm gray clearfix">
+										<ul class="pagination">
+
+											<li class="previous">
+												{% if page1.has_previous %}
+												<a href="/search?page1={{page1.previous_page_number}}"><i class="ti-arrow-left"></i> Prev</a>
+												{% endif %}
+											</li>
+<!--											<li class="active"><a href="#">1</a></li>-->
+<!--											<li><a href="#">2</a></li>-->
+<!--											<li><a href="#">3</a></li>-->
+											<li class="next">
+												{% if page1.has_next %}
+												<a href="/search?page1={{page1.next_page_number}}">Next <i class="ti-arrow-right"></i></a>
+												{% endif %}
+											</li>
+
+										</ul>
+									</div>
+								</div>
+							</div>
+<!--&lt;!&ndash;							-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;====================================&ndash;&gt;-->
+<!--							<div class="row" id="row3">-->
+<!--									{% for i in page2.object_list %}-->
+<!--								<div class="col-md-6 col-lg-4 col-sm-6 m-b30">-->
+<!--									<div class="cours-bx">-->
+<!--										<div class="action-box" style="width:300px;height:150px;">-->
+<!--											<img src="/{{i.college_image}}" alt="">-->
+<!--											<a href="/college_dashboard" class="btn" >Read More</a>-->
+<!--										</div>-->
+<!--										<div class="info-bx text-center">-->
+<!--											<h5><a href="#">{{i.college_name}}</a></h5>-->
+<!--											<span>{{i.college_location}}</span>-->
+<!--										</div>-->
+<!--										<div class="cours-more-info">-->
+<!--											<div class="review">-->
+<!--												<span>3 Review</span>-->
+<!--												<ul class="cours-star">-->
+<!--													<li class="active"><i class="fa fa-star"></i></li>-->
+<!--													<li class="active"><i class="fa fa-star"></i></li>-->
+<!--													<li class="active"><i class="fa fa-star"></i></li>-->
+<!--													<li><i class="fa fa-star"></i></li>-->
+<!--													<li><i class="fa fa-star"></i></li>-->
+<!--												</ul>-->
+<!--											</div>-->
+<!--											<div class="price">-->
+<!--												<del>$190</del>-->
+<!--												<h5>$120</h5>-->
+<!--											</div>-->
+<!--										</div>-->
+<!--									</div>-->
+
+<!--								</div>-->
+<!--								{% endfor %}-->
+<!--								<div class="col-lg-12 m-b20">-->
+<!--									<div class="pagination-bx rounded-sm gray clearfix">-->
+<!--										<ul class="pagination">-->
+
+<!--											<li class="previous">-->
+<!--												{% if page2.has_previous %}-->
+<!--												<a href="/search?page1={{page2.previous_page_number}}"><i class="ti-arrow-left"></i> Prev</a>-->
+<!--												{% endif %}-->
+<!--											</li>-->
+
+<!--											<li class="next">-->
+<!--												{% if page2.has_next %}-->
+<!--												<a href="/search?page2={{page2.next_page_number}}">Next <i class="ti-arrow-right"></i></a>-->
+<!--												{% endif %}-->
+<!--											</li>-->
+
+<!--										</ul>-->
+<!--									</div>-->
+<!--								</div>-->
+<!--							</div>-->
+<!--&lt;!&ndash;							==========================================================&ndash;&gt;-->
+<!--							<div class="row" id="two">-->
+<!--									{% for i in page3.object_list %}-->
+<!--								<div class="col-md-6 col-lg-4 col-sm-6 m-b30">-->
+<!--									<div class="cours-bx">-->
+<!--										<div class="action-box" style="width:300px;height:150px;">-->
+<!--											<img src="/{{i.college_image}}" alt="">-->
+<!--											<a href="/college_dashboard" class="btn" >Read More</a>-->
+<!--										</div>-->
+<!--										<div class="info-bx text-center">-->
+<!--											<h5><a href="#">{{i.college_name}}</a></h5>-->
+<!--											<span>{{i.college_location}}</span>-->
+<!--										</div>-->
+<!--										<div class="cours-more-info">-->
+<!--											<div class="review">-->
+<!--												<span>3 Review</span>-->
+<!--												<ul class="cours-star">-->
+<!--													<li class="active"><i class="fa fa-star"></i></li>-->
+<!--													<li class="active"><i class="fa fa-star"></i></li>-->
+<!--													<li class="active"><i class="fa fa-star"></i></li>-->
+<!--													<li><i class="fa fa-star"></i></li>-->
+<!--													<li><i class="fa fa-star"></i></li>-->
+<!--												</ul>-->
+<!--											</div>-->
+<!--											<div class="price">-->
+<!--												<del>$190</del>-->
+<!--												<h5>$120</h5>-->
+<!--											</div>-->
+<!--										</div>-->
+<!--									</div>-->
+
+<!--								</div>-->
+<!--								{% endfor %}-->
+<!--								<div class="col-lg-12 m-b20">-->
+<!--									<div class="pagination-bx rounded-sm gray clearfix">-->
+<!--										<ul class="pagination">-->
+
+<!--											<li class="previous">-->
+<!--												{% if page3.has_previous %}-->
+<!--												<a href="/search?page3={{page3.previous_page_number}}"><i class="ti-arrow-left"></i> Prev</a>-->
+<!--												{% endif %}-->
+<!--											</li>-->
+<!--&lt;!&ndash;											<li class="active"><a href="#">1</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;											<li><a href="#">2</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;											<li><a href="#">3</a></li>&ndash;&gt;-->
+<!--											<li class="next">-->
+<!--												{% if page3.has_next %}-->
+<!--												<a href="/search?page3={{page3.next_page_number}}">Next <i class="ti-arrow-right"></i></a>-->
+<!--												{% endif %}-->
+<!--											</li>-->
+
+<!--										</ul>-->
+<!--									</div>-->
+<!--								</div>-->
+<!--							</div>-->
+<!--&lt;!&ndash;							================================================================&ndash;&gt;-->
+<!--							<div class="row" id="three">-->
+<!--									{% for i in page4.object_list %}-->
+<!--								<div class="col-md-6 col-lg-4 col-sm-6 m-b30">-->
+<!--									<div class="cours-bx">-->
+<!--										<div class="action-box" style="width:300px;height:150px;">-->
+<!--											<img src="/{{i.college_image}}" alt="">-->
+<!--											<a href="/college_dashboard" class="btn" >Read More</a>-->
+<!--										</div>-->
+<!--										<div class="info-bx text-center">-->
+<!--											<h5><a href="#">{{i.college_name}}</a></h5>-->
+<!--											<span>{{i.college_location}}</span>-->
+<!--										</div>-->
+<!--										<div class="cours-more-info">-->
+<!--											<div class="review">-->
+<!--												<span>3 Review</span>-->
+<!--												<ul class="cours-star">-->
+<!--													<li class="active"><i class="fa fa-star"></i></li>-->
+<!--													<li class="active"><i class="fa fa-star"></i></li>-->
+<!--													<li class="active"><i class="fa fa-star"></i></li>-->
+<!--													<li><i class="fa fa-star"></i></li>-->
+<!--													<li><i class="fa fa-star"></i></li>-->
+<!--												</ul>-->
+<!--											</div>-->
+<!--											<div class="price">-->
+<!--												<del>$190</del>-->
+<!--												<h5>$120</h5>-->
+<!--											</div>-->
+<!--										</div>-->
+<!--									</div>-->
+
+<!--								</div>-->
+<!--								{% endfor %}-->
+<!--								<div class="col-lg-12 m-b20">-->
+<!--									<div class="pagination-bx rounded-sm gray clearfix">-->
+<!--										<ul class="pagination">-->
+
+<!--											<li class="previous">-->
+<!--												{% if page4.has_previous %}-->
+<!--												<a href="/search?page4={{page4.previous_page_number}}"><i class="ti-arrow-left"></i> Prev</a>-->
+<!--												{% endif %}-->
+<!--											</li>-->
+
+<!--											<li class="next">-->
+<!--												{% if page4.has_next %}-->
+<!--												<a href="/search?page4={{page4.next_page_number}}">Next <i class="ti-arrow-right"></i></a>-->
+<!--												{% endif %}-->
+<!--											</li>-->
+
+<!--										</ul>-->
+<!--									</div>-->
+<!--								</div>-->
+<!--							</div>-->
+<!--==================================================================================-->
+<!--								<div class="col-lg-12 m-b20">-->
+<!--									<div class="pagination-bx rounded-sm gray clearfix">-->
+<!--										<ul class="pagination">-->
+
+<!--											<li class="previous">-->
+<!--												{% if page.has_previous %}-->
+<!--												<a href="/search?page={{page.previous_page_number}}"><i class="ti-arrow-left"></i> Prev</a>-->
+<!--												{% endif %}-->
+<!--											</li>-->
+<!--											-->
+<!--											<li class="next">-->
+<!--												{% if page.has_next %}-->
+<!--												<a href="/search?page={{page.next_page_number}}">Next <i class="ti-arrow-right"></i></a>-->
+<!--												{% endif %}-->
+<!--											</li>-->
+
+<!--										</ul>-->
+<!--									</div>-->
+<!--								</div>-->
 							</div>
 						</div>
 					</div>
@@ -721,6 +727,108 @@
 <script src="../static/assets/js/functions.js"></script>
 <script src="../static/assets/js/contact.js"></script>
 <script src='../static/assets/vendors/switcher/switcher.js'></script>
+
+<script>
+$('#row2').hide();
+	$('#page').click(function(){
+	 if ($(this).is(":checked")) {
+   		 $('#row1').hide();
+   		 $('#row2').show();
+   		}
+});
+</script>
+<!--<script>-->
+<!--	$('#page1').click(function(){-->
+<!--	 if ($(this).is(":checked")) {-->
+<!--   		 $('#row1').hide()-->
+<!--   		 $('#row2').hide()-->
+<!--   		 $('#row3').show()-->
+<!--   		 $('#two').hide()-->
+<!--   		   $(#three).hide()-->
+<!--   	 }-->
+<!--   	 else{-->
+<!--   	 	$('#row1').show()-->
+<!--   		 $('#row2').hide()-->
+<!--   		 $('#row3').hide()-->
+<!--   		  $('#two').hide()-->
+<!--   		    $(#three).hide()-->
+<!--   	 }-->
+<!--});-->
+<!--</script>-->
+
+<!--<script>-->
+<!--	$('#check1').click(function(){-->
+<!--	 if ($(this).is(":checked")) {-->
+<!--   		 $('#row1').hide()-->
+<!--   		 $('#row2').hide()-->
+<!--   		 $('#row3').hide()-->
+<!--   		 $('#two').show()-->
+<!--   		   $(#three).hide()-->
+<!--   	 }-->
+<!--   	 else{-->
+<!--   	 	$('#row1').show()-->
+<!--   		 $('#row2').hide()-->
+<!--   		 $('#row3').hide()-->
+<!--   		  $('#two').hide()-->
+<!--   		    $(#three).hide()-->
+<!--   	 }-->
+<!--});-->
+<!--</script>-->
+<!--<script>-->
+<!--	$('#check1').click(function(){-->
+<!--	 if ($(this).is(":checked")) {-->
+<!--   		 $('#row1').hide()-->
+<!--   		 $('#row2').hide()-->
+<!--   		 $('#row3').hide()-->
+<!--   		 $('#two').show()-->
+<!--   		   $(#three).hide()-->
+<!--   	 }-->
+<!--   	 else{-->
+<!--   	 	$('#row1').show()-->
+<!--   		 $('#row2').hide()-->
+<!--   		 $('#row3').hide()-->
+<!--   		  $('#two').hide()-->
+<!--   		    $(#three).hide()-->
+<!--   	 }-->
+<!--});-->
+<!--</script>-->
+<!--<script>-->
+<!--	$('#check1').click(function(){-->
+<!--	 if ($(this).is(":checked")) {-->
+<!--   		 $('#row1').hide()-->
+<!--   		 $('#row2').hide()-->
+<!--   		 $('#row3').hide()-->
+<!--   		 $('#two').show()-->
+<!--   		   $(#three).hide()-->
+<!--   	 }-->
+<!--   	 else{-->
+<!--   	 	$('#row1').show()-->
+<!--   		 $('#row2').hide()-->
+<!--   		 $('#row3').hide()-->
+<!--   		  $('#two').hide()-->
+<!--   		    $('#three').hide()-->
+<!--   	 }-->
+<!--});-->
+<!--</script>-->
+<!--<script>-->
+<!--	$('#check2').click(function(){-->
+<!--	 if ($(this).is(":checked")) {-->
+<!--   		 $('#row1').hide()-->
+<!--   		 $('#row2').hide()-->
+<!--   		 $('#row3').hide()-->
+<!--   		 $('#two').hide()-->
+<!--   		  $('#three').show()-->
+<!--   	 }-->
+<!--   	 else{-->
+<!--   	 	$('#row1').show()-->
+<!--   		 $('#row2').hide()-->
+<!--   		 $('#row3').hide()-->
+<!--   		 $('#two').hide()-->
+<!--   		 $('#three').hide()-->
+<!--   	 }-->
+<!--});-->
+<!--</script>-->
+
 </body>
 
 </html>
