@@ -279,15 +279,22 @@
 
 							<div class="filter_box">
 								<div class="filter_by_p">
-									<h6>choose your college type</h6>
+									<h6 style="color:orange;">Choose your college type</h6>
 									<form method="post" action="{% url 'search' %}", enctype="multipart/form-data">
 										{% csrf_token %}
-										<input type="radio" id="public" name="page" value="1">
-										<label for="public">Public</label><br>
-										<input type="radio" id="Private" name="page" value="2">
-										<label for="Private">Private</label><br>
+										<input type="radio" id="page" name="page" value="1">
+										<label for="page">Public</label><br>
+										<input type="radio" id="page1" name="page" value="2">
+										<label for="Page1">Private</label><br>
+
+										<h6 style="color:orange;">Choose your college level</h6>
+										<input type="checkbox" id="2year" name="2year" value="3">
+										<label for="2year"> 2 Year </label><br>
+										<input type="checkbox" id="4year" name="check2" value="4">
+										<label for="4year"> 4 Year </label><br>
 										<input type="submit" value="Submit">
 									</form>
+
 								</div>
 							</div>
 							<div class="widget">

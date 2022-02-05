@@ -216,9 +216,11 @@ def front(request):
 
 def search(request):
     if request.method == "POST":
-        print("hi how are you")
         page = request.POST['page']
-        print(page)
+        page1 = request.POST['2year']
+        # check1 = request.POST['check1']
+        # check2 = request.POST['check2']
+        print(page,page1)
         if page=="1":
             c = Colleges.objects.filter(college_type="Public")
             public_paginator = Paginator(c, 9)
@@ -239,6 +241,29 @@ def search(request):
                 'page': page2
             }
             return render(request, 'Admin/Search.html', context)
+
+        elif page == "3":
+            d = Colleges.objects.filter(college_level="2 Year")
+            private_paginator = Paginator(d, 9)
+            private_page = request.GET.get('page2')
+            page2 = private_paginator.get_page(private_page)
+            context = {
+                'count3': private_paginator.count,
+                'page': page2
+            }
+            return render(request, 'Admin/Search.html', context)
+
+        elif page == "4":
+            d = Colleges.objects.filter(college_level="4 Year")
+            private_paginator = Paginator(d, 9)
+            private_page = request.GET.get('page2')
+            page2 = private_paginator.get_page(private_page)
+            context = {
+                'count3': private_paginator.count,
+                'page': page2
+            }
+            return render(request, 'Admin/Search.html', context)
+
         else:
             colleges = Colleges.objects.all().order_by('-id')
             location_filter = LocationFilter(request.GET, queryset=colleges)
