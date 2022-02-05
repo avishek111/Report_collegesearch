@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.shortcuts import render, redirect, get_object_or_404,\
     HttpResponse, HttpResponseRedirect
 from .form import CategoryForm, CollegeForm, LocationForm
-from .models import Category, Colleges, Locations, wishlist
+from .models import Category, Colleges, Locations
 from django.contrib import messages
 from .filters import LocationFilter
 from django.core.paginator import Paginator
@@ -319,11 +319,8 @@ def college_dashboard(request):
 #     else:
 #         return render(request, 'Admin/Search.html')
 
-# wish list of users
-def add_to_wishlist(request, id):
-    product =get_object_or_404(Colleges,id=id)
-    if wishlist.user_wishlist.filter(id=request.user.id).exists():
-        wishlist.user_wishlist.remove(request.user)
-    else:
-        product.user_wishlist.add(request.user)
-    return HttpResponseRedirect(request.META["HPPT_REFERER"])
+ # wish list of users
+
+
+def add_to_wishlist(request,id):
+    product = get_object_or_404(Colleges, id=id)

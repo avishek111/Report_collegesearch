@@ -1,6 +1,6 @@
 from django.db import models
 from django.core import validators
-
+from django.contrib.auth.models import User
 
 class Category(models.Model):
     category_name = models.CharField(max_length=200, null=True, validators=[validators.MinLengthValidator(2)])
@@ -33,6 +33,6 @@ class Locations(models.Model):
     def __str__(self):
         return self.location_name
 
-class wishlist(models.Model):
-    College_id=models.CharField(max_length=200,null=True,blank=True)
-    user_id=models.CharField(max_length=200,null=True,blank=True)
+class Wish_list(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    item = models.ForeignKey(Colleges, on_delete=models.CASCADE)
