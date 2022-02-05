@@ -25,4 +25,5 @@ urlpatterns =[
     path('search/',views.search,name="search"),
     path('college_dashboard/',views.college_dashboard),
 #     wish list for students
+    path('wishlist/add_to_wishlist/<int:id>',views.add_to_wishlist,name="user_wishlist"),
 ]

@@ -32,3 +32,7 @@ class Locations(models.Model):
 
     def __str__(self):
         return self.location_name
+
+class wishlist(models.Model):
+    College_id=models.CharField(max_length=200,null=True,blank=True)
+    user_id=models.CharField(max_length=200,null=True,blank=True)
