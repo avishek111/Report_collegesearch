@@ -32,7 +32,7 @@ def filter(request):
     page_num = request.GET.get('page')
     page = college_paginator.get_page(page_num)
 
-    c = Colleges.objects.filter(college_type="Public")
+    c =Colleges.objects.filter(college_type="Public")
     public_paginator = Paginator(c,9)
     public_page = request.GET.get('page1')
     page1 = public_paginator.get_page(public_page)

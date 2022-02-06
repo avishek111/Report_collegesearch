@@ -12,9 +12,6 @@ from django.contrib.auth.decorators import login_required
 def logout_user(request):
     logout(request)
     return redirect('/login')
-#
-# def back(request):
-#     return redirect('/home/seecollege')
 
 @unauthenticated_user
 def login_user(request):

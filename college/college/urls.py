@@ -6,5 +6,5 @@ urlpatterns = [
     # path('',include('account.urls')),
     path('', include('home.urls')),
     path('',include('Admin.urls')),
-    path("", include("account.urls")),
+    path('', include("account.urls")),
 ]
