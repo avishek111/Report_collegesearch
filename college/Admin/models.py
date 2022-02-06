@@ -33,6 +33,4 @@ class Locations(models.Model):
     def __str__(self):
         return self.location_name
 
-class Wish_list(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    item = models.ForeignKey(Colleges, on_delete=models.CASCADE)
+

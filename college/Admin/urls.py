@@ -3,7 +3,7 @@ from . import views
 from django.contrib.auth import views as auth_views
 
 urlpatterns =[
-    path('',views.dashboard),
+
     path('add_category/',views.add_category),
     path('show_category/',views.show_category),
     path('update_category/<int:category_id>',views.update_category),
@@ -15,15 +15,10 @@ urlpatterns =[
     path('delete_college/<int:college_id>', views.delete_college),
 
     path('show_location_college/',views.show_location_college),
-    path('khabar/',views.khabar),
-    path('front/',views.front),
 
     path('show_locations/',views.show_locations),
     path('add_locations/',views.add_locations),
 
-    path('filter/',views.filter),
-    path('search/',views.search,name="search"),
-    path('college_dashboard/',views.college_dashboard),
-#     wish list for students
-    path('wishlist/add_to_wishlist/<int:id>',views.add_to_wishlist,name="user_wishlist"),
+
+
 ]

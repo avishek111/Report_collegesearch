@@ -3,13 +3,12 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
-from .forms import Loginform,createUserForm
+from .forms import Loginform,createUserForm, ProfileForm
 from .auth import unauthenticated_user,admin_only,user_only
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-
-
+@login_required
 def logout_user(request):
     logout(request)
     return redirect('/login')
@@ -17,7 +16,7 @@ def logout_user(request):
 # def back(request):
 #     return redirect('/home/seecollege')
 
-
+@unauthenticated_user
 def login_user(request):
     if request.method =="POST":
         form = Loginform(request.POST)
@@ -41,7 +40,7 @@ def login_user(request):
     }
     return render(request,'account/login.html',context)
 
-
+@unauthenticated_user
 def register_user(request):
     if request.method =="POST":
         form = createUserForm(request.POST)
@@ -58,21 +57,34 @@ def register_user(request):
     }
     return render(request, 'account/register.html', context)
 
-def change_password(request):
-    if request.method == "POST":
-        form = PasswordChangeForm(request.user, request.POST)
+# def change_password(request):
+#     if request.method == "POST":
+#         form = PasswordChangeForm(request.user, request.POST)
+#         if form.is_valid():
+#             user = form.save()
+#             update_session_auth_hash(request, user)
+#             messages.add_message(request, messages.SUCCESS, 'Password Changed Successfully')
+#             if request.user.is_staff:
+#                 return redirect('/admins')
+#             else:
+#                 return redirect('/resort/home')
+#         else:
+#             messages.add_message(request, messages.ERROR, 'Please verify the form fields')
+#             return render(request, 'accounts/pwchange.html', {'password_change_form': form})
+#     context = {
+#         'password_change_form': PasswordChangeForm(request.user)
+#     }
+#     return render(request, 'accounts/pwchange.html', context)
+
+def profile(request):
+    profile= request.user.Profile
+    if request.method== 'POST':
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
-            user = form.save()
-            update_session_auth_hash(request, user)
-            messages.add_message(request, messages.SUCCESS, 'Password Changed Successfully')
-            if request.user.is_staff:
-                return redirect('/admins')
-            else:
-                return redirect('/resort/home')
-        else:
-            messages.add_message(request, messages.ERROR, 'Please verify the form fields')
-            return render(request, 'accounts/pwchange.html', {'password_change_form': form})
+            form.save()
+            messages.add_message(request, messages.SUCCESS, 'Profile Updated Successfully')
+            return redirect('/accounts/profile')
     context = {
-        'password_change_form': PasswordChangeForm(request.user)
+        'form': ProfileForm(instance=profile)
     }
-    return render(request, 'accounts/pwchange.html', context)
+    return render(request, 'accounts/profile.html', context)
