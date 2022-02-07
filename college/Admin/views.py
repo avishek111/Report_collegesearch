@@ -3,8 +3,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from account.auth import unauthenticated_user, admin_only,user_only
 from django.shortcuts import render, redirect
-from .form import CategoryForm, CollegeForm, LocationForm
-from .models import Category, Colleges, Locations
+from .form import CategoryForm, CollegeForm, LocationForm, College_students_form
+from .models import Category, Colleges, Locations, Colleges_of_student
 from django.contrib import messages
 from .filters import LocationFilter
 from django.core.paginator import Paginator
@@ -70,23 +70,23 @@ def delete_category(request,category_id):
 
 def add_college(request):
     if request.method == "POST":
-        form = CollegeForm(request.POST, request.FILES)
+        form = College_students_form(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             messages.add_message(request, messages.SUCCESS, 'College added successfully')
             return redirect("/show_colleges")
         else:
             messages.add_message(request, messages.ERROR, 'Unable to add college')
-            return render(request, 'Admin/add_category.html', {'add_college':form})
+            return render(request, 'Admin/add_college.html', {'add_college':form})
     context ={
-        'form_category': CollegeForm,
+        'form_category': College_students_form,
         'activate_category': 'active'
     }
     return render(request, 'Admin/add_college.html', context)
 
 
 def show_college(request):
-    colleges = Colleges.objects.all().order_by('-id')
+    colleges = Colleges_of_student.objects.all().order_by('-id')
     # location_filter = LocationFilter(request.GET, queryset=colleges)
     # location_final = location_filter.qs
     context={
@@ -98,9 +98,9 @@ def show_college(request):
 
 
 def update_college(request,college_id):
-    college = Colleges.objects.get(id=college_id)
+    college = Colleges_of_student.objects.get(id=college_id)
     if request.method == "POST":
-        form = CollegeForm(request.POST, request.FILES)
+        form = College_students_form(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             messages.add_message(request, messages.SUCCESS, 'College added successfully')
@@ -109,17 +109,20 @@ def update_college(request,college_id):
             messages.add_message(request, messages.ERROR, 'Unable to add college')
             return render(request, 'Admin/update_college_form.html', {'add_college':form})
     context ={
-        'form_category': CollegeForm(instance=college),
+        'form_category': College_students_form(instance=college),
         'activate_category': 'active'
     }
     return render(request, 'Admin/update_college.html', context)
 
 
 def delete_college(request,college_id):
-    college= Colleges.objects.get(id=college_id)
+    college= Colleges_of_student.objects.get(id=college_id)
     college.delete()
     messages.add_message(request,messages.SUCCESS,'College deleted successfully')
     return redirect('/show_colleges')
+
+
+
 
 # show location and colleges
 

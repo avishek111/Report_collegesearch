@@ -352,7 +352,7 @@
             {% csrf_token %}
             {{ form_login | bootstrap_horizontal }}
             <input type="checkbox" value="lsRememberMe" id="rememberMe"> <label for="rememberMe">Remember me</label>
-            <a href="/user_dashboard" type="submit" class="btn btn-primary mt-5">SIGN IN</a>
+            <button type="submit" class="btn btn-primary mt-5">SIGN IN</button>
         </form>
 
     </div>
@@ -362,13 +362,13 @@
 </div>
 </div>
 <script>
-    var form_fields = document.getElementsByTagName('input')
-    form_fields[1].placeholder = "Enter username"
-    form_fields[2].placeholder = "Enter password"
+<!--    var form_fields = document.getElementsByTagName('input')-->
+<!--    form_fields[1].placeholder = "Enter username"-->
+<!--    form_fields[2].placeholder = "Enter password"-->
 
-   for(field in form_fields){
-   form_fields[field].className += ' my-3'
-   }
+<!--   for(field in form_fields){-->
+<!--   form_fields[field].className += ' my-3'-->
+<!--   }-->
 </script>
 
 </div>

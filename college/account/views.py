@@ -13,7 +13,7 @@ def logout_user(request):
     logout(request)
     return redirect('/login')
 
-@unauthenticated_user
+
 def login_user(request):
     if request.method =="POST":
         form = Loginform(request.POST)
@@ -23,11 +23,15 @@ def login_user(request):
             if user is not None:
                 if user.is_staff:
                     login(request, user)
-                    return redirect('/home/homepage')
+                    return redirect('/admin_dashboard')
                 elif not user.is_staff:
                     login(request,user)
-                    return redirect('/home/homepage')
-
+                    user_id=data['username']
+                    print(user_id)
+                    context={
+                        'username':user_id
+                    }
+                    return redirect('/user_dashboard')
             else:
                 messages.add_message(request,messages.ERROR,'invalid User credintials')
                 return render(request,'account/login.html',{'form_login':form})
@@ -37,13 +41,15 @@ def login_user(request):
     }
     return render(request,'account/login.html',context)
 
-@unauthenticated_user
+
 def register_user(request):
     if request.method =="POST":
         form = createUserForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.add_message(request,messages.SUCCESS,'User Registred SUcesfully')
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Account created for {username}')
+            # messages.add_message(request,messages.SUCCESS,'User Registred SUcesfully')
             return redirect('/login')
         else:
             messages.add_message(request,messages.ERROR,'Unable To Register User')
