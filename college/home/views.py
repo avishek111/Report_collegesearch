@@ -9,7 +9,7 @@ from Admin.models import Colleges, Colleges_of_student
 from Admin.form import CollegeForm, College_students_form
 from account.forms import Loginform
 from Admin.filters import *
-
+from home.models import Cart
 
 
 @login_required
@@ -297,4 +297,42 @@ def user_college_details(request):
     return render(request, 'home/user_college_details.html', context)
 
 
+@login_required
+@user_only
+def user_wishlist(request,id):
+    user = request.user
+    food = Colleges_of_student.objects.get(id=id)
+
+    check_item_presence = Cart.objects.filter(user=user, food=food)
+    if check_item_presence:
+        messages.success(request,f'Item already exited')
+        return redirect('/my_colleges')
+    else:
+        cart = Cart.objects.create(food=food, user=user)
+        if cart:
+            messages.add_message(request, messages.SUCCESS, 'Item added to cart')
+            return redirect('/user_colleges')
+        else:
+            messages.add_message(request, messages.ERROR, 'Unable to add item to cart')
+            return redirect('/user_colleges')
+
+
+@login_required
+@user_only
+def show_cart_items(request):
+    user = request.user
+    items = Cart.objects.filter(user=user)
+    context = {
+        'items':items,
+        'activate_my_cart':'active'
+    }
+    return render(request, 'home/wishlist.html', context)
+
+@login_required
+@user_only
+def remove_cart_item(request, cart_id):
+    item = Cart.objects.get(id=cart_id)
+    item.delete()
+    messages.add_message(request, messages.SUCCESS, 'Cart item removed successfully')
+    return redirect('/user_wishlist')
 
