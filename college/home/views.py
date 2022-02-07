@@ -12,9 +12,14 @@ from Admin.filters import *
 
 
 
+@login_required
+@user_only
 def user_dashboard(request):
-
-    return render(request, 'home/user_dashboard.html')
+    user_id = request.user.username
+    context = {
+        'user_id':user_id
+    }
+    return render(request, 'home/user_dashboard.html',context)
 
 # def profile(request):
 #     profile= request.user.profile
@@ -30,6 +35,7 @@ def user_dashboard(request):
 #     return render(request, 'accounts/profile.html', context)
 #
 #
+
 def filter(request):
     colleges = Colleges_of_student.objects.all().order_by('-id')
     college_paginator = Paginator(colleges, 9)
@@ -66,7 +72,7 @@ def filter(request):
 
 
 def front(request):
-    return render(request, 'home/dash.html')
+    return render(request, 'home/dash1.html')
 
 
 def search(request):
@@ -113,6 +119,7 @@ def search(request):
         'activate_college': 'active'
     }
     return render(request, 'home/search.html', context)
+
 
 def college_dashboard(request):
     colleges = Colleges.objects.all().order_by('-id')
@@ -174,52 +181,76 @@ def college_dashboard(request):
 #         return render(request, 'Admin/Search.html')
 
  # wish list of users
+
+@login_required
+@user_only
 def user_colleges(request):
-    colleges = Colleges_of_student.objects.all().order_by('-id')
-    c = Colleges.objects.filter(college_type="Public")
-    public_paginator = Paginator(c, 9)
-    public_page = request.GET.get('page1')
-    page1 = public_paginator.get_page(public_page)
+    if request.method == "POST":
+        user_id=(request.user.username)
+        val = request.POST["fav_language1"]
+        val1 = request.POST['fav_language']
+        print(val,val1)
+        if val == "Public" and val1=="":
+            c = Colleges_of_student.objects.filter(college_type="Public")
+            public_paginator = Paginator(c, 9)
+            public_page = request.GET.get('page1')
+            page1 = public_paginator.get_page(public_page)
 
-    d =  Colleges_of_student.objects.filter(college_type="Private")
-    private_paginator = Paginator(d, 9)
-    private_page = request.GET.get('page2')
-    page2 = private_paginator.get_page(private_page)
+            context = {
+                "page":page1,
+                'user_id':user_id
+            }
+            return render(request, 'home/user_colleges.html', context)
 
-    e =  Colleges_of_student.objects.filter(college_level="2 Year")
-    two_paginator = Paginator(e, 9)
-    two_page = request.GET.get('page3')
-    page3 = two_paginator.get_page(two_page)
-
-    f =Colleges_of_student.objects.filter(college_level="4 Year")
-    three_paginator = Paginator(f, 9)
-    three_page = request.GET.get('page4')
-    page4 = three_paginator.get_page(three_page)
-
+        elif val=="Private" and val1=="":
+            d = Colleges_of_student.objects.filter(college_type="Private")
+            private_paginator = Paginator(d, 9)
+            private_page = request.GET.get('page2')
+            page2 = private_paginator.get_page(private_page)
+            context={
+                'page':page2,
+                'user_id': user_id
+            }
+            return render(request, 'home/user_colleges.html', context)
+        elif val1 == "2 Year":
+            e =  Colleges_of_student.objects.filter(college_level="2 Year")
+            two_paginator = Paginator(e, 9)
+            two_page = request.GET.get('page3')
+            page3 = two_paginator.get_page(two_page)
+            context = {
+                'page':page3,
+                'user_id': user_id
+            }
+            return render(request, 'home/user_colleges.html', context)
+        else:
+            f =Colleges_of_student.objects.filter(college_level="4 Year")
+            three_paginator = Paginator(f, 9)
+            three_page = request.GET.get('page4')
+            page4 = three_paginator.get_page(three_page)
+            context = {
+                'page4': page4,
+                'activate_category': 'active',
+                'activate_college': 'active',
+                'user_id': user_id
+            }
+            return render(request, 'home/user_colleges.html', context)
+    user_id = request.user.username
+    colleges = Colleges_of_student.objects.all().order_by('id')
     location_filter = LocationFilter(request.GET, queryset=colleges)
     location_final = location_filter.qs
     college_paginator = Paginator(location_final, 9)
     page_num = request.GET.get('page')
     page = college_paginator.get_page(page_num)
-    context = {
-        'count1': college_paginator.count,
+    context= {
         'page': page,
-        'count2': public_paginator.count,
-        'page1': page1,
-        'page3': page3,
-        'page4': page4,
-        'count3': private_paginator.count,
-        'colleges': location_final,
-        'page2': page2,
-        'c': c,
-        'd': d,
-        'activate_category': 'active',
         'location_filter': location_filter,
-        'activate_college': 'active'
+        'colleges': location_final,
+        'user_id': user_id
     }
-    return render(request, 'home/user_colleges.html', context)
+    return render(request, 'home/user_colleges.html',context)
 
-
+@login_required
+@user_only
 def user_college_details(request):
     colleges = Colleges_of_student.objects.all().order_by('-id')
     c = Colleges.objects.filter(college_type="Public")

@@ -3,9 +3,10 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
-from .forms import Loginform,createUserForm, ProfileForm
+from .forms import Loginform,createUserForm, ProfileForms
 from .auth import unauthenticated_user,admin_only,user_only
 from django.contrib.auth.decorators import login_required
+from .models import User_profile
 
 # Create your views here.
 @login_required
@@ -13,7 +14,7 @@ def logout_user(request):
     logout(request)
     return redirect('/login')
 
-
+@unauthenticated_user
 def login_user(request):
     if request.method =="POST":
         form = Loginform(request.POST)
@@ -41,12 +42,13 @@ def login_user(request):
     }
     return render(request,'account/login.html',context)
 
-
+@unauthenticated_user
 def register_user(request):
     if request.method =="POST":
         form = createUserForm(request.POST)
         if form.is_valid():
-            form.save()
+            user=form.save()
+            User_profile.objects.create(user=user, Username=user.username)
             username = form.cleaned_data.get('username')
             messages.success(request, f'Account created for {username}')
             # messages.add_message(request,messages.SUCCESS,'User Registred SUcesfully')
@@ -78,16 +80,17 @@ def register_user(request):
 #         'password_change_form': PasswordChangeForm(request.user)
 #     }
 #     return render(request, 'accounts/pwchange.html', context)
-
-def profile(request):
-    profile= request.user.Profile
-    if request.method== 'POST':
-        form = ProfileForm(request.POST, request.FILES, instance=profile)
+@login_required
+@user_only
+def user_profile(request):
+    profile= request.user.user_profile
+    if request.method == 'POST':
+        form = ProfileForms(request.POST, request.FILES, instance=profile)
         if form.is_valid():
             form.save()
             messages.add_message(request, messages.SUCCESS, 'Profile Updated Successfully')
-            return redirect('/accounts/profile')
+            return redirect('/user_profile')
     context = {
-        'form': ProfileForm(instance=profile)
+        'form': ProfileForms(instance=profile)
     }
-    return render(request, 'accounts/profile.html', context)
+    return render(request, 'account/profile.html', context)

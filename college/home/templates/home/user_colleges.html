@@ -1,8 +1,32 @@
 <!DOCTYPE html>
+{% load bootstrap %}
 <html lang="en">
 
 <!-- Mirrored from educhamp.themetrades.com/demo/admin/courses.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Feb 2019 13:10:19 GMT -->
 <head>
+	<style>
+		.home-button {
+  align-self: center;
+  margin-left: 20px;
+  border-radius:20px;
+  padding:5px;
+  border:none;
+
+
+}
+
+.home-button6 {
+  color: white;
+  align-self: center;
+  margin-left: 20px;
+  border-color: #c97777;
+  border:none;
+  padding:5px;
+  border-radius:20px;
+  background-color:black;
+
+}
+	</style>
 
 	<!-- META ============================================= -->
 	<meta charset="utf-8">
@@ -23,6 +47,7 @@
 	<!-- FAVICONS ICON ============================================= -->
 	<link rel="icon" href="../error-404.html" type="image/x-icon" />
 	<link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 	<!-- PAGE TITLE HERE ============================================= -->
 	<title>EduChamp : Education HTML Template </title>
@@ -349,9 +374,57 @@
 				<div class="col-lg-12 m-b30">
 					<div class="widget-box">
 						<div class="wc-title">
-							<h4>Your Colleges</h4>
+							<h4>Your Colleges</h4><br>
+							<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Basics
+</button>
+
+<!-- Modal -->
+							<form method="POST">
+								{% csrf_token %}
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Choose Basics</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-body">
+
+        <h5 style="font-weight:800;">Institution Type</h5>
+          <div style="width:80px;margin-left:30px;">
+                    <input type="radio" id="public_1" name="fav_language1" value="Public">
+                    <label for="public_1" style="font-size:15px;">Public</label><br>
+                    <input type="radio" id="private_1" name="fav_language1" value="Private">
+                    <label for="private_1" style="font-size:15px;">Private</label><br>
+                    </div>
+          <h5 style="font-weight:800;">Level Of Institution</h5>
+          <div style="">
+                        <input type="radio" id="html1" name="fav_language" value="2 Year">
+                        <label for="html1" style="font-size:15px;">2years</label>
+                        <input type="radio" id="css1" name="fav_language" value="4 Year">
+                        <label for="css1" style="font-size:15px;">4years</label>
+                    </div>
+
+
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+							</form>
+
+
 						</div>
-						<div class="widget-inner">
+						<div class="widget-inner" id="row1">
 							{% for i in page.object_list %}
 							<div class="card-courses-list admin-courses">
 								<div class="card-courses-media">
@@ -426,170 +499,9 @@
 										</ul>
 									</div>
 								</div>
-<!--							<div class="card-courses-list admin-courses">-->
-<!--								<div class="card-courses-media">-->
-<!--									<img src="assets/images/courses/pic2.jpg" alt=""/>-->
-<!--								</div>-->
-<!--								<div class="card-courses-full-dec">-->
-<!--									<div class="card-courses-title">-->
-<!--										<h4>Become a PHP Master and Make Money</h4>-->
-<!--									</div>-->
-<!--									<div class="card-courses-list-bx">-->
-<!--										<ul class="card-courses-view">-->
-<!--											<li class="card-courses-user">-->
-<!--												<div class="card-courses-user-pic">-->
-<!--													<img src="assets/images/testimonials/pic3.jpg" alt=""/>-->
-<!--												</div>-->
-<!--												<div class="card-courses-user-info">-->
-<!--													<h5>Teacher</h5>-->
-<!--													<h4>Keny White</h4>-->
-<!--												</div>-->
-<!--											</li>-->
-<!--											<li class="card-courses-categories">-->
-<!--												<h5>3 Categories</h5>-->
-<!--												<h4>Backend</h4>-->
-<!--											</li>-->
-<!--											<li class="card-courses-review">-->
-<!--												<h5>3 Review</h5>-->
-<!--												<ul class="cours-star">-->
-<!--													<li class="active"><i class="fa fa-star"></i></li>-->
-<!--													<li class="active"><i class="fa fa-star"></i></li>-->
-<!--													<li class="active"><i class="fa fa-star"></i></li>-->
-<!--													<li><i class="fa fa-star"></i></li>-->
-<!--													<li><i class="fa fa-star"></i></li>-->
-<!--												</ul>-->
-<!--											</li>-->
-<!--											<li class="card-courses-stats">-->
-<!--												<a href="#" class="btn button-sm green radius-xl">Pending</a>-->
-<!--											</li>-->
-<!--											<li class="card-courses-price">-->
-<!--												<del>$190</del>-->
-<!--												<h5 class="text-primary">$120</h5>-->
-<!--											</li>-->
-<!--										</ul>-->
-<!--									</div>-->
-<!--									<div class="row card-courses-dec">-->
-<!--										<div class="col-md-12">-->
-<!--											<h6 class="m-b10">Course Description</h6>-->
-<!--											<p>Lorem ipsum dolor sit amet, est ei idque voluptua copiosae, pro detracto disputando reformidans at, ex vel suas eripuit. Vel alii zril maiorum ex, mea id sale eirmod epicurei. Sit te possit senserit, eam alia veritus maluisset ei, id cibo vocent ocurreret per. Te qui doming doctus referrentur, usu debet tamquam et. Sea ut nullam aperiam, mei cu tollit salutatus delicatissimi. </p>-->
-<!--										</div>-->
-<!--										<div class="col-md-12">-->
-<!--											<a href="#" class="btn green radius-xl outline">Approve</a>-->
-<!--											<a href="#" class="btn red outline radius-xl ">Cancel</a>-->
-<!--										</div>-->
-<!--									</div>-->
+						</div>
+<!--							=========================================-->
 
-<!--								</div>-->
-<!--							</div>-->
-<!--							<div class="card-courses-list admin-courses">-->
-<!--								<div class="card-courses-media">-->
-<!--									<img src="assets/images/courses/pic3.jpg" alt=""/>-->
-<!--								</div>-->
-<!--								<div class="card-courses-full-dec">-->
-<!--									<div class="card-courses-title">-->
-<!--										<h4>Become a PHP Master and Make Money</h4>-->
-<!--									</div>-->
-<!--									<div class="card-courses-list-bx">-->
-<!--										<ul class="card-courses-view">-->
-<!--											<li class="card-courses-user">-->
-<!--												<div class="card-courses-user-pic">-->
-<!--													<img src="assets/images/testimonials/pic3.jpg" alt=""/>-->
-<!--												</div>-->
-<!--												<div class="card-courses-user-info">-->
-<!--													<h5>Teacher</h5>-->
-<!--													<h4>Keny White</h4>-->
-<!--												</div>-->
-<!--											</li>-->
-<!--											<li class="card-courses-categories">-->
-<!--												<h5>3 Categories</h5>-->
-<!--												<h4>Backend</h4>-->
-<!--											</li>-->
-<!--											<li class="card-courses-review">-->
-<!--												<h5>3 Review</h5>-->
-<!--												<ul class="cours-star">-->
-<!--													<li class="active"><i class="fa fa-star"></i></li>-->
-<!--													<li class="active"><i class="fa fa-star"></i></li>-->
-<!--													<li class="active"><i class="fa fa-star"></i></li>-->
-<!--													<li><i class="fa fa-star"></i></li>-->
-<!--													<li><i class="fa fa-star"></i></li>-->
-<!--												</ul>-->
-<!--											</li>-->
-<!--											<li class="card-courses-stats">-->
-<!--												<a href="#" class="btn button-sm green radius-xl">Pending</a>-->
-<!--											</li>-->
-<!--											<li class="card-courses-price">-->
-<!--												<del>$190</del>-->
-<!--												<h5 class="text-primary">$120</h5>-->
-<!--											</li>-->
-<!--										</ul>-->
-<!--									</div>-->
-<!--									<div class="row card-courses-dec">-->
-<!--										<div class="col-md-12">-->
-<!--											<h6 class="m-b10">Course Description</h6>-->
-<!--											<p>Lorem ipsum dolor sit amet, est ei idque voluptua copiosae, pro detracto disputando reformidans at, ex vel suas eripuit. Vel alii zril maiorum ex, mea id sale eirmod epicurei. Sit te possit senserit, eam alia veritus maluisset ei, id cibo vocent ocurreret per. Te qui doming doctus referrentur, usu debet tamquam et. Sea ut nullam aperiam, mei cu tollit salutatus delicatissimi. </p>-->
-<!--										</div>-->
-<!--										<div class="col-md-12">-->
-<!--											<a href="#" class="btn green radius-xl outline">Approve</a>-->
-<!--											<a href="#" class="btn red outline radius-xl ">Cancel</a>-->
-<!--										</div>-->
-<!--									</div>-->
-
-<!--								</div>-->
-<!--							</div>-->
-<!--							<div class="card-courses-list admin-courses">-->
-<!--								<div class="card-courses-media">-->
-<!--									<img src="assets/images/courses/pic4.jpg" alt=""/>-->
-<!--								</div>-->
-<!--								<div class="card-courses-full-dec">-->
-<!--									<div class="card-courses-title">-->
-<!--										<h4>Become a PHP Master and Make Money</h4>-->
-<!--									</div>-->
-<!--									<div class="card-courses-list-bx">-->
-<!--										<ul class="card-courses-view">-->
-<!--											<li class="card-courses-user">-->
-<!--												<div class="card-courses-user-pic">-->
-<!--													<img src="assets/images/testimonials/pic3.jpg" alt=""/>-->
-<!--												</div>-->
-<!--												<div class="card-courses-user-info">-->
-<!--													<h5>Teacher</h5>-->
-<!--													<h4>Keny White</h4>-->
-<!--												</div>-->
-<!--											</li>-->
-<!--											<li class="card-courses-categories">-->
-<!--												<h5>3 Categories</h5>-->
-<!--												<h4>Backend</h4>-->
-<!--											</li>-->
-<!--											<li class="card-courses-review">-->
-<!--												<h5>3 Review</h5>-->
-<!--												<ul class="cours-star">-->
-<!--													<li class="active"><i class="fa fa-star"></i></li>-->
-<!--													<li class="active"><i class="fa fa-star"></i></li>-->
-<!--													<li class="active"><i class="fa fa-star"></i></li>-->
-<!--													<li><i class="fa fa-star"></i></li>-->
-<!--													<li><i class="fa fa-star"></i></li>-->
-<!--												</ul>-->
-<!--											</li>-->
-<!--											<li class="card-courses-stats">-->
-<!--												<a href="#" class="btn button-sm green radius-xl">Pending</a>-->
-<!--											</li>-->
-<!--											<li class="card-courses-price">-->
-<!--												<del>$190</del>-->
-<!--												<h5 class="text-primary">$120</h5>-->
-<!--											</li>-->
-<!--										</ul>-->
-<!--									</div>-->
-<!--									<div class="row card-courses-dec">-->
-<!--										<div class="col-md-12">-->
-<!--											<h6 class="m-b10">Course Description</h6>-->
-<!--											<p>Lorem ipsum dolor sit amet, est ei idque voluptua copiosae, pro detracto disputando reformidans at, ex vel suas eripuit. Vel alii zril maiorum ex, mea id sale eirmod epicurei. Sit te possit senserit, eam alia veritus maluisset ei, id cibo vocent ocurreret per. Te qui doming doctus referrentur, usu debet tamquam et. Sea ut nullam aperiam, mei cu tollit salutatus delicatissimi. </p>-->
-<!--										</div>-->
-<!--										<div class="col-md-12">-->
-<!--											<a href="#" class="btn green radius-xl outline">Approve</a>-->
-<!--											<a href="#" class="btn red outline radius-xl ">Cancel</a>-->
-<!--										</div>-->
-<!--									</div>-->
-
-<!--								</div>-->
 							</div>
 						</div>
 					</div>
@@ -619,6 +531,52 @@
 <script src="../static/assets_user/js/admin.js"></script>
 <script src='../static/assets_user/vendors/switcher/switcher.js'></script>
 </body>
+<!--<script>-->
+<!--    $("#row2").hide();-->
+<!--    $(function () {-->
+<!--        $("#public_1").click(function () {-->
+<!--            if ($(this).is(":checked")) {-->
+<!--                $("#row1").hide();-->
+<!--                $("#row2").show();-->
+<!--            } else {-->
+<!--                $("#row2").hide();-->
+<!--                $("#row1").show();-->
+<!--            }-->
+<!--        });-->
+<!--    });-->
+<!--    </script>-->
+<!--    <script>-->
+<!--    $(".row2").hide();-->
+<!--    $(".row3").hide();-->
+<!--    $(function () {-->
+<!--        $("#private_1").click(function () {-->
+<!--            if ($(this).is(":checked")) {-->
+<!--                $(".row1").hide();-->
+<!--                $(".row3").show();-->
+<!--                $(".row2").hide();-->
+<!--            } else {-->
+<!--                $(".row3").hide();-->
+<!--                $(".row1").show();-->
+<!--            }-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
+<!--<script>-->
+<!--       function uncheck(){-->
+<!--$('input[type="radio"]').prop("checked", false);-->
+<!--$(".row1").show();-->
+<!--$(".row2").hide();-->
+<!--$(".row3").hide();-->
+<!--}-->
+<!--</script>-->
+<!--<script>-->
+<!--function myFunction() {-->
+<!--  $('input[type="radio"]').prop("checked", false);-->
+<!--  $(".row1").show();-->
+<!--$(".row2").hide();-->
+<!--$(".row3").hide();-->
+<!--}-->
+<!--</script>-->
 
 <!-- Mirrored from educhamp.themetrades.com/demo/admin/courses.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Feb 2019 13:11:35 GMT -->
 </html>

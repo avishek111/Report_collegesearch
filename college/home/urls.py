@@ -10,5 +10,4 @@ urlpatterns =[
     path('college_dashboard/', views.college_dashboard),
     path('user_colleges/',views.user_colleges),
     path('user_college_details/',views.user_college_details),
-
 ]

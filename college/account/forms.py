@@ -2,7 +2,8 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import ModelForm
-from .models import Profile
+from .models import User_profile
+
 
 class Loginform(forms.Form):
     username = forms.CharField()
@@ -13,8 +14,9 @@ class createUserForm(UserCreationForm):
         model = User
         fields = ['username','email','password1','password2']
 
-class ProfileForm(ModelForm):
+class ProfileForms(ModelForm):
     class Meta:
-        model = Profile
+        model = User_profile
         fields = "__all__"
         exclude = ['user','Username', 'email']
+
