@@ -10,6 +10,7 @@ from Admin.form import CollegeForm, College_students_form
 from account.forms import Loginform
 from Admin.filters import *
 from home.models import Cart
+from django.contrib import messages
 
 
 @login_required
@@ -305,8 +306,8 @@ def user_wishlist(request,id):
 
     check_item_presence = Cart.objects.filter(user=user, food=food)
     if check_item_presence:
-        messages.success(request,f'Item already exited')
-        return redirect('/my_colleges')
+        messages.success(request,'Item already exited')
+        return redirect('/user_colleges')
     else:
         cart = Cart.objects.create(food=food, user=user)
         if cart:
