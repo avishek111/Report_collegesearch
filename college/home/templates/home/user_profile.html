@@ -1,14 +1,7 @@
-{% extends 'layout.html' %}
-{% load bootstrap %}
-{% block title %}
-<title>Profile</title>
-{% endblock%}
 
+{% extends 'user_layout.html' %}
 {% block main_content %}
-
-<div class="container">
-    <div class="row">
-        <div class="col">
+	<main class="ttr-wrapper">
             <h1>Current Details</h1>
             <div class="card">
                 <div class="card-body">
@@ -41,19 +34,7 @@
         </div>
 
 
-    </div>
-</div>
-<script>
-    var form_fields = document.getElementsByTagName('input')
-    form_fields[1].placeholder = 'Enter first name';
-    form_fields[2].placeholder = 'Enter last name';
-    form_fields[3].placeholder = 'phone number';
-    form_fields[4].placeholder = 'Enter phone number';
+    </main>
+        {% endblock main_content %}
 
-    for (var field in form_fields){
-    field.className += ' my-2'
-    }
 
-</script>
-
-{% endblock %}

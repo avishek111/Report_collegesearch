@@ -9,7 +9,7 @@ from Admin.models import Colleges, Colleges_of_student
 from Admin.form import CollegeForm, College_students_form
 from account.forms import Loginform
 from Admin.filters import *
-from home.models import Cart
+from home.models import Cart, Admission
 from django.contrib import messages
 
 
@@ -187,49 +187,39 @@ def college_dashboard(request):
 @user_only
 def user_colleges(request):
     if request.method == "POST":
-        user_id=(request.user.username)
+        user_id = request.user.username
         val = request.POST["fav_language1"]
-        val1 = request.POST['fav_language']
+        val1 = request.POST["fav_language"]
         print(val,val1)
-        if val == "Public" and val1=="":
-            c = Colleges_of_student.objects.filter(college_type="Public")
+        if val and val1:
+            c = Colleges_of_student.objects.filter(college_type=val).filter(college_level=val1)
             public_paginator = Paginator(c, 9)
             public_page = request.GET.get('page1')
             page1 = public_paginator.get_page(public_page)
-
             context = {
                 "page":page1,
                 'user_id':user_id
             }
             return render(request, 'home/user_colleges.html', context)
-
-        elif val=="Private" and val1=="":
-            d = Colleges_of_student.objects.filter(college_type="Private")
-            private_paginator = Paginator(d, 9)
-            private_page = request.GET.get('page2')
-            page2 = private_paginator.get_page(private_page)
-            context={
-                'page':page2,
-                'user_id': user_id
-            }
-            return render(request, 'home/user_colleges.html', context)
-        elif val1 == "2 Year":
-            e =  Colleges_of_student.objects.filter(college_level="2 Year")
-            two_paginator = Paginator(e, 9)
-            two_page = request.GET.get('page3')
-            page3 = two_paginator.get_page(two_page)
-            context = {
-                'page':page3,
-                'user_id': user_id
-            }
-            return render(request, 'home/user_colleges.html', context)
-        else:
-            f =Colleges_of_student.objects.filter(college_level="4 Year")
+        elif val:
+            f =Colleges_of_student.objects.filter(college_level="val")
             three_paginator = Paginator(f, 9)
             three_page = request.GET.get('page4')
             page4 = three_paginator.get_page(three_page)
             context = {
-                'page4': page4,
+                'page': page4,
+                'activate_category': 'active',
+                'activate_college': 'active',
+                'user_id': user_id
+            }
+            return render(request, 'home/user_colleges.html', context)
+        else:
+            f =Colleges_of_student.objects.filter(college_level="val1")
+            three_paginator = Paginator(f, 9)
+            three_page = request.GET.get('page4')
+            page4 = three_paginator.get_page(three_page)
+            context = {
+                'page': page4,
                 'activate_category': 'active',
                 'activate_college': 'active',
                 'user_id': user_id
@@ -252,50 +242,26 @@ def user_colleges(request):
 
 @login_required
 @user_only
-def user_college_details(request):
-    colleges = Colleges_of_student.objects.all().order_by('-id')
-    c = Colleges.objects.filter(college_type="Public")
-    public_paginator = Paginator(c, 9)
-    public_page = request.GET.get('page1')
-    page1 = public_paginator.get_page(public_page)
-
-    d = Colleges_of_student.objects.filter(college_type="Private")
-    private_paginator = Paginator(d, 9)
-    private_page = request.GET.get('page2')
-    page2 = private_paginator.get_page(private_page)
-
-    e = Colleges_of_student.objects.filter(college_level="2 Year")
-    two_paginator = Paginator(e, 9)
-    two_page = request.GET.get('page3')
-    page3 = two_paginator.get_page(two_page)
-
-    f = Colleges_of_student.objects.filter(college_level="4 Year")
+def user_college_details(request,id):
+    if request.method == "POST":
+        if request.POST['email'] and request.POST['text'] and request.POST['file']:
+            post = Admission()
+            post.Email = request.POST['email']
+            post.Text = request.POST['text']
+            post.Certificate=request.POST['file']
+            post.save()
+            messages.add_message(request, messages.SUCCESS, 'On the way')
+            return render('/user_college_details')
+        else:
+            return render(request, 'home/user_college_details.html')
+    f = Colleges_of_student.objects.filter(id=id)
     three_paginator = Paginator(f, 9)
     three_page = request.GET.get('page4')
     page4 = three_paginator.get_page(three_page)
-
-    location_filter = LocationFilter(request.GET, queryset=colleges)
-    location_final = location_filter.qs
-    college_paginator = Paginator(location_final, 9)
-    page_num = request.GET.get('page')
-    page = college_paginator.get_page(page_num)
     context = {
-        'count1': college_paginator.count,
-        'page': page,
-        'count2': public_paginator.count,
-        'page1': page1,
-        'page3': page3,
-        'page4': page4,
-        'count3': private_paginator.count,
-        'colleges': location_final,
-        'page2': page2,
-        'c': c,
-        'd': d,
-        'activate_category': 'active',
-        'location_filter': location_filter,
-        'activate_college': 'active'
+        'page': page4
     }
-    return render(request, 'home/user_college_details.html', context)
+    return render(request, 'home/user_college_details.html',context)
 
 
 @login_required
@@ -332,8 +298,10 @@ def show_cart_items(request):
 @login_required
 @user_only
 def remove_cart_item(request, cart_id):
-    item = Cart.objects.get(id=cart_id)
+    user = request.user.id
+    item = Colleges_of_student.objects.get(id=cart_id)
     item.delete()
     messages.add_message(request, messages.SUCCESS, 'Cart item removed successfully')
-    return redirect('/user_wishlist')
+    return redirect('/my_colleges')
+
 

@@ -4,12 +4,11 @@
 
 
 {% block main_content %}
-<div class="container">
-    <div class="row">
+	<main class="ttr-wrapper">
 
-        <div class="col-md-10 offset-md-1">
             <h1 class="text-center">My Cart</h1>
             <div class="card py-2 px-2">
+                	{% include 'messages.html'%}
                 <table class="table-striped">
                     <tr>
                         <th>College Name</th>
@@ -30,8 +29,7 @@
 
                 </table>
             </div>
-        </div>
-    </div>
-</div>
+    </main>
+
 
 {% endblock %}
