@@ -1,6 +1,6 @@
 
 from django.forms import ModelForm
-from .models import Category, Colleges, Locations, Colleges_of_student
+from .models import Category, Colleges, Locations, Colleges_of_student, notifications
 
 
 class CategoryForm(ModelForm):
@@ -24,3 +24,7 @@ class College_students_form(ModelForm):
         model = Colleges_of_student
         fields="__all__"
 
+class notification_form(ModelForm):
+    class Meta:
+        model = notifications
+        fields = "__all__"

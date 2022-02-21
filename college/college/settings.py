@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'account.apps.AccountConfig',
     'home.apps.HomeConfig',
     'Admin.apps.AdminConfig',
+    'notifications.apps.NotificationsConfig',
     'bootstrapform',
     'django_filters',
 ]

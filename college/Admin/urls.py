@@ -11,7 +11,7 @@ urlpatterns =[
 
     path('add_college/',views.add_college),
     path('show_colleges/', views.show_college),
-    path('update_college/<int:college_id>', views.update_college),
+    path('update_college/<int:id>', views.update_college),
     path('delete_college/<int:college_id>', views.delete_college),
 
     path('show_location_college/',views.show_location_college),
@@ -19,6 +19,8 @@ urlpatterns =[
     path('show_locations/',views.show_locations),
     path('add_locations/',views.add_locations),
 
-
+    path('admin_dashboard/',views.admin_dashboard),
+    path('add_notification/',views.add_notification),
+    path('get_notification/',views.get_notification),
 
 ]

@@ -1,33 +1,86 @@
 {% extends 'user_layout.html' %}
-
     <!-- Content -->
-
-
 {% block main_content %}
 	<main class="ttr-wrapper">
 
-            <h1 class="text-center">My Cart</h1>
+            <h1 class="text-center">My Wishlist</h1>
             <div class="card py-2 px-2">
-                	{% include 'messages.html'%}
-                <table class="table-striped">
-                    <tr>
-                        <th>College Name</th>
-                        <th>College Location</th>
-                        <th>Date Added</th>
-                        <th>Actions</th>
-                    </tr>
-                    {% for i in items %}
-                    <tr>
-                        <td> {{ i.food.college_name }}</td>
-                        <td> {{ i.food.college_location }}</td>
-                        <td> {{ i.created_date }}</td>
-                        <td><a class="btn btn-dark btn-sm" href="/remove_item/{{i.food.id}}">Remove</a> &nbsp;
-                            </td>
+<!--                	{% include 'messages.html'%}-->
+<!--                <table class="table-striped">-->
+<!--                    <tr>-->
+<!--                        <th>College Name</th>-->
+<!--                        <th>College Location</th>-->
+<!--                        <th>Date Added</th>-->
+<!--                        <th>Actions</th>-->
+<!--                    </tr>-->
+<!--                    {% for i in items %}-->
+<!--                    <tr>-->
+<!--                        <td> {{ i.food.college_name }}</td>-->
+<!--                        <td> {{ i.food.college_location }}</td>-->
+<!--                        <td> {{ i.created_date }}</td>-->
+<!--                        <td><a class="btn btn-dark btn-sm" href="/remove_item/{{i.food.id}}">Remove</a> &nbsp;-->
+<!--                            </td>-->
 
-                    </tr>
-                    {% endfor %}
+<!--                    </tr>-->
+<!--                    {% endfor %}-->
 
-                </table>
+<!--                </table>-->
+                <div class="widget-inner" id="row1">
+							{% include 'messages.html'%}
+							{% for i in items %}
+							<div class="card-courses-list admin-courses">
+								<div class="card-courses-media">
+									<img src="/{{i.food.college_image}}" alt=""/>
+								</div>
+								<div class="card-courses-full-dec">
+									<div class="card-courses-title">
+										<h4>{{i.food.college_name}}</h4>
+									</div>
+									<div class="card-courses-list-bx">
+										<ul class="card-courses-view">
+											<li class="card-courses-user">
+												<div class="card-courses-user-pic">
+													<img src="assets/images/testimonials/pic3.jpg" alt=""/>
+												</div>
+												<div class="card-courses-user-info">
+													<h5>Locations</h5>
+													<h4>{{i.food.college_location}}</h4>
+												</div>
+											</li>
+											<li class="card-courses-categories">
+												<h5>College Type</h5>
+												<h4>{{i.food.college_type}}</h4>
+											</li>
+
+											<li class="card-courses-review">
+												<h5>3 Review</h5>
+												<ul class="cours-star">
+													<li class="active"><i class="fa fa-star"></i></li>
+													<li class="active"><i class="fa fa-star"></i></li>
+													<li class="active"><i class="fa fa-star"></i></li>
+													<li><i class="fa fa-star"></i></li>
+													<li><i class="fa fa-star"></i></li>
+												</ul>
+											</li>
+
+
+										</ul>
+									</div>
+									<div class="row card-courses-dec">
+										<div class="col-md-12">
+											<h6 class="m-b10">College Description</h6>
+											<p>{{i.food.college_description}} </p>
+										</div>
+										<div class="col-md-12">
+
+											<a href="/remove_item/{{i.food.id}}" class="btn red outline radius-xl ">Remove</a>
+										</div>
+									</div>
+
+								</div>
+							</div>
+							{% endfor %}
+            </div>
             </div>
     </main>
 

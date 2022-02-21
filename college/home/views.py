@@ -11,6 +11,7 @@ from account.forms import Loginform
 from Admin.filters import *
 from home.models import Cart, Admission
 from django.contrib import messages
+from notifications.notific import SendNotification
 
 
 @login_required
@@ -278,6 +279,8 @@ def user_wishlist(request,id):
         cart = Cart.objects.create(food=food, user=user)
         if cart:
             messages.add_message(request, messages.SUCCESS, 'Item added to cart')
+            message = f"Hello world"
+            SendNotification(request.user,message)
             return redirect('/user_colleges')
         else:
             messages.add_message(request, messages.ERROR, 'Unable to add item to cart')

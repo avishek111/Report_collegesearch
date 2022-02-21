@@ -60,6 +60,9 @@ class Colleges_of_student(models.Model):
         return self.college_name
 
 
+class notifications(models.Model):
+    news =  models.CharField(max_length=200, null=True)
+    created_date = models.DateTimeField(auto_now_add=True, null=True)
 
 
 

@@ -1,3 +1,4 @@
+{% load notification %}
 	<!-- header start -->
 	<header class="ttr-header">
 		<div class="ttr-header-wrapper">
@@ -49,76 +50,102 @@
 						<a href="#" class="ttr-material-button ttr-search-toggle"><i class="fa fa-heart"></i></a>
 					</li>
 					<li>
-						<a href="#" class="ttr-material-button ttr-submenu-toggle"><i class="fa fa-bell"></i></a>
+						<a href="/get_notification" class="ttr-material-button ttr-submenu-toggle"><i class="fa fa-bell">
+
+                                        {% if request.user|notification_count %}
+                                            <span class="cart-count">{{ request.user|notification_count}}</span>
+                                        {% else %}
+                                        <span class="cart-count">0</span>
+                                        {% endif %}
+
+						</i>
+
+						</a>
+
+
+
+
 						<div class="ttr-header-submenu noti-menu">
 							<div class="ttr-notify-header">
-								<span class="ttr-notify-text-top">9 New</span>
+<!--								<span class="ttr-notify-text-top">9 New</span>-->
+
 								<span class="ttr-notify-text">User Notifications</span>
 							</div>
+
 							<div class="noti-box-list">
 								<ul>
-									<li>
-										<span class="notification-icon dashbg-gray">
-											<i class="fa fa-check"></i>
-										</span>
-										<span class="notification-text">
-											<span>Sneha Jogi</span> sent you a message.
-										</span>
-										<span class="notification-time">
-											<a href="#" class="fa fa-close"></a>
-											<span> 02:14</span>
-										</span>
-									</li>
-									<li>
-										<span class="notification-icon dashbg-yellow">
-											<i class="fa fa-shopping-cart"></i>
-										</span>
-										<span class="notification-text">
-											<a href="#">Your order is placed</a> sent you a message.
-										</span>
-										<span class="notification-time">
-											<a href="#" class="fa fa-close"></a>
-											<span> 7 Min</span>
-										</span>
-									</li>
-									<li>
-										<span class="notification-icon dashbg-red">
-											<i class="fa fa-bullhorn"></i>
-										</span>
-										<span class="notification-text">
-											<span>Your item is shipped</span> sent you a message.
-										</span>
-										<span class="notification-time">
-											<a href="#" class="fa fa-close"></a>
-											<span> 2 May</span>
-										</span>
-									</li>
-									<li>
-										<span class="notification-icon dashbg-green">
-											<i class="fa fa-comments-o"></i>
-										</span>
-										<span class="notification-text">
-											<a href="#">Sneha Jogi</a> sent you a message.
-										</span>
-										<span class="notification-time">
-											<a href="#" class="fa fa-close"></a>
-											<span> 14 July</span>
-										</span>
-									</li>
-									<li>
-										<span class="notification-icon dashbg-primary">
-											<i class="fa fa-file-word-o"></i>
-										</span>
-										<span class="notification-text">
-											<span>Sneha Jogi</span> sent you a message.
-										</span>
-										<span class="notification-time">
-											<a href="#" class="fa fa-close"></a>
-											<span> 15 Min</span>
-										</span>
-									</li>
+<!--									<li>-->
+<!--										<span class="notifications-icon dashbg-gray">-->
+<!--											<i class="fa fa-check"></i>-->
+<!--										</span>-->
+<!--										<span class="notifications-text">-->
+<!--											<span>Sneha Jogi</span> sent you a message.-->
+<!--										</span>-->
+<!--										<span class="notifications-time">-->
+<!--											<a href="#" class="fa fa-close"></a>-->
+<!--											<span> 02:14</span>-->
+<!--										</span>-->
+<!--									</li>-->
+									{% for notification in request.user|notifications %}
+										<li>
+											<span class="notification-icon dashbg-yellow">
+												<i class="fa fa-bullhorn"></i>
+											</span>
+											<span class="notification-text">
+												<a href="">{{ notification.message }}</a>
+											</span>
+											<div style="float:right;">
+											<span class="notifications-time">
+												<a href="{% url 'notifications:is_read' notification.pk %}" class="fa fa-close" id="hello"></a>
+											</span>
+												</div>
+
+										</li>
+									{% endfor %}
+
+
+<!--									{% for i in notifications %}-->
+<!--									<li>-->
+<!--										<span class="notifications-icon dashbg-red">-->
+<!--											<i class="fa fa-bullhorn"></i>-->
+<!--										</span>-->
+<!--										<span class="notifications-text">-->
+<!--											<span>{{i.news}}</span> sent you a message.-->
+<!--										</span>-->
+<!--										<span class="notifications-time">-->
+<!--											<a href="#" class="fa fa-close"></a>-->
+<!--											<span> {{i.created_date}}</span>-->
+<!--										</span>-->
+<!--									</li>-->
+<!--									{% endfor %}-->
+<!--									<li>-->
+<!--										<span class="notifications-icon dashbg-green">-->
+<!--											<i class="fa fa-comments-o"></i>-->
+<!--										</span>-->
+<!--										<span class="notifications-text">-->
+<!--											<a href="#">Sneha Jogi</a> sent you a message.-->
+<!--										</span>-->
+<!--										<span class="notifications-time">-->
+<!--											<a href="#" class="fa fa-close"></a>-->
+<!--											<span> 14 July</span>-->
+<!--										</span>-->
+<!--									</li>-->
+<!--									<li>-->
+<!--										<span class="notifications-icon dashbg-primary">-->
+<!--											<i class="fa fa-file-word-o"></i>-->
+<!--										</span>-->
+<!--										<span class="notifications-text">-->
+<!--											<span>Sneha Jogi</span> sent you a message.-->
+<!--										</span>-->
+<!--										<span class="notifications-time">-->
+<!--											<a href="#" class="fa fa-close"></a>-->
+<!--											<span> 15 Min</span>-->
+<!--										</span>-->
+<!--									</li>-->
 								</ul>
+
 							</div>
+
 						</div>
 					</li>
 					<li>
