@@ -206,3 +206,67 @@ def get_notification(request):
         'notifications':notification
     }
     return render(request,'home/user_dashboard.html',context)
+
+
+def get_users(request):
+    users = User.objects.filter(is_staff=0).order_by('-id')
+    context = {
+        'users':users
+    }
+    return render(request, 'Admin/users.html', context)
+
+
+def get_admins(request):
+    admins = User.objects.filter(is_staff=1).order_by('-id')
+    context = {
+        'admins':admins
+    }
+    return render(request, 'Admin/admins.html', context)
+
+
+def promote_user(request,user_id):
+    user = User.objects.get(id=user_id)
+    user.is_staff=True
+    user.save()
+    messages.add_message(request, messages.SUCCESS, 'User promoted to admin')
+    return redirect('/admins')
+
+
+def demote_user(request,user_id):
+    user = User.objects.get(id=user_id)
+    user.is_staff=False
+    user.save()
+    messages.add_message(request, messages.SUCCESS, 'Admin demoted to user')
+    return redirect('/users')
+
+# @login_required
+# @admin_only
+# def deactivate_admin(request, user_id):
+#     user = User.objects.get(id=user_id)
+#     user.delete()
+#     messages.add_message(request, messages.SUCCESS, 'admin deactivated succesfully')
+#     return redirect('/admins/admins')
+
+
+
+def deactivate_user(request,user_id):
+    user = User.objects.get(id=user_id)
+    user.is_active=False
+    user.save()
+    messages.add_message(request, messages.SUCCESS, 'user Disabled')
+    return redirect('/users')
+
+
+def activate_user(request,user_id):
+    user = User.objects.get(id=user_id)
+    user.is_active=True
+    user.save()
+    messages.add_message(request, messages.SUCCESS, 'Admin enabled')
+    return redirect('/admins')
+
+def activate_users(request,user_id):
+    user = User.objects.get(id=user_id)
+    user.is_active=True
+    user.save()
+    messages.add_message(request, messages.SUCCESS, 'user enabled')
+    return redirect('/users')

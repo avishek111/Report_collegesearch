@@ -23,4 +23,11 @@ urlpatterns =[
     path('add_notification/',views.add_notification),
     path('get_notification/',views.get_notification),
 
+    path('users/',views.get_users),
+    path('admins/', views.get_admins),
+    path('promote_user/<int:user_id>', views.promote_user),
+    path('demote_user/<int:user_id>', views.demote_user),
+    path('deactivate_user/<int:user_id>', views.deactivate_user),
+    path('activate_users/<int:user_id>', views.activate_users),
+
 ]

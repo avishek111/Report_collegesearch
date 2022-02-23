@@ -1,6 +1,7 @@
 from django import template
 from notifications.models import UserObj, Notification
 
+
 register = template.Library()
 
 
@@ -28,3 +29,6 @@ def notification_count(user):
             return 0
     else:
         return 0
+
+
+

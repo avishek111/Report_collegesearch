@@ -13,3 +13,14 @@ class Admission(models.Model):
     Email = models.CharField(max_length=100)
     Text = models.CharField(max_length=100)
     Certificate = models.FileField(upload_to='static/certificate')
+
+
+class college_filter(models.Model):
+    college_name= (
+    ('Manasalu college','Manasalu college')
+)
+    college_location = (
+        ('Nayabazar,kathmandu','Nayabazar,kathmandu')
+    )
+
+

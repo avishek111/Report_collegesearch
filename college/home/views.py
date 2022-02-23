@@ -4,7 +4,7 @@ from django.core.paginator import Paginator
 from django.contrib.auth.models import User
 from account.auth import unauthenticated_user, admin_only,user_only
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from Admin.models import Colleges, Colleges_of_student
 from Admin.form import CollegeForm, College_students_form
 from account.forms import Loginform
@@ -12,6 +12,7 @@ from Admin.filters import *
 from home.models import Cart, Admission
 from django.contrib import messages
 from notifications.notific import SendNotification
+from .filter import college_filters
 
 
 @login_required
@@ -76,6 +77,9 @@ def filter(request):
 def front(request):
     return render(request, 'home/dash1.html')
 
+
+def faq(request):
+    return render(request, 'home/faq.html')
 
 def search(request):
     colleges = Colleges_of_student.objects.all().order_by('-id')
@@ -226,6 +230,7 @@ def user_colleges(request):
                 'user_id': user_id
             }
             return render(request, 'home/user_colleges.html', context)
+    my_college = college_filters()
     user_id = request.user.username
     colleges = Colleges_of_student.objects.all().order_by('id')
     location_filter = LocationFilter(request.GET, queryset=colleges)
@@ -237,7 +242,8 @@ def user_colleges(request):
         'page': page,
         'location_filter': location_filter,
         'colleges': location_final,
-        'user_id': user_id
+        'user_id': user_id,
+        'my_college':my_college
     }
     return render(request, 'home/user_colleges.html',context)
 
@@ -270,7 +276,6 @@ def user_college_details(request,id):
 def user_wishlist(request,id):
     user = request.user
     food = Colleges_of_student.objects.get(id=id)
-
     check_item_presence = Cart.objects.filter(user=user, food=food)
     if check_item_presence:
         messages.success(request,'Item already exited')
@@ -279,8 +284,9 @@ def user_wishlist(request,id):
         cart = Cart.objects.create(food=food, user=user)
         if cart:
             messages.add_message(request, messages.SUCCESS, 'Item added to cart')
-            message = f"Hello world"
-            SendNotification(request.user,message)
+
+            # message = f"Item added"
+            # SendNotification(request.user,message)
             return redirect('/user_colleges')
         else:
             messages.add_message(request, messages.ERROR, 'Unable to add item to cart')
@@ -300,11 +306,11 @@ def show_cart_items(request):
 
 @login_required
 @user_only
-def remove_cart_item(request, cart_id):
-    user = request.user.id
-    item = Colleges_of_student.objects.get(id=cart_id)
+def remove_cart_item(request,cart_id):
+    item = Cart.objects.get(food_id=cart_id)
     item.delete()
-    messages.add_message(request, messages.SUCCESS, 'Cart item removed successfully')
+    messages.add_message(request, messages.SUCCESS, 'Item removed successfully')
     return redirect('/my_colleges')
+
 
 
