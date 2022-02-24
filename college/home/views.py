@@ -258,9 +258,9 @@ def user_college_details(request,id):
             post.Certificate=request.POST['file']
             post.save()
             messages.add_message(request, messages.SUCCESS, 'On the way')
-            return render('/user_college_details')
+            return redirect('/user_colleges')
         else:
-            return render(request, 'home/user_college_details.html')
+            return redirect('/user_colleges')
     f = Colleges_of_student.objects.filter(id=id)
     three_paginator = Paginator(f, 9)
     three_page = request.GET.get('page4')

@@ -14,4 +14,5 @@ urlpatterns =[
     path('user_wishlist/<int:id>', views.user_wishlist),
     path('my_colleges/', views.show_cart_items),
     path('remove_item/<int:cart_id>', views.remove_cart_item),
+    path('user_admission/',views.user_college_details),
 ]
