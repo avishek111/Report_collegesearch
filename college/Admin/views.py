@@ -3,12 +3,15 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from account.auth import unauthenticated_user, admin_only,user_only
 from django.shortcuts import render, redirect
+
+from notifications.notific import SendNotification
 from .form import CategoryForm, CollegeForm, LocationForm, College_students_form, notification_form
 from .models import Category, Colleges, Locations, Colleges_of_student, notifications
 from django.contrib import messages
 from .filters import LocationFilter
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
+from home.models import *
 
 
 def add_category(request):
@@ -270,3 +273,26 @@ def activate_users(request,user_id):
     user.save()
     messages.add_message(request, messages.SUCCESS, 'user enabled')
     return redirect('/users')
+
+
+def user_admission(request):
+    admission = Admission.objects.all()
+    context={
+        'admission':admission
+    }
+    return render(request,'Admin/user_admission.html',context)
+
+
+def delete_admission(request,id):
+    college= Admission.objects.get(id=id)
+    college.delete()
+    messages.add_message(request,messages.SUCCESS,'College deleted successfully')
+    return redirect('/user_admission')
+
+def deletes_admission(request,id):
+    college= Admission.objects.get(id=id)
+    college.delete()
+    message = f"Your notification was read by admin"
+    SendNotification(request.user,message)
+    messages.add_message(request,messages.SUCCESS,'Read successfully')
+    return redirect('/user_admission')

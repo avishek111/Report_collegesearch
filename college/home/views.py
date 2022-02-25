@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth import login, authenticate
+from django.core.files.storage import FileSystemStorage
 from django.core.paginator import Paginator
 from django.contrib.auth.models import User
 from account.auth import unauthenticated_user, admin_only,user_only
@@ -311,6 +312,4 @@ def remove_cart_item(request,cart_id):
     item.delete()
     messages.add_message(request, messages.SUCCESS, 'Item removed successfully')
     return redirect('/my_colleges')
-
-
 

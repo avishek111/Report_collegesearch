@@ -30,4 +30,9 @@ urlpatterns =[
     path('deactivate_user/<int:user_id>', views.deactivate_user),
     path('activate_users/<int:user_id>', views.activate_users),
 
+    path('user_admission/',views.user_admission),
+    path('delete_admission/<int:id>', views.delete_admission),
+    path('deletes_admission/<int:id>', views.deletes_admission),
+
+
 ]
