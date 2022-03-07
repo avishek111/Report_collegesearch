@@ -485,7 +485,7 @@
     <button class="back-to-top fa fa-chevron-up" ></button>
 </div>
 <!-- External JavaScripts -->
-<form method="POST">
+<form method="POST" enctype="multipart/form-data">
 	{% csrf_token %}
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -504,7 +504,7 @@
 		  <textarea class="form-control" name="text" id="exampleFormControlTextarea1" rows="3"></textarea>
 		</div>
 		  <div class="mb-3">
-			  <label for="formFile" class="form-label">Your Grade 10 Certificate</label>
+			  <label for="formFile" class="form-label">Your Grades Certificate</label>
 			  <input class="form-control" name="file" type="file" id="formFile">
 		  </div>
       </div>

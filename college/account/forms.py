@@ -20,3 +20,4 @@ class ProfileForms(ModelForm):
         fields = "__all__"
         exclude = ['user','Username', 'email']
 
+

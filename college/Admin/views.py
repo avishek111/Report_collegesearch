@@ -5,8 +5,9 @@ from account.auth import unauthenticated_user, admin_only,user_only
 from django.shortcuts import render, redirect
 
 from notifications.notific import SendNotification
-from .form import CategoryForm, CollegeForm, LocationForm, College_students_form, notification_form
-from .models import Category, Colleges, Locations, Colleges_of_student, notifications
+from .form import CategoryForm, CollegeForm, LocationForm, College_students_form, \
+    notification_form, sampleform,Profile_Forms
+from .models import Category, Colleges, Locations, Colleges_of_student, notifications, admin_profile
 from django.contrib import messages
 from .filters import LocationFilter
 from django.core.paginator import Paginator
@@ -30,6 +31,22 @@ def add_category(request):
     }
     return render(request, 'Admin/add_category.html', context)
 
+
+def sample(request):
+    if request.method == "POST":
+        form = sampleform(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.add_message(request, messages.SUCCESS, 'Category added successfully')
+            return redirect("/show_category")
+        else:
+            messages.add_message(request, messages.ERROR, 'Unable to add category')
+            return render(request, 'Admin/sample.html', {'add_category': form})
+    context = {
+        'form_category': sampleform,
+        'activate_category': 'active'
+    }
+    return render(request, 'Admin/sample.html',context)
 
 def dashboard(request):
     return render(request,'Admin/dashboard.html')
@@ -183,8 +200,8 @@ def show_locations(request):
 # def front(request):
 #     return render(request, 'Admin/fil.html')
 
-def admin_dashboard(request):
-    return render(request, 'Admin/admin_dashboard.html')
+# def admin_dashboard(request):
+#     return render(request, 'Admin/admin_dashboard.html')
 
 def add_notification(request):
     if request.method == "POST":
@@ -292,7 +309,40 @@ def delete_admission(request,id):
 def deletes_admission(request,id):
     college= Admission.objects.get(id=id)
     college.delete()
-    message = f"Your notification was read by admin"
+    user = request.user.username
+    message = f'Dear{user}your message was read'
     SendNotification(request.user,message)
     messages.add_message(request,messages.SUCCESS,'Read successfully')
     return redirect('/user_admission')
+
+
+# def admin_profiles(request):
+#     profile= request.user.admin_profiles
+#     if request.method == 'POST':
+#         form = Profile_Forms(request.POST, request.FILES, instance=profile)
+#         if form.is_valid():
+#             form.save()
+#             messages.add_message(request, messages.SUCCESS, 'Profile Updated Successfully')
+#             return redirect('/admin_profile')
+#     context = {
+#         'form': Profile_Forms(instance=profile)
+#     }
+#     return render(request, 'Admin/admin_profile.html', context)
+
+
+def admin_dashboard(request):
+    user = User.objects.all()
+    user_count = user.filter(is_staff=0).count()
+    admin_count = user.filter(is_staff=1).count()
+    colleges =  Colleges_of_student.objects.all()
+    coleges_count = colleges.count()
+    admi = Admission.objects.all()
+    admission_count = admi.count()
+    context = {
+        'user': user_count,
+        'admin': admin_count,
+        'colleges':coleges_count,
+        'admi_count':admission_count,
+    }
+
+    return render(request, 'Admin/admin_dashboard.html', context)

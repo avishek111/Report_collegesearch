@@ -8,4 +8,6 @@ urlpatterns = [
     path('',include('Admin.urls')),
     path('', include("account.urls")),
     path('',include("notifications.urls")),
+    path('',include("wishlist.urls")),
+
 ]

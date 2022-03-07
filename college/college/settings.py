@@ -41,8 +41,10 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'Admin.apps.AdminConfig',
     'notifications.apps.NotificationsConfig',
+    'wishlist.apps.WishlistConfig',
     'bootstrapform',
     'django_filters',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [

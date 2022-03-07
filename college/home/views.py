@@ -252,11 +252,11 @@ def user_colleges(request):
 @user_only
 def user_college_details(request,id):
     if request.method == "POST":
-        if request.POST['email'] and request.POST['text'] and request.POST['file']:
+        if request.POST['email'] and request.POST['text'] and request.FILES['file']:
             post = Admission()
             post.Email = request.POST['email']
             post.Text = request.POST['text']
-            post.Certificate=request.POST['file']
+            post.Certificate=request.FILES['file']
             post.save()
             messages.add_message(request, messages.SUCCESS, 'On the way')
             return redirect('/user_colleges')
@@ -270,6 +270,11 @@ def user_college_details(request,id):
         'page': page4
     }
     return render(request, 'home/user_college_details.html',context)
+
+
+
+
+
 
 
 @login_required
@@ -308,7 +313,9 @@ def show_cart_items(request):
 @login_required
 @user_only
 def remove_cart_item(request,cart_id):
-    item = Cart.objects.get(food_id=cart_id)
+    user = request.user
+    item = Cart.objects.get(food_id=cart_id,user_id=user)
+    print(item)
     item.delete()
     messages.add_message(request, messages.SUCCESS, 'Item removed successfully')
     return redirect('/my_colleges')

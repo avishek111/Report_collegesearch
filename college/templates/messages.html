@@ -15,9 +15,9 @@
 {% endfor %}
 
 <script>
-var m = document.getElementsByIdName("msg");
-
-setTimeout(function(){
-   m.style.display = "none";
-}, 3000);
-</script>
+    setTimeout(function(){
+      if ($('#msg').length > 0) {
+        $('#msg').remove();
+      }
+    }, 1000)
+  </script>

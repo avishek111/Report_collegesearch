@@ -4,13 +4,34 @@
     <title>Add Category</title>
 {% endblock%}
 
+{% block style %}
+.form{
+    width:720px;
+    margin-top:20px;
+}
+label{
+    color:blue;
+}
+@media only screen and (max-width: 700px) {
+  .card{
+    width:400px;
+  }
+}
+
+
+<!--@media only screen and (max-width: 700px) {-->
+<!--  .card{-->
+<!--    width:400px;-->
+<!--  }-->
+<!--}-->
+{% endblock style %}
 {% block main_content %}
-
+	<main class="ttr-wrapper">
 <div class="container">
-<div class="row">
+<!--<div class="row">-->
 
-    <div class="col-md-6 offset-md-3">
-        <h1 class="text-center">Add New Category</h1>
+<!--    <div class="col-md-6 offset-md-3">-->
+        <h1 class="text-center" style="color:blue">Send Notification</h1>
           {% include 'messages.html'%}
         <div class="card py-2 px-2">
         <form class="form" action="" method="POST" enctype="multipart/form-data">
@@ -22,5 +43,5 @@
     </div>
 </div>
 </div>
-
+    </main>
 {% endblock %}
