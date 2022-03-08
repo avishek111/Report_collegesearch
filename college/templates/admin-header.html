@@ -33,7 +33,12 @@
 				<ul class="ttr-header-navigation">
 
 					<li>
-						<a href="#" class="ttr-material-button ttr-submenu-toggle"><i class="fa fa-bell"></i></a>
+						<a href="#" class="ttr-material-button ttr-submenu-toggle"><i class="fa fa-bell"></i>
+						{% if request.user|notification_count %}
+                                            <span class="cart-count">{{ request.user|notification_count}}</span>
+                                        {% else %}
+                                        <span class="cart-count">0</span>
+                                        {% endif %}</a>
 						<div class="ttr-header-submenu noti-menu">
 							<div class="ttr-notify-header">
 
@@ -41,18 +46,22 @@
 							</div>
 							<div class="noti-box-list">
 								<ul>
-									<li>
-										<span class="notification-icon dashbg-gray">
-											<i class="fa fa-check"></i>
-										</span>
-										<span class="notification-text">
-											<span>Sneha Jogi</span> sent you a message.
-										</span>
-										<span class="notification-time">
-											<a href="#" class="fa fa-close"></a>
-											<span> 02:14</span>
-										</span>
-									</li>
+									{% for notification in request.user|notifications %}
+										<li>
+											<span class="notification-icon dashbg-yellow">
+												<i class="fa fa-bullhorn"></i>
+											</span>
+											<span class="notification-text">
+												<a href="">{{ notification.message }}</a>
+											</span>
+											<div style="float:right;">
+											<span class="notifications-time">
+												<a href="{% url 'notifications:is_read' notification.pk %}" class="fa fa-close" id="hello"></a>
+											</span>
+												</div>
+
+										</li>
+									{% endfor %}
 								</ul>
 							</div>
 						</div>

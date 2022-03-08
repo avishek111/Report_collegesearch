@@ -18,10 +18,10 @@ def add_notifications(request):
         if form.is_valid():
             form.save()
             messages.add_message(request, messages.SUCCESS, 'Notification added successfully')
-            return redirect("/show_category")
+            return redirect("/add_notifications")
         else:
             messages.add_message(request, messages.ERROR, 'Unable to add category')
-            return render(request, 'Admin/add_category.html', {'add_category': form})
+            return render(request, 'notifications/add_notifications.html', {'add_category': form})
     context = {
         'form_category': NotificationForm,
         'activate_category': 'active'
@@ -38,3 +38,14 @@ def seenNotification(request, pk):
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     else:
         return redirect('account:login')
+
+
+# def seensNotification(request, pk):
+#     if request.user.is_authenticated:
+#         user_obj = UserObj.objects.get(user=request.user)
+#         notification_qs = Notification.objects.get(id=pk)
+#         notification_qs.userobj.remove(user_obj)
+#         notification_qs.is_read = True
+#         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+#     else:
+#         return redirect('account:login')

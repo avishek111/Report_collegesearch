@@ -11,7 +11,7 @@ class UserObj(models.Model):
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.user.email} notification objects"
+        return f"{self.user.email}"
 
     @receiver(post_save, sender=User)
     def create_notification_object(sender, instance, created, **kwargs):
@@ -29,4 +29,12 @@ class Notification(models.Model):
     def __str__(self):
         return str(self.message)
 
+# class Notifications(models.Model):
+#     userobj = models.ManyToManyField(UserObj, blank=True)
+#     message = models.TextField()
+#     is_read = models.BooleanField(default=False)
+#     created = models.DateTimeField(auto_now_add=True)
+#
+#     def __str__(self):
+#         return str(self.message)
 

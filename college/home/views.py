@@ -84,7 +84,32 @@ def faq(request):
 
 def search(request):
     colleges = Colleges_of_student.objects.all().order_by('-id')
-    c = Colleges.objects.filter(college_type="Public")
+
+
+    if request.method == "POST":
+        user_id = request.user.username
+        val1 = request.POST["check"]
+
+        print(val1)
+        if val1:
+            c = Colleges_of_student.objects.filter(college_level=val1)
+            public_paginator = Paginator(c, 9)
+            public_page = request.GET.get('page1')
+            page1 = public_paginator.get_page(public_page)
+
+            location_filter = LocationFilter(request.GET, queryset=colleges)
+            location_final = location_filter.qs
+            college_paginator = Paginator(location_final, 9)
+            page_num = request.GET.get('page')
+            page = college_paginator.get_page(page_num)
+            context = {
+                "page":page1,
+                'user_id':user_id,
+                'location_filter': location_filter,
+            }
+            return render(request, 'home/search.html', context)
+
+    c = Colleges_of_student.objects.filter(college_type="Public")
     public_paginator = Paginator(c, 9)
     public_page = request.GET.get('page1')
     page1 = public_paginator.get_page(public_page)
@@ -93,16 +118,6 @@ def search(request):
     private_paginator = Paginator(d, 9)
     private_page = request.GET.get('page2')
     page2 = private_paginator.get_page(private_page)
-
-    e = Colleges_of_student.objects.filter(college_level="2 Year")
-    two_paginator = Paginator(e, 9)
-    two_page = request.GET.get('page3')
-    page3 = two_paginator.get_page(two_page)
-
-    f = Colleges_of_student.objects.filter(college_level="4 Year")
-    three_paginator = Paginator(f, 9)
-    three_page = request.GET.get('page4')
-    page4 = three_paginator.get_page(three_page)
 
     location_filter = LocationFilter(request.GET, queryset=colleges)
     location_final = location_filter.qs
@@ -114,8 +129,6 @@ def search(request):
         'page': page,
         'count2': public_paginator.count,
         'page1': page1,
-        'page3': page3,
-        'page4':page4,
         'count3': private_paginator.count,
         'colleges': location_final,
         'page2': page2,
@@ -129,13 +142,13 @@ def search(request):
 
 
 def college_dashboard(request):
-    colleges = Colleges.objects.all().order_by('-id')
-    c = Colleges.objects.filter(college_type="Public")
+    colleges = Colleges_of_student.objects.all().order_by('-id')
+    c = Colleges_of_student.objects.filter(college_type="Public")
     public_paginator = Paginator(c, 9)
     public_page = request.GET.get('page1')
     page1 = public_paginator.get_page(public_page)
 
-    d = Colleges.objects.filter(college_type="Private")
+    d = Colleges_of_student.objects.filter(college_type="Private")
     private_paginator = Paginator(d, 9)
     private_page = request.GET.get('page2')
     page2 = private_paginator.get_page(private_page)
@@ -194,11 +207,10 @@ def college_dashboard(request):
 def user_colleges(request):
     if request.method == "POST":
         user_id = request.user.username
-        val = request.POST["fav_language1"]
-        val1 = request.POST["fav_language"]
-        print(val,val1)
-        if val and val1:
-            c = Colleges_of_student.objects.filter(college_type=val).filter(college_level=val1)
+        val1 = request.POST["check"]
+        print(val1)
+        if val1:
+            c = Colleges_of_student.objects.filter(college_level=val1)
             public_paginator = Paginator(c, 9)
             public_page = request.GET.get('page1')
             page1 = public_paginator.get_page(public_page)
@@ -207,18 +219,18 @@ def user_colleges(request):
                 'user_id':user_id
             }
             return render(request, 'home/user_colleges.html', context)
-        elif val:
-            f =Colleges_of_student.objects.filter(college_level="val")
-            three_paginator = Paginator(f, 9)
-            three_page = request.GET.get('page4')
-            page4 = three_paginator.get_page(three_page)
-            context = {
-                'page': page4,
-                'activate_category': 'active',
-                'activate_college': 'active',
-                'user_id': user_id
-            }
-            return render(request, 'home/user_colleges.html', context)
+        # elif :
+        #     f =Colleges_of_student.objects.filter(college_level="val")
+        #     three_paginator = Paginator(f, 9)
+        #     three_page = request.GET.get('page4')
+        #     page4 = three_paginator.get_page(three_page)
+        #     context = {
+        #         'page': page4,
+        #         'activate_category': 'active',
+        #         'activate_college': 'active',
+        #         'user_id': user_id
+        #     }
+        #     return render(request, 'home/user_colleges.html', context)
         else:
             f =Colleges_of_student.objects.filter(college_level="val1")
             three_paginator = Paginator(f, 9)
@@ -259,6 +271,9 @@ def user_college_details(request,id):
             post.Certificate=request.FILES['file']
             post.save()
             messages.add_message(request, messages.SUCCESS, 'On the way')
+            message = f"new admission"
+            user = 34
+            SendNotification(user, message)
             return redirect('/user_colleges')
         else:
             return redirect('/user_colleges')
@@ -270,10 +285,6 @@ def user_college_details(request,id):
         'page': page4
     }
     return render(request, 'home/user_college_details.html',context)
-
-
-
-
 
 
 
@@ -290,9 +301,8 @@ def user_wishlist(request,id):
         cart = Cart.objects.create(food=food, user=user)
         if cart:
             messages.add_message(request, messages.SUCCESS, 'Item added to cart')
-
-            # message = f"Item added"
-            # SendNotification(request.user,message)
+            message = f"Item added"
+            SendNotification(request.user,message)
             return redirect('/user_colleges')
         else:
             messages.add_message(request, messages.ERROR, 'Unable to add item to cart')

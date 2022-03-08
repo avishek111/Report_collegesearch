@@ -25,6 +25,8 @@ def notifications(user):
         return None
 
 
+
+
 @register.filter
 def notification_count(user):
     if user.is_authenticated:

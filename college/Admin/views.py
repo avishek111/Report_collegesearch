@@ -13,6 +13,7 @@ from .filters import LocationFilter
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from home.models import *
+from notifications.notific import SendNotifications
 
 
 def add_category(request):
@@ -87,7 +88,8 @@ def delete_category(request,category_id):
 
 # list of college
 
-
+@login_required
+@admin_only
 def add_college(request):
     if request.method == "POST":
         form = College_students_form(request.POST, request.FILES)
@@ -104,7 +106,8 @@ def add_college(request):
     }
     return render(request, 'Admin/add_college.html', context)
 
-
+@login_required
+@admin_only
 def show_college(request):
     colleges = Colleges_of_student.objects.all().order_by('-id')
     # location_filter = LocationFilter(request.GET, queryset=colleges)
@@ -116,7 +119,8 @@ def show_college(request):
     }
     return render(request,'Admin/show_colleges.html',context)
 
-
+@login_required
+@admin_only
 def update_college(request, id):
     college = Colleges_of_student.objects.get(id=id)
     if request.method == "POST":
@@ -134,7 +138,8 @@ def update_college(request, id):
     }
     return render(request, 'Admin/update_college.html', context)
 
-
+@login_required
+@admin_only
 def delete_college(request,college_id):
     college= Colleges_of_student.objects.get(id=college_id)
     college.delete()
@@ -146,7 +151,8 @@ def delete_college(request,college_id):
 
 # show location and colleges
 
-
+@login_required
+@admin_only
 def show_location_college(request):
     colleges = Colleges.objects.all().order_by('-id')
     location_filter = LocationFilter(request.GET, queryset=colleges)
@@ -202,7 +208,8 @@ def show_locations(request):
 
 # def admin_dashboard(request):
 #     return render(request, 'Admin/admin_dashboard.html')
-
+@login_required
+@admin_only
 def add_notification(request):
     if request.method == "POST":
         form = notification_form(request.POST,request.FILES)
@@ -219,6 +226,8 @@ def add_notification(request):
     }
     return render(request, 'Admin/add_notification.html', context)
 
+@login_required
+@admin_only
 def get_notification(request):
     notification = notifications.objects.all().order_by('-id')
     print(notification)
@@ -227,7 +236,8 @@ def get_notification(request):
     }
     return render(request,'home/user_dashboard.html',context)
 
-
+@login_required
+@admin_only
 def get_users(request):
     users = User.objects.filter(is_staff=0).order_by('-id')
     context = {
@@ -235,7 +245,8 @@ def get_users(request):
     }
     return render(request, 'Admin/users.html', context)
 
-
+@login_required
+@admin_only
 def get_admins(request):
     admins = User.objects.filter(is_staff=1).order_by('-id')
     context = {
@@ -243,7 +254,8 @@ def get_admins(request):
     }
     return render(request, 'Admin/admins.html', context)
 
-
+@login_required
+@admin_only
 def promote_user(request,user_id):
     user = User.objects.get(id=user_id)
     user.is_staff=True
@@ -251,7 +263,8 @@ def promote_user(request,user_id):
     messages.add_message(request, messages.SUCCESS, 'User promoted to admin')
     return redirect('/admins')
 
-
+@login_required
+@admin_only
 def demote_user(request,user_id):
     user = User.objects.get(id=user_id)
     user.is_staff=False
@@ -268,7 +281,8 @@ def demote_user(request,user_id):
 #     return redirect('/admins/admins')
 
 
-
+@login_required
+@admin_only
 def deactivate_user(request,user_id):
     user = User.objects.get(id=user_id)
     user.is_active=False
@@ -276,14 +290,16 @@ def deactivate_user(request,user_id):
     messages.add_message(request, messages.SUCCESS, 'user Disabled')
     return redirect('/users')
 
-
+@login_required
+@admin_only
 def activate_user(request,user_id):
     user = User.objects.get(id=user_id)
     user.is_active=True
     user.save()
     messages.add_message(request, messages.SUCCESS, 'Admin enabled')
     return redirect('/admins')
-
+@login_required
+@admin_only
 def activate_users(request,user_id):
     user = User.objects.get(id=user_id)
     user.is_active=True
@@ -291,28 +307,32 @@ def activate_users(request,user_id):
     messages.add_message(request, messages.SUCCESS, 'user enabled')
     return redirect('/users')
 
-
+@login_required
+@admin_only
 def user_admission(request):
     admission = Admission.objects.all()
     context={
         'admission':admission
     }
+
     return render(request,'Admin/user_admission.html',context)
 
-
+@login_required
+@admin_only
 def delete_admission(request,id):
     college= Admission.objects.get(id=id)
     college.delete()
     messages.add_message(request,messages.SUCCESS,'College deleted successfully')
     return redirect('/user_admission')
-
+@login_required
+@admin_only
 def deletes_admission(request,id):
     college= Admission.objects.get(id=id)
+    user = college.Email
     college.delete()
-    user = request.user.username
-    message = f'Dear{user}your message was read'
-    SendNotification(request.user,message)
-    messages.add_message(request,messages.SUCCESS,'Read successfully')
+    message = f'Message Read'
+    SendNotifications(user, message)
+    messages.add_message(request, messages.SUCCESS, 'Read successfully')
     return redirect('/user_admission')
 
 
@@ -329,7 +349,8 @@ def deletes_admission(request,id):
 #     }
 #     return render(request, 'Admin/admin_profile.html', context)
 
-
+@login_required
+@admin_only
 def admin_dashboard(request):
     user = User.objects.all()
     user_count = user.filter(is_staff=0).count()

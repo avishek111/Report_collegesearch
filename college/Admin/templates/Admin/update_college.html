@@ -3,7 +3,28 @@
 {% block title %}
     <title>Add Category</title>
 {% endblock%}
+{% block style %}
+<style>
+.card{
+    width:720px;
+    margin-top:20px;
+}
+.control-label{
+    color:blue;
+}
+@media only screen and (max-width: 700px) {
+  .card{
+    width:400px;
+  }
+}
 
+@media only screen and (max-width: 500px {
+  .card{
+    width:500px;
+  }
+}
+</style>
+{% endblock style %}
 {% block main_content %}
 
 <div class="container">

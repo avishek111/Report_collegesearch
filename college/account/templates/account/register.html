@@ -4,6 +4,9 @@
 <html lang="en">
 <head>
     <style>
+        .help-block{
+            display:hidden;
+        }
         .imagei img{
         position:absolute;
         right:50%;
@@ -318,9 +321,6 @@
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% block title %}
-    {{section.title}}
-    {% endblock title%}
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -341,11 +341,11 @@
     <div class="col-md-6 offset-md-3">
         <h1 class="text-center">Register Form</h1>
         <div class="imagei">
-              <img src="{%static 'images/1.jpg'%}" style="width:580px;height:450px;">
+              <img src="{%static 'images/1.jpg'%}" style="width:600px;height:500px;margin-top:50px;">
             </div>
           {% include 'messages.html'%}
         <div class="form1">
-        <div class="card py-3 px-2 w-105 p-4" style="background-color: #eee;"">
+        <div class="card py-3 px-2 w-90 p-4" style="background-color: #eee;">
         <form class="form myForm" action="" method="POST">
             {% csrf_token %}
             {{ form_register | bootstrap_horizontal }}
